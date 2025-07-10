@@ -36,7 +36,7 @@ typedef map<ll, ll> mll;
 #define repr(i, a, b) for (int i = (a); i >= (b); --i)
 #define ff first
 #define ss second
-
+// #################OA AMAZON#####
 
 void fastio() {
     ios_base::sync_with_stdio(false);
