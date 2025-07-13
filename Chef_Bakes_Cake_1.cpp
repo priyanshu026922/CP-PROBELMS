@@ -48,6 +48,8 @@ void solve() {
    
     
 }
+######addded 3 questions from codechef contest####
+###will add more####
 
 
     
