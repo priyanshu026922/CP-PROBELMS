@@ -51,12 +51,12 @@ void solve() {
    vi s(n);
    p[0]=a[0];
    rep(i,1,n){
-     p[i]=a[i]+a[i-1];
+     p[i]=(a[i],p[i-1]);
    }
    
    s[n-1]=a[n-1];
    repr(i,n-2,0){
-        s[i]=a[i]+a[i+1];
+        s[i]=(a[i],s[i+1]);
    }
    int mini=INT_MAX;
 
