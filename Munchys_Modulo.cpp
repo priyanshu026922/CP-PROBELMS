@@ -45,6 +45,10 @@ void fastio() {
     cout.tie(NULL);
 }
 
+//////////////////GOOD QUESTION @@Munchys Modulo  STARTERS194///////////
+
+
+
 void solve() {
    ll n;
    cin>>n;

@@ -34,6 +34,10 @@ typedef map<int, int> mii;
 #define ff first
 #define ss second
 
+int lcm(int a, int b) {
+    return a / __gcd(a, b) * b;
+} 
+
 void fastio() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);

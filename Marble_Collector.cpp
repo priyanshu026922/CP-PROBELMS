@@ -1,6 +1,10 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+//CODE3FORCES DIV2 119------- B. Triangles on a Rectangle
+
+
+
 typedef long long ll;
 typedef unsigned long long ull;
 typedef pair<int, int> pii;
@@ -15,6 +19,7 @@ typedef set<int> si;
 typedef multiset<int> msi;
 typedef map<int, int> mii;
 
+
 #define all(x) (x).begin(), (x).end()
 #define rall(x) (x).rbegin(), (x).rend()
 #define sz(x) ((int)(x).size())
@@ -28,11 +33,13 @@ typedef map<int, int> mii;
 #define ispresent(v, x) (binary_search(all(v), x))
 #define freqmap(mp, v) for (auto &el : v) mp[el]++
 
+
 #define rep(i, a, b) for (int i = (a); i < (b); ++i)
-#define repi(i, a, b) for (int i = (a); i <= (b); ++i)
+#define repi(i, a, b) for (int i = (a); i <=(b); ++i)
 #define repr(i, a, b) for (int i = (a); i >= (b); --i)
 #define ff first
 #define ss second
+
 
 void fastio() {
     ios_base::sync_with_stdio(false);
@@ -40,33 +47,37 @@ void fastio() {
     cout.tie(NULL);
 }
 
-int getProfit(vi &a,int cus,int n){
-    int profit=0;
-    for(int i=0;i<n;i++){
-        int s=min(cus,a[i]);
-        int us=cus-s;
-      profit+=s*20-us*30;
-    }
-    return profit;
-}
-void solve() {
-   int n;
-   cin>>n;
-   vi a(n);
-   rep(i,0,n){
-    cin>>a[i];
-   }
-  int maxC=maxe(a);
-  int maxP=INT_MIN;
-  for(int i=0;i<=maxC;i++){
-    int p=getProfit(a,i,n);
-    maxP=max(maxP,p);
+bool cmp(pair<ll,ll>&a,pair<ll,ll>&b){
+  if(a.first!=b.first){
+    return a.ff>b.ff;
   }
-  cout<<maxP<<endl;
-   
+  return a.ss<b.ss;
 }
+
+void solve() {
+int n,m;
+cin>>n>>m;
+vi a(n);
+rep(i,0,n){
+    cin>>a[i];
+}
+
+si s;
+rep(i,0,n){
+    s.insert(a[i]);
+}
+int x=s.size();
+cout<<m-x<<endl;;
+
+
+}
+
+
+    
+
+
 int main() {
-   fastio();
+    fastio();
     int t;
     cin >> t;
     while (t--) {
