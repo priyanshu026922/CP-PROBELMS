@@ -55,21 +55,31 @@ bool cmp(pair<ll,ll>&a,pair<ll,ll>&b){
 }
 
 void solve() {
-int n,m;
-cin>>n>>m;
+int n,k;
+cin>>n>>k;
 vi a(n);
 rep(i,0,n){
     cin>>a[i];
 }
-
-si s;
-rep(i,0,n){
-    s.insert(a[i]);
+int count=0;
+int i=0;
+while(i<=n-k){
+    bool h=true;
+    for(int j=i;j<i+k;j++){
+        if(a[j]==1){
+            h=false;
+        break;
+    }
 }
-int x=s.size();
-cout<<m-x<<endl;;
-
-
+    
+    if(h){
+        count++;
+        i+=k+1;
+    }else{
+        i++;
+    }
+}
+cout<<count<<endl;
 }
 
 

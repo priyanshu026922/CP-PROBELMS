@@ -55,19 +55,33 @@ bool cmp(pair<ll,ll>&a,pair<ll,ll>&b){
 }
 
 void solve() {
-int n,m;
-cin>>n>>m;
-vi a(n);
+ll n,k;
+cin>>n>>k;
+priority_queue<pair<pair<int,int>,int>,vector<pair<pair<int,int>,int>>,greater<pair<pair<int,int>,int>>>pq;
 rep(i,0,n){
-    cin>>a[i];
+   ll l,r,real;
+ cin>>l>>r>>real;
+ pq.push({{l,r},real});
+}
+ll coin=k;
+while(!pq.empty()){
+ll x=pq.top().first.first;
+ll y=pq.top().first.second;
+ll z=pq.top().second;
+pq.pop();
+if(x<=k&&k<=y&&k<=z){
+coin=z;
+k=z;
+}else{
+    break;
+}
 }
 
-si s;
-rep(i,0,n){
-    s.insert(a[i]);
-}
-int x=s.size();
-cout<<m-x<<endl;;
+ 
+cout<<coin<<endl;
+
+
+
 
 
 }

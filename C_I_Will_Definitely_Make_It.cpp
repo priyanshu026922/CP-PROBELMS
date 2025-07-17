@@ -55,21 +55,42 @@ bool cmp(pair<ll,ll>&a,pair<ll,ll>&b){
 }
 
 void solve() {
-int n,m;
-cin>>n>>m;
-vi a(n);
-rep(i,0,n){
-    cin>>a[i];
-}
+int n,k;
+cin>>n>>k;
+vi h(n);
 
 si s;
 rep(i,0,n){
-    s.insert(a[i]);
+    cin>>h[i];
+    s.insert(h[i]);
 }
-int x=s.size();
-cout<<m-x<<endl;;
 
+int m=h[k-1];
+vi a;
+int u;
+for(auto  it:s){
+    a.push_back(it);
+}
 
+int x=a.size();
+rep(i,0,x){
+    if(a[i]==m)u=i;
+}
+// rep(i,0,x){
+//   cout<<a[i]<<" ";
+// }
+// // cout<<endl;
+// cout<<u<<endl;
+int t=0;
+rep(i,u,x-1){
+    if(t+abs(a[i]-a[i+1])<=a[i]){
+      t+=abs(a[i]-a[i+1]);
+    }else{
+cout<<"No"<<endl;
+return;
+    }
+} 
+cout<<"Yes"<<endl;
 }
 
 
