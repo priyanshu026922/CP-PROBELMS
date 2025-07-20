@@ -36,7 +36,6 @@ typedef map<char, int> mci;
 #define repr(i, a, b) for (int i = (a); i >= (b); --i)
 #define ff first
 #define ss second
-// #################OA AMAZON @2#####
 
 void fastio() {
     ios_base::sync_with_stdio(false);
@@ -51,14 +50,15 @@ bool cmp(pair<ll,ll>&a,pair<ll,ll>&b){
   return a.ss<b.ss;
 }
 
+
 void solve() {
 ll n;
 cin>>n;
+n--; 
 vll a;
-n--;
 
-ll msb=log2(n);
-ll num=pow(2,msb)-1;
+ll msb=log2(n);//finding the most significant bit
+ll num=pow(2,msb)-1;    ///contruction cost>=pow(2,msb)
 while(num>=0){
 a.push_back(num);
 num--;
@@ -69,8 +69,8 @@ a.push_back(num);
 num++;
 }
 
-rep(i,0,n){
-    cout<<a[i]<<" ";
+for (auto it:a){
+    cout<<it<<" ";
 }
 cout<<endl;
 }

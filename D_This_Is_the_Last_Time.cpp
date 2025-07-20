@@ -76,14 +76,7 @@ k=z;
     break;
 }
 }
-
- 
 cout<<coin<<endl;
-
-
-
-
-
 }
 
 

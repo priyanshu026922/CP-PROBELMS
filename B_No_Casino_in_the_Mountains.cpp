@@ -71,7 +71,6 @@ while(i<=n-k){
         break;
     }
 }
-    
     if(h){
         count++;
         i+=k+1;
