@@ -52,75 +52,25 @@ bool cmp(pair<ll,ll>&a,pair<ll,ll>&b){
 
 
 void solve() {
-ll n;
-cin>>n;
-vll a(n);
-rep(i,0,n){
-  cin>>a[i];
-}
-//  deque<pair<int,int>>dq;
-//  dq.push_back({0,0});
-//  priority_queue<pair<int,int>>pq;
-//  rep(i,0,n){
-//   pq.push({a[i],i+1});
-//  }
-//  int cost=0; 
-//  bool val=true;
-//  while(!pq.empty()){
-//    int x=pq.top().first;
-//    int y=pq.top().second;
-//    pq.pop();
-//    if(val){
-//     int m=dq.back().first;
-//     cost+=(x*abs(m+1)*2);
-//     dq.push_back({m+1,y});
-    
-//    } else{
-//       int u=dq.front().first;
-//       cost+=(abs(u-1)*2*x);
-//        dq.push_front({u-1,y});
-//    }
-//    val=!val;
-//  }
+string a;
+cin>>a;
+string b;
+cin>>b;
+int n=a.length();
+int m=b.length();
 
-
-//  vll v(n+1);
-//  while(!dq.empty()){
-//     int x=dq.front().first;
-//     int y=dq.front().second;
-//     v[y]=x;
-//     dq.pop_front();
-//  }
-//  cout<<cost<<endl;
-
-//  rep(i,0,n+1){
-//     cout<<v[i]<<" ";
-//  }
-//  cout<<endl;
-
-vpll v;
-rep(i,0,n){
-    v.push_back({a[i],i+1});
-}
-sort(v.rbegin(),v.rend());
-vll ans(n+1,0);
-ll min=0;
-ll coordinate=1;
-rep(i,0,n){
-    ans[v[i].second]=coordinate;
-    min+=(2*v[i].first*abs(coordinate));
-    if(coordinate<0){
-       coordinate=abs(coordinate)+1;
-    }else{
-       coordinate=-coordinate;
+int x=min(n,m);
+int maxi=0;
+for (int len=1;len<=x;len++){
+    for(int i=0;i+len<=n;i++){
+        for(int j=0;j+len<=m;j++){
+            if(a.substr(i,len)==b.substr(j,len)){
+                maxi=max(maxi,len);
+            }
+        }
     }
 }
-cout<<min<<endl;
-rep(i,0,n+1){
-    cout<<ans[i]<<" ";
-}
-cout<<endl;
-
+cout<<n-maxi+m-maxi<<endl;
 }
 
 int main() {
