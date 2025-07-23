@@ -52,20 +52,30 @@ bool cmp(pair<ll,ll>&a,pair<ll,ll>&b){
 
 
 void solve() {
-    ll a,b,k;
-    cin>>a>>b>>k;
-    if(a<=k&&b<=k){
-        cout<<"1"<<endl;
-        return;
-    }
-    ll c=__gcd(a,b);
-    ll count=1;
-    ll mini=min(a,b);
-    a=a-mini;
-    b=b-mini;
+      int n,c;
+    cin>>n>>c;
     
+   vi a(n);
+   rep(i,0,n){
+        cin>>a[i];
+    }
 
-    cout<<c<<endl;
+repi(i,c,100){
+int cookies=c+i;
+bool eq=false;
+bool less=false;
+rep(i,0,n){
+  if(a[i]==cookies)eq=true;
+ if (a[i] <cookies) less = true;
+
+}
+ if (!eq && less) {
+    cout<<i<<endl;
+    return;
+  }
+}
+
+
 }
 
 int main() {
@@ -77,7 +87,3 @@ int main() {
     }
     return 0;
 }
-
-
-
- 

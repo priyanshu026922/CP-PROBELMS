@@ -52,21 +52,35 @@ bool cmp(pair<ll,ll>&a,pair<ll,ll>&b){
 
 
 void solve() {
-    ll a,b,k;
-    cin>>a>>b>>k;
-    if(a<=k&&b<=k){
-        cout<<"1"<<endl;
-        return;
-    }
-    ll c=__gcd(a,b);
-    ll count=1;
-    ll mini=min(a,b);
-    a=a-mini;
-    b=b-mini;
-    
+     ll n,k;
+     cin>>n>>k;
+     vll a(n);
+     rep(i,0,n){
+        cin>>a[i];
+     }
+     ll sum=0;
+     priority_queue<ll,vector<ll>,greater<ll>>pq;
 
-    cout<<c<<endl;
+     rep(i,0,n){
+        pq.push(a[i]);
+        sum+=a[i];
+     }
+
+     while(k>0){
+        ll x1=pq.top();
+        pq.pop();
+        ll x2=pq.top();
+        pq.pop();
+         pq.push((x1+x2+1)/2);
+        sum+=pq.top();
+        pq.push(x1);
+          k--;
+     }
+
+    
+     cout<<sum<<endl;
 }
+
 
 int main() {
     fastio();
@@ -77,7 +91,3 @@ int main() {
     }
     return 0;
 }
-
-
-
- 
