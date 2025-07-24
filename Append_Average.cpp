@@ -50,37 +50,60 @@ bool cmp(pair<ll,ll>&a,pair<ll,ll>&b){
   return a.ss<b.ss;
 }
 
+// //TLE(contraints of k is very high)
+// void solve() {
+//      ll n,k;
+//      cin>>n>>k;
+//      vll a(n);
+//      rep(i,0,n){
+//         cin>>a[i];
+//      }
+//      ll sum=0;
+//      priority_queue<ll,vector<ll>,greater<ll>>pq;
 
-void solve() {
+//      rep(i,0,n){
+//         pq.push(a[i]);
+//         sum+=a[i];
+//      }
+
+//      while(k>0){
+//         ll x1=pq.top();
+//         pq.pop();
+//         ll x2=pq.top();
+//         pq.pop();
+//          pq.push((x1+x2+1)/2);
+//         sum+=pq.top();
+//         pq.push(x1);
+//           k--;
+//      }
+//      cout<<sum<<endl;
+// }
+
+void solve(){
      ll n,k;
      cin>>n>>k;
-     vll a(n);
-     rep(i,0,n){
-        cin>>a[i];
-     }
      ll sum=0;
-     priority_queue<ll,vector<ll>,greater<ll>>pq;
-
+     vll v;
      rep(i,0,n){
-        pq.push(a[i]);
-        sum+=a[i];
+      ll x;
+        cin>>x;
+        sum+=x;
+        v.push_back(x);
+        sortasc(v);
+       if(v.size()>2)v.pop_back();
+       
      }
-
-     while(k>0){
-        ll x1=pq.top();
-        pq.pop();
-        ll x2=pq.top();
-        pq.pop();
-         pq.push((x1+x2+1)/2);
-        sum+=pq.top();
-        pq.push(x1);
-          k--;
-     }
-
     
-     cout<<sum<<endl;
+    while(k--){    //not while(k>0)--->as break is used here....doing k-- later and then comming back can cost us 1 extra op unneccesssarily
+      ll temp=(v[0]+v[1]+1)/2;
+       sum+=temp;
+       if(temp==v[1])break;
+       v[1]=temp;
+      k--;
+    }
+    if(k>0)sum+=k*v[1];
+   cout<<sum<<endl;
 }
-
 
 int main() {
     fastio();
