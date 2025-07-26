@@ -51,31 +51,29 @@ bool cmp(pair<ll,ll>&a,pair<ll,ll>&b){
 }
 
 
-void solve() {
-      int n,c;
-    cin>>n>>c;
-    
-   vi a(n);
-   rep(i,0,n){
-        cin>>a[i];
+ll next_prime(ll n ){
+   
+    for (ll i=n;;i++){
+         bool isPrime=true;
+         for (ll j=2;j*j<=i;j++){
+            if(i%j==0){
+                isPrime=false;
+                break;
+            }
+         }
+         if(isPrime)return i;
+
     }
-
-repi(i,1,100){
-int cookies=c+i;
-bool eq=false;
-bool less=false;
-rep(i,0,n){
-  if(a[i]==cookies)eq=true;
- if (a[i] <cookies) less = true;
-
-}
- if (!eq && less) {
-    cout<<i<<endl;
-    return;
-  }
 }
 
 
+void solve(){
+   int d;
+   cin>>d;
+ll p=next_prime(d+1);
+ll q=next_prime(p+d);
+cout<<min(1LL*p*p*p,1LL*p*q)<<endl;;
+     
 }
 
 int main() {
