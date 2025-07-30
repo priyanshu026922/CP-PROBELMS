@@ -68,12 +68,26 @@ ll next_prime(ll n ){
 
 
 void solve(){
-   int d;
-   cin>>d;
-ll p=next_prime(d+1);
-ll q=next_prime(p+d);
-cout<<min(1LL*p*p*p,1LL*p*q)<<endl;
-     
+    int n;
+    cin>>n;
+    vi a(n);
+    rep(i,0,n){
+        cin>>a[i];
+    }
+    int counte=0;
+    int counto=0;
+    rep(i,0,n){
+        if(a[i]%2==0){
+            counte++;
+        }else{
+            counto++;
+        }
+    }
+    if(counto==1&&counte>=0){
+        cout<<"YES"<<endl;
+        return;
+    }
+    cout<<"NO"<<endl;
 }
 
 int main() {
