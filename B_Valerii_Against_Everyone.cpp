@@ -68,18 +68,30 @@ ll next_prime(ll n ){
 
 
 void solve(){
-     int n,k;
-    cin>>n>>k;
-    string s;
-    cin>>s;
-    
+ int n;
+ cin>>n;
+ vll b(n);
+ rep(i,0,n){
+    cin>>b[i];
+ }
+ mii m;
+ rep(i,0,n){
+    m[b[i]]++;
+ }
+  for(auto it:m){
+    if(it.second>=2){
+        cout<<"YES"<<endl;
+        return;
+    }
+  }
+cout<<"NO"<<endl;
 }
 
 int main() {
     fastio();
-    int n;
-    cin >> n;
-    while (n--) {
+    int t;
+    cin >> t;
+    while (t--) {
         solve();
     }
     return 0;

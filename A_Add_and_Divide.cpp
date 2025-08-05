@@ -68,11 +68,22 @@ ll next_prime(ll n ){
 
 
 void solve(){
-     int n,k;
-    cin>>n>>k;
-    string s;
-    cin>>s;
-    
+    ll a,b;
+    cin>>a>>b;
+    int count=0;
+    ll mini=LLONG_MAX;
+    for(int add=0;add<32;add++){
+        ll op=add;
+        ll b_new=b+op;
+        if(b_new==1)continue;
+       ll new_a=a;
+        while(new_a>0){
+            new_a/=b_new;
+            op++;
+        }
+      mini=min(mini,op);
+    }
+    cout<<mini<<endl;
 }
 
 int main() {
