@@ -68,55 +68,37 @@ ll next_prime(ll n ){
 
 
 void solve(){
-   ll n,m;
-   cin>>n>>m;
-   vvi a(n,vi(m));
-   int sum=0;
-   int countN=0;
-   int mini=INT_MAX;
-   bool zero=false;
-     rep(i,0,n){
-        rep(j,0,m){
-            cin>>a[i][j];
-            sum+=abs(a[i][j]);
-            if(a[i][j]==0){
-                zero =true;
-            }
-            if(a[i][j]<0){
-                countN++;
-            }
-            mini=min(mini,abs(a[i][j]));
-        }
-     }
-    //  if(zero){
-    //     cout<<sum<<endl;
-    //     return;
-    //  }
-     if(countN%2==0){
-        cout<<sum<<endl;
-        return;
-     }
-    //  bool neg=true;
-    //  rep(i,0,n){
-    //     rep(j,0,m){
-    //      if(a[i][j]==mini&&neg){
-    //         sum-=a
-    //      }
-    //         sum+=abs(a[i][j]);
-          
-    //     }
-    // }
-     cout<<sum-2*mini<<endl;
+ int n;
+ cin>>n;
+ vi a(n);
+  mii mp;
+ rep(i,0,n){
+    cin>>a[i];
+    mp[a[i]]++;
+ }
+int score=0;
 
-
-
+if(mp.count(0)>0){
+    int y=mp[0];
+    score+=y;
+   while(y>0){
+    mp[0]--;
+    y--;
+   }
 }
+
+for(auto it:mp){
+    score+=(it.first*it.second);
+}
+cout<<score<<endl;
+}
+
 
 int main() {
     fastio();
-    int n;
-    cin >> n;
-    while (n--) {
+    int t;
+    cin >> t;
+    while (t--) {
         solve();
     }
     return 0;
