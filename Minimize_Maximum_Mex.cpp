@@ -51,55 +51,50 @@ bool cmp(pair<ll,ll>&a,pair<ll,ll>&b){
 }
 
 
-ll next_prime(ll n ){
-   
-    for (ll i=n;;i++){
-         bool isPrime=true;
-         for (ll j=2;j*j<=i;j++){
-            if(i%j==0){
-                isPrime=false;
-                break;
-            }
-         }
-         if(isPrime)return i;
-
+void solve() {
+int n;
+cin>>n;
+vi a(n);
+rep(i,0,n){
+    cin>>a[i];
+}
+vi b(n);
+rep(i,0,n){
+    cin>>b[i];
+}
+set<int>both,one;
+rep(i,0,n){
+    if(a[i]==b[i])both.insert(a[i]);
+    else{
+        one.insert(a[i]);
+        one.insert(b[i]);
     }
 }
-
-
-void solve(){
- int n;
- cin>>n;
- vi a(n);
-  mii mp;
- rep(i,0,n){
-    cin>>a[i];
-    mp[a[i]]++;
- }
-int score=0;
-
-if(mp.count(0)>0){
-    int y=mp[0];
-    score+=y;
-   while(y>0){
-    mp[0]--;
-    y--;
-   }
+int val=0;
+bool first=true;
+while(true){
+    if(both.count(val)){
+        val++;
+    }
+    else if(first&&one.count(val)){
+        val++;
+        first=false;
+    }
+    else break;
 }
-
-for(auto it:mp){
-    score+=(it.first*it.second);
+cout<<val<<endl;
 }
-cout<<score<<endl;
-}
-
 
 int main() {
     fastio();
-    int t;
-    cin >> t;
-    while (t--) {
+    int n;
+    cin >> n;
+    while (n--) {
         solve();
     }
     return 0;
 }
+
+
+
+ 

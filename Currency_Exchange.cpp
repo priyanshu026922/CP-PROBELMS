@@ -50,33 +50,27 @@ bool cmp(pair<ll,ll>&a,pair<ll,ll>&b){
   return a.ss<b.ss;
 }
 
-
-#include <iostream>
-using namespace std;
-
 void solve() {
     int a1, b1, a2, b2;
     cin >> a1 >> b1 >> a2 >> b2;
 
     int da = a2-a1;
     int db = b2-b1; 
-    if (da > 0) {
-     int n_s = da * 5;
- if (b1 >= n_s) {
-         b1 -= n_s;
-         a1 += da;
-        } else {
-            cout << "NO"<<endl;
+    if (da>0){
+     int n_s=da*5;
+        if (b1>=n_s) {
+         b1-=n_s;
+         a1+=da;
+        } else{
+         cout << "NO"<<endl;
             return;
         }
-    }
-
-    else if (db > 0) {
-        int n_g = (db + 4) / 5; 
-        if (a1 >= n_g) {
-            a1 -= n_g;
-            b1 += n_g * 5;
-        } else {
+    } else if (db > 0) {
+        int n_g=(db+4)/5; 
+        if (a1 >=n_g) {
+            a1-=n_g;
+            b1+=n_g * 5;
+        } else{
             cout << "NO"<<endl;
             return;
         }

@@ -61,10 +61,22 @@ bool fair(ll n){
     return true;
 }
 
+//T.C===O(2520*18)===APPROX(10^5)----------->[CORRECT]
+
+
+//AT MAX WE CHECK FOR +2520 operations------>
+
+///BECAUSE if we find a number by every digit[1........9] --then it is 2520;
+//2520----2*2520-----3*2520---->these all are the numbers divisible bu every digit
+//this numbers are taking 2520 operations to find a fair number 
+
+
+//so any other number would be taking at max 2520 operations only*************************
+
 void solve(){
   ll n;
   cin>>n;
-  while(!fair(n)){
+  while(!fair(n)){ 
     n+=1;
   }
 cout<<n<<endl;
