@@ -62,27 +62,13 @@ vi b(n);
 rep(i,0,n){
     cin>>b[i];
 }
-set<int>both,one;
+int count=1;
 rep(i,0,n){
-    if(a[i]==b[i])both.insert(a[i]);
-    else{
-        one.insert(a[i]);
-        one.insert(b[i]);
+    if(a[i]>b[i]){
+        count+=(a[i]-b[i]);
     }
 }
-int val=0;
-bool firstTime=true;
-while(true){
-    if(both.count(val)){
-        val++;
-    }
-    else if(firstTime&&one.count(val)){
-        val++;
-        firstTime=false;
-    }
-    else break;
-}
-cout<<val<<endl;
+cout<<count<<endl;
 }
 
 int main() {

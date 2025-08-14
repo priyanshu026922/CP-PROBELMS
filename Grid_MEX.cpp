@@ -43,46 +43,25 @@ void fastio() {
     cout.tie(NULL);
 }
 
-bool cmp(pair<ll,ll>&a,pair<ll,ll>&b){
-  if(a.first!=b.first){
-    return a.ff>b.ff;
-  }
-  return a.ss<b.ss;
-}
-
-
 void solve() {
 int n;
 cin>>n;
-vi a(n);
-rep(i,0,n){
-    cin>>a[i];
-}
-vi b(n);
-rep(i,0,n){
-    cin>>b[i];
-}
-set<int>both,one;
-rep(i,0,n){
-    if(a[i]==b[i])both.insert(a[i]);
-    else{
-        one.insert(a[i]);
-        one.insert(b[i]);
+vvi a(n,vi (n));
+
+rep(i, 0, n) {
+    int val = i;
+    rep(j, 0, n) {
+        a[i][j] = val;
+        val = (val + 1) % n;
     }
 }
-int val=0;
-bool firstTime=true;
-while(true){
-    if(both.count(val)){
-        val++;
+rep(i,0,n){
+    rep(j,0,n){
+        cout<<a[i][j]<<" ";
     }
-    else if(firstTime&&one.count(val)){
-        val++;
-        firstTime=false;
-    }
-    else break;
+    
+    cout<<endl;
 }
-cout<<val<<endl;
 }
 
 int main() {
@@ -94,7 +73,3 @@ int main() {
     }
     return 0;
 }
-
-
-
- 

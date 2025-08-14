@@ -43,46 +43,61 @@ void fastio() {
     cout.tie(NULL);
 }
 
-bool cmp(pair<ll,ll>&a,pair<ll,ll>&b){
-  if(a.first!=b.first){
-    return a.ff>b.ff;
-  }
-  return a.ss<b.ss;
-}
-
-
 void solve() {
-int n;
-cin>>n;
-vi a(n);
+ll n,k;
+cin>>n>>k;
+vi s(n);
 rep(i,0,n){
-    cin>>a[i];
+    cin>>s[i];
 }
-vi b(n);
+vi t(n);
 rep(i,0,n){
-    cin>>b[i];
+    cin>>t[i];
 }
-set<int>both,one;
-rep(i,0,n){
-    if(a[i]==b[i])both.insert(a[i]);
-    else{
-        one.insert(a[i]);
-        one.insert(b[i]);
+unordered_map<ll,ll>mp;
+ if (k == 0) {
+      sortasc(s);
+    sortasc(t);
+      if (s == t){
+        cout<<"YES"<<endl;
+      }else{
+        cout<<"NO"<<endl;
+      }
+      return;
     }
-}
-int val=0;
-bool firstTime=true;
-while(true){
-    if(both.count(val)){
-        val++;
+
+    for(ll x:s){
+        ll u=x%k;
+        if(u<0){
+            u+=k;
+
+        }
+        ll v=min(u,k-u);
+mp[v]++;
     }
-    else if(firstTime&&one.count(val)){
-        val++;
-        firstTime=false;
+    for(ll x:t){
+        ll u=x%k;
+         if(u<0){
+            u+=k;
+
+        }
+        ll v=min(u,k-u);
+mp[v]--;
     }
-    else break;
-}
-cout<<val<<endl;
+    bool pos=true;
+    for(auto it:mp){
+        if(it.second!=0){
+            pos=false;
+            break;
+        }
+    }
+    if(pos){
+        cout<<"YES"<<endl;
+        return;
+    }
+    cout<<"NO"<<endl;
+
+
 }
 
 int main() {

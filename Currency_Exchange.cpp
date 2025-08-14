@@ -51,8 +51,8 @@ bool cmp(pair<ll,ll>&a,pair<ll,ll>&b){
 }
 
 void solve() {
-    int a1, b1, a2, b2;
-    cin >> a1 >> b1 >> a2 >> b2;
+    int a1,b1,a2,b2;
+    cin>>a1>>b1>>a2>>b2;
 
     int da = a2-a1;
     int db = b2-b1; 

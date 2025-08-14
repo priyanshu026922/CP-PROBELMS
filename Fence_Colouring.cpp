@@ -42,15 +42,39 @@ void fastio() {
     cin.tie(NULL);
     cout.tie(NULL);
 }
+// void solve() {
+//     int n;
+//     cin >> n;
+//     vi a(n);
+//     rep(i,0,n) cin >> a[i];
 
-bool cmp(pair<ll,ll>&a,pair<ll,ll>&b){
-  if(a.first!=b.first){
-    return a.ff>b.ff;
-  }
-  return a.ss<b.ss;
-}
+//     // If already all 1's
+//     bool allOne = all_of(all(a), [](int x){ return x == 1; });
+//     if (allOne) {
+//         cout << 0 << "\n";
+//         return;
+//     }
 
+//     // Count non-1 elements (option 2: no global paint)
+//     int op2 = 0;
+//     rep(i,0,n) if (a[i] != 1) op2++;
 
+//     // Find most frequent value (option 1: global paint)
+//     mii mp;
+//     rep(i,0,n) mp[a[i]]++;
+//     int val = -1, maxi = INT_MIN;
+//     for (auto &it : mp) {
+//         if (it.second > maxi) {
+//             maxi = it.second;
+//             val = it.first;
+//         }
+//     }
+//     int mismatches = 0;
+//     rep(i,0,n) if (a[i] != val) mismatches++;
+//     int op1 = 1 + mismatches;
+
+//     cout << min(op1, op2) << "\n";
+// }
 void solve() {
 int n;
 cin>>n;
@@ -58,31 +82,28 @@ vi a(n);
 rep(i,0,n){
     cin>>a[i];
 }
-vi b(n);
+
+mii mp;
+int d=0;
 rep(i,0,n){
-    cin>>b[i];
+    mp[a[i]]++;
+    if(a[i]!=1)d++;
 }
-set<int>both,one;
-rep(i,0,n){
-    if(a[i]==b[i])both.insert(a[i]);
-    else{
-        one.insert(a[i]);
-        one.insert(b[i]);
+
+int maxi=INT_MIN;
+int val=-1;
+int count=0;
+for(auto it:mp){
+    if(it.second>maxi){
+        maxi=it.second;
+        val=it.first;
     }
 }
-int val=0;
-bool firstTime=true;
-while(true){
-    if(both.count(val)){
-        val++;
-    }
-    else if(firstTime&&one.count(val)){
-        val++;
-        firstTime=false;
-    }
-    else break;
-}
-cout<<val<<endl;
+int mismatches = 0;
+    rep(i,0,n) if (a[i] != val) mismatches++;
+    int op1 = 1 + mismatches;
+
+    cout << min(op1, d) << "\n";
 }
 
 int main() {
