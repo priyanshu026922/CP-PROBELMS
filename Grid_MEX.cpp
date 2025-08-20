@@ -55,6 +55,7 @@ rep(i, 0, n) {
         val = (val + 1) % n;
     }
 }
+
 rep(i,0,n){
     rep(j,0,n){
         cout<<a[i][j]<<" ";

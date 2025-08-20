@@ -45,45 +45,32 @@ void fastio() {
 
 void solve() {
 int n;
-cin>>n;
-vi a(n);
-rep(i,0,n){
-    cin>>a[i];
-}
-
-mii mp;
-int d=0;
-rep(i,0,n){
-    mp[a[i]]++;
-    if(a[i]!=1)d++;
-}
-
-int maxi=INT_MIN;
-int val=-1;
-int count=0;
-for(auto it:mp){
-    if(it.second>maxi){
-        maxi=it.second;
-        val=it.first;
+    cin >> n;
+    string s = "";
+    int x=0;
+    rep(i,0,n) {
+      if(x==0){
+        s+='a';
+        x=1;
+      }
+      else if(x==1){
+        s+='b';
+        x=2;
+      }
+      else{
+        s+='c';
+        x=0;
+      }
     }
-}
-int m = 0;
-    rep(i,0,n) if (a[i] != val) m++;
-    int op1 = 1 + m;
-
-    cout << min(op1, d) << endl;
+    cout << s << endl;
 }
 
 int main() {
     fastio();
-    int n;
-    cin >> n;
-    while (n--) {
+    int t;
+    cin >> t;
+    while (t--) {
         solve();
     }
     return 0;
 }
-
-
-
- 

@@ -14,15 +14,13 @@ void fastio() {
     cout.tie(NULL);
 }
 
-
-
 void s() {
 long long n;
 cin>>n;
-if(n%2==1){
+if(n%2==1){            //for odd
     cout<<(n/2)+1<<endl;
 }
-else{
+else{     // for even
     long long ans=n/2;
     n/=2;
     if(n%2==0)n--;

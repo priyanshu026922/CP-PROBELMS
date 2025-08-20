@@ -50,28 +50,19 @@ vi a(n);
 rep(i,0,n){
     cin>>a[i];
 }
-
-mii mp;
-int d=0;
-rep(i,0,n){
-    mp[a[i]]++;
-    if(a[i]!=1)d++;
-}
-
 int maxi=INT_MIN;
-int val=-1;
-int count=0;
-for(auto it:mp){
-    if(it.second>maxi){
-        maxi=it.second;
-        val=it.first;
+rep(i,0,n){
+    int x=a[i]%2;
+    int count=1;
+    rep(j,i+1,n){
+       if(a[j]%2==!x){
+          count++;
+          x=!x;
+       }
     }
+    maxi=max(maxi,count);
 }
-int m = 0;
-    rep(i,0,n) if (a[i] != val) m++;
-    int op1 = 1 + m;
-
-    cout << min(op1, d) << endl;
+cout<<maxi<<endl;
 }
 
 int main() {
@@ -83,7 +74,3 @@ int main() {
     }
     return 0;
 }
-
-
-
- 
