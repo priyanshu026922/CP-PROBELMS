@@ -36,7 +36,6 @@ typedef map<char, int> mci;
 #define repr(i, a, b) for (int i = (a); i >= (b); --i)
 #define ff first
 #define ss second
-#define  mod 998244353
 
 void fastio() {
     ios_base::sync_with_stdio(false);
@@ -51,7 +50,11 @@ vi a(n);
 rep(i,0,n){
     cin>>a[i];
 }
-
+reverse(begin(a),end(a));
+rep(i,0,n){
+    cout<<a[i]<<" ";
+}
+cout<<endl;
 }
 
 int main() {
