@@ -23,8 +23,6 @@ typedef map<char, int> mci;
 #define maxe(v) (*max_element(all(v)))
 #define mine(v) (*min_element(all(v)))
 #define sumv(v) (accumulate(all(v), 0LL))
-#define sortasc(v) sort(all(v))
-#define sortdesc(v) sort(rall(v))
 #define lb(v, x) (lower_bound(all(v), x) - (v).begin())
 #define ub(v, x) (upper_bound(all(v), x) - (v).begin())
 #define ispresent(v, x) (binary_search(all(v), x))
@@ -51,7 +49,21 @@ vi a(n);
 rep(i,0,n){
     cin>>a[i];
 }
-
+int c1=0;
+int c2=0;
+rep(i,0,n){
+   if(a[i]==1)c1++;
+   else c2++;
+}
+if(c2>0){
+    cout<<"499122177"<<endl;
+    return;
+}
+if(c1&1){
+    cout<<"1"<<endl;
+}else{
+    cout<<"0"<<endl;
+}
 }
 
 int main() {
