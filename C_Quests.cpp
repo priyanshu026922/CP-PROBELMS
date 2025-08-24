@@ -40,21 +40,23 @@ void fastio() {
   
 
 void solve(){
-int n;
-cin>>n;
-string s;
-cin>>s;
-map<char,int>mp;
-vi distinct(n);
-int count=0;
+int n,k;
+cin>>n>>k;
+vi a(n);
 rep(i,0,n){
-mp[s[i]]++;
-if(mp[s[i]]==1)count++;
-distinct[i]=count;
+    cin>>a[i];
 }
-int ans=0;
+vi b(n);
 rep(i,0,n){
-    ans+=distinct[i];
+    cin>>b[i];
+}
+int maxi=0;
+int sum=0;
+int ans=0;
+rep(i,0,min(n,k)){
+    sum+=a[i];
+    maxi=max(maxi,b[i]);
+    ans=max(ans,sum+(k-i-1)*maxi);
 }
 cout<<ans<<endl;
 }
