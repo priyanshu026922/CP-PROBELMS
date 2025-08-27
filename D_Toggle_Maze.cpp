@@ -38,52 +38,33 @@ void fastio() {
     cout.tie(NULL);
 }
 
-
-void solve(){
-int n;
-cin>>n;
-vll a(n);
-vpll v;
-rep(i,0,n){
-    cin>>a[i];
-    v.push_back({a[i],i});
-
-}
-vll pre(n);
-sort(begin(v),end(v));
-pre[0]=v[0].first;
-rep(i,1,n){
-    pre[i]=pre[i-1]+v[i].first;
-}
-vll ans(n);
-rep(i,0,n){
-    int j=i;
-    int found=i;
-    while(j<n){
-        pair<ll,ll>temp={pre[j]+1,INT_MIN};
-        ll idx=lower_bound(begin(v),end(v),temp)-begin(v);
-        idx--;
-        if(idx==j){
-            break;
-        }
-        found+=idx-j;
-        j=idx;
-    }
-    ans[v[i].second]=found;
-}
-rep(i,0,n){
-    cout<<ans[i]<<" ";
-}
-cout<<endl;
-
-}
+// . : Empty cell.
+// # : Obstacle cell.
+// S : Start cell.
+// G : Goal cell.
+// o : Open door cell.
+// x : Closed door cell.
+// ? : Switch cell.
 
 int main() {
     fastio();
-    int t;
-    cin >> t;
-    while (t--) {
-        solve();
+ int h,w;
+ cin>>h>>w;
+ vvi a(h,vi(w));
+ rep(i,0,h){
+    rep(j,0,w){
+        cin>>a[i][j];
     }
-    return 0;
+ }
+ vvi vis(h,vi(w,0));
+ rep(i,0,h){
+    rep(j,0,w){
+        if(a[i][j]=='S'){
+            int count
+            dfs(i,j,vis);
+        }
+    }
+}
+
+
 }

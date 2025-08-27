@@ -12,7 +12,7 @@ typedef vector<string> vs;
 typedef vector<pii> vpii;
 typedef vector<pll> vpll;
 typedef vector<vi> vvi;
-typedef set<int> si;
+typedef set<int> si; 
 typedef multiset<int> msi;
 typedef map<int, int> mii;
 typedef map<ll, ll> mll;
@@ -43,14 +43,14 @@ void fastio() {
     cout.tie(NULL);
 }
 
-void solve() {
+void solve(){
 int n;
 cin>>n;
 vi a(n);
 rep(i,0,n){
     cin>>a[i];
 }
-reverse(begin(a),end(a));
+sort(rbegin(a), rend(a)); 
 rep(i,0,n){
     cout<<a[i]<<" ";
 }

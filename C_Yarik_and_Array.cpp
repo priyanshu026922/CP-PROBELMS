@@ -42,40 +42,30 @@ void fastio() {
 void solve(){
 int n;
 cin>>n;
-vll a(n);
-vpll v;
+vi a(n);
 rep(i,0,n){
     cin>>a[i];
-    v.push_back({a[i],i});
-
 }
-vll pre(n);
-sort(begin(v),end(v));
-pre[0]=v[0].first;
+vi p(n);
+p[0]=a[0];
+int par=a[0]%2;
+int maxi=p[0];
 rep(i,1,n){
-    pre[i]=pre[i-1]+v[i].first;
-}
-vll ans(n);
-rep(i,0,n){
-    int j=i;
-    int found=i;
-    while(j<n){
-        pair<ll,ll>temp={pre[j]+1,INT_MIN};
-        ll idx=lower_bound(begin(v),end(v),temp)-begin(v);
-        idx--;
-        if(idx==j){
-            break;
-        }
-        found+=idx-j;
-        j=idx;
+    if(a[i]%2!=par){
+        p[i]=max(a[i],p[i-1]+a[i]);
+         par=a[i]%2;
+    }else{
+        p[i]=a[i];
+        par=a[i]%2;
     }
-    ans[v[i].second]=found;
+   
+    maxi=max(maxi,p[i]);
 }
 rep(i,0,n){
-    cout<<ans[i]<<" ";
+    cout<<p[i]<<" ";
 }
 cout<<endl;
-
+cout<<maxi<<endl;
 }
 
 int main() {

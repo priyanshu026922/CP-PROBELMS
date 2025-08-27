@@ -16,7 +16,6 @@ typedef set<int> si;
 typedef multiset<int> msi;
 typedef map<int, int> mii;
 typedef map<ll, ll> mll;
-typedef map<char, int> mci;
 #define all(x) (x).begin(), (x).end()
 #define rall(x) (x).rbegin(), (x).rend()
 #define sz(x) ((int)(x).size())
@@ -26,15 +25,12 @@ typedef map<char, int> mci;
 #define lb(v, x) (lower_bound(all(v), x) - (v).begin())
 #define ub(v, x) (upper_bound(all(v), x) - (v).begin())
 #define ispresent(v, x) (binary_search(all(v), x))
-#define freqmap(mp, v) for (auto &el : v) mp[el]++
 
 
 #define rep(i, a, b) for (int i = (a); i < (b); ++i)
-#define repi(i, a, b) for (int i = (a); i <=(b); ++i)
 #define repr(i, a, b) for (int i = (a); i >= (b); --i)
 #define ff first
 #define ss second
-#define  mod 998244353
 
 void fastio() {
     ios_base::sync_with_stdio(false);
@@ -55,10 +51,12 @@ rep(i,0,n){
    if(a[i]==1)c1++;
    else c2++;
 }
+
 if(c2>0){
     cout<<"499122177"<<endl;
     return;
 }
+
 if(c1&1){
     cout<<"1"<<endl;
 }else{

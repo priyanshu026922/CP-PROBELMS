@@ -16,6 +16,7 @@ typedef set<int> si;
 typedef multiset<int> msi;
 typedef map<int, int> mii;
 typedef map<ll, ll> mll;
+typedef vector<vll> vvll;
 #define all(x) (x).begin(), (x).end()
 #define rall(x) (x).rbegin(), (x).rend()
 #define sz(x) ((int)(x).size())
@@ -40,42 +41,18 @@ void fastio() {
 
 
 void solve(){
-int n;
+ll n;
 cin>>n;
-vll a(n);
-vpll v;
-rep(i,0,n){
-    cin>>a[i];
-    v.push_back({a[i],i});
-
-}
-vll pre(n);
-sort(begin(v),end(v));
-pre[0]=v[0].first;
+string a;
+cin>>a;
+ll sum=a[0]-'0';
+int val=a[0]-'0';
 rep(i,1,n){
-    pre[i]=pre[i-1]+v[i].first;
+    val+=(a[i]-'0');
+  sum+=val+(a[i]-'0');
+  val-=(a[i-1]-'0');
 }
-vll ans(n);
-rep(i,0,n){
-    int j=i;
-    int found=i;
-    while(j<n){
-        pair<ll,ll>temp={pre[j]+1,INT_MIN};
-        ll idx=lower_bound(begin(v),end(v),temp)-begin(v);
-        idx--;
-        if(idx==j){
-            break;
-        }
-        found+=idx-j;
-        j=idx;
-    }
-    ans[v[i].second]=found;
-}
-rep(i,0,n){
-    cout<<ans[i]<<" ";
-}
-cout<<endl;
-
+cout<<sum<<endl;
 }
 
 int main() {

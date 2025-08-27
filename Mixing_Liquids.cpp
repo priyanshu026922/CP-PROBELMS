@@ -40,42 +40,23 @@ void fastio() {
 
 
 void solve(){
-int n;
-cin>>n;
-vll a(n);
-vpll v;
-rep(i,0,n){
-    cin>>a[i];
-    v.push_back({a[i],i});
-
-}
-vll pre(n);
-sort(begin(v),end(v));
-pre[0]=v[0].first;
-rep(i,1,n){
-    pre[i]=pre[i-1]+v[i].first;
-}
-vll ans(n);
-rep(i,0,n){
-    int j=i;
-    int found=i;
-    while(j<n){
-        pair<ll,ll>temp={pre[j]+1,INT_MIN};
-        ll idx=lower_bound(begin(v),end(v),temp)-begin(v);
-        idx--;
-        if(idx==j){
-            break;
-        }
-        found+=idx-j;
-        j=idx;
+int a,b;
+cin>>a>>b;
+int sum=0;
+int x=1;
+int y=2;
+while(x<=a){
+    if(y<=b){
+        sum+=3;
+        y+=2;
+         x++;
+      
+    }else{
+        break;
     }
-    ans[v[i].second]=found;
+     
 }
-rep(i,0,n){
-    cout<<ans[i]<<" ";
-}
-cout<<endl;
-
+cout<<sum<<endl;
 }
 
 int main() {

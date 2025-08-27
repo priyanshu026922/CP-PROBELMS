@@ -43,6 +43,27 @@ void fastio() {
     cout.tie(NULL);
 }
 
+// void solve() {
+// int n;
+//     cin >> n;
+//     string s = "";
+//     int x=0;
+//     rep(i,0,n) {
+//       if(x==0){
+//         s+='a';
+//         x=1;
+//       }
+//       else if(x==1){
+//         s+='b';
+//         x=2;
+//       }
+//       else{
+//         s+='c';
+//         x=0;
+//       }
+//     }
+//     cout << s << endl;
+// }
 void solve() {
 int n;
     cin >> n;
