@@ -40,56 +40,34 @@ void fastio() {
 
 
 void solve(){
-int n;
+ll n;
 cin>>n;
-vi a(n);
+vll a(n);
 rep(i,0,n){
     cin>>a[i];
 }
-// int sum=0;
-// int maxi=INT_MIN;
-// rep(i,1,n){
-//     sum+=a[i];
-//     if(sum>maxi&&a[i]%2!=par){
-//         maxi=sum;
-//     }
-//     if(sum<0||a[i]%2==par){
-//         sum=a[i];
-//     }
-//       par=a[i]%2;
-// }
-// int i=0,j=0;
-// while(j<n){
-//     if(sum<0){
-//         sum=0;
-//         i=j;
-//     }
-//     if(i<j){
-//         if((a[i]^a[j-1])&1){
-//             sum+=a[j];
-//         }else{
-//             sum=a[j];
-//             i=j;
-//         }
-//     }else{
-//         sum=a[j];
-//     }
-//     maxi=max(maxi,sum);
-//     j++;
-// }
-   int maxi = a[0];
-    int sum = a[0];
 
-    for (int j = 1; j < n; j++) {
-        // check if current element alternates parity with previous
-        if ((a[j] ^ a[j-1]) & 1) {
-            sum = max(a[j], sum + a[j]);   // continue or restart
-        } else {
-            sum = a[j];                    // must restart
-        }
-        maxi = max(maxi, sum);
-    }
-cout<<maxi<<endl;
+vll pre(n);
+pre[0]=a[0];
+
+rep(i,1,n){
+    pre[i]=a[i]+pre[i-1];
+}
+
+ll ans=0;
+rep(k,1,n){
+    if(n%k!=0)continue;
+    int s=k-1;
+    ll maxi=pre[s];
+    ll mini=pre[s];
+   for(int j=s+k;j<n;j+=k){
+    ll curr=pre[j]-pre[j-k];
+    maxi=max(maxi,curr);
+    mini=min(mini,curr);
+   }
+   ans=max(ans,maxi-mini);
+}
+cout<<ans<<endl;
 }
 
 

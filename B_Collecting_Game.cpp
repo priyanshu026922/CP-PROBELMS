@@ -44,17 +44,22 @@ int n;
 cin>>n;
 vll a(n);
 vpll v;
+
+//store values {a[i],index}
 rep(i,0,n){
     cin>>a[i];
     v.push_back({a[i],i});
-
 }
+
+
 vll pre(n);
 sort(begin(v),end(v));
 pre[0]=v[0].first;
+//store value in prefix sum array
 rep(i,1,n){
     pre[i]=pre[i-1]+v[i].first;
 }
+
 vll ans(n);
 rep(i,0,n){
     int j=i;
@@ -71,6 +76,8 @@ rep(i,0,n){
     }
     ans[v[i].second]=found;
 }
+
+
 rep(i,0,n){
     cout<<ans[i]<<" ";
 }
