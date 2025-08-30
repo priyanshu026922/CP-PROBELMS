@@ -46,46 +46,14 @@ vi a(n);
 rep(i,0,n){
     cin>>a[i];
 }
-// int sum=0;
-// int maxi=INT_MIN;
-// rep(i,1,n){
-//     sum+=a[i];
-//     if(sum>maxi&&a[i]%2!=par){
-//         maxi=sum;
-//     }
-//     if(sum<0||a[i]%2==par){
-//         sum=a[i];
-//     }
-//       par=a[i]%2;
-// }
-// int i=0,j=0;
-// while(j<n){
-//     if(sum<0){
-//         sum=0;
-//         i=j;
-//     }
-//     if(i<j){
-//         if((a[i]^a[j-1])&1){
-//             sum+=a[j];
-//         }else{
-//             sum=a[j];
-//             i=j;
-//         }
-//     }else{
-//         sum=a[j];
-//     }
-//     maxi=max(maxi,sum);
-//     j++;
-// }
-   int maxi = a[0];
-    int sum = a[0];
+int maxi = a[0];
+ int sum = a[0];
 
-    for (int j = 1; j < n; j++) {
-        // check if current element alternates parity with previous
+   rep(j,1,n) {
         if ((a[j] ^ a[j-1]) & 1) {
-            sum = max(a[j], sum + a[j]);   // continue or restart
+            sum = max(a[j], sum + a[j]);
         } else {
-            sum = a[j];                    // must restart
+            sum = a[j];     
         }
         maxi = max(maxi, sum);
     }
