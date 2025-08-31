@@ -55,13 +55,13 @@ rep(i,1,n){
 }
 
 ll ans=0;
-rep(k,1,n){
-    if(n%k!=0)continue;
-    int s=k-1;
+rep(i,1,n){
+    if(n%i!=0)continue;
+    int s=i-1;
     ll maxi=pre[s];
     ll mini=pre[s];
-   for(int j=s+k;j<n;j+=k){
-    ll curr=pre[j]-pre[j-k];
+   for(int j=s+i;j<n;j+=i){
+    ll curr=pre[j]-pre[j-i];
     maxi=max(maxi,curr);
     mini=min(mini,curr);
    }

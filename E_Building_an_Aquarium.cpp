@@ -37,13 +37,47 @@ void fastio() {
     cin.tie(NULL);
     cout.tie(NULL);
 }
+ll getVal(ll mid,vll &a,ll n){
+   ll count=0;
+   rep(i,0,n){
+    if(a[i]<=mid){
+        count+=(mid-a[i]);
+    }
+   }
+   return count;
+}
+void solve(){
+ll n,x;
+cin>>n>>x;
+vll a(n);
+rep(i,0,n){
+    cin>>a[i];
+}
+ll l=1;
+ll c=mine(a);
+ll h=x+c;
+ll ans=-1;
+while(l<=h){
+    ll mid=l+(h-l)/2;
+    ll u=getVal(mid,a,n);
+    if(u<=x){
+        ans=mid;
+        l=mid+1;
+    }else{
+        h=mid-1;
+    }
+}
+cout<<ans<<endl;
+}
+
+
 
 int main() {
     fastio();
-  int n;
-  cin>>n;
-  string s;
-  cin>>s;
-  
-
+    int t;
+    cin >> t;
+    while (t--) {
+        solve();
+    }
+    return 0;
 }

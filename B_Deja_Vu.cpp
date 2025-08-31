@@ -38,12 +38,46 @@ void fastio() {
     cout.tie(NULL);
 }
 
+
+void solve(){
+ll n,q;
+cin>>n>>q;
+vll a(n);
+rep(i,0,n){
+    cin>>a[i];
+}
+vll x(q);
+rep(i,0,q){
+    cin>>x[i];
+}
+rep(i,0,q){
+    ll m=1<<x[i];
+    rep(j,0,n){
+        if(a[j]%m==0){
+            ll u=x[i]-1;
+            a[j]+=(1<<u);
+        }
+    }
+}
+
+rep(i,0,n){
+    cout<<a[i]<<" ";
+}
+cout<<endl;
+
+
+
+
+
+}
+
+
 int main() {
     fastio();
-  int n;
-  cin>>n;
-  string s;
-  cin>>s;
-  
-
+    int t;
+    cin >> t;
+    while (t--) {
+        solve();
+    }
+    return 0;
 }
