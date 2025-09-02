@@ -25,8 +25,6 @@ typedef map<ll, ll> mll;
 #define lb(v, x) (lower_bound(all(v), x) - (v).begin())
 #define ub(v, x) (upper_bound(all(v), x) - (v).begin())
 #define ispresent(v, x) (binary_search(all(v), x))
-
-
 #define rep(i, a, b) for (int i = (a); i < (b); ++i)
 #define repr(i, a, b) for (int i = (a); i >= (b); --i)
 #define ff first
@@ -38,15 +36,6 @@ void fastio() {
     cout.tie(NULL);
 }
 
-ll getVal(ll mid,vll &a,ll n){
-   ll count=0;
-   rep(i,0,n){
-    if(a[i]<=mid){
-        count+=(mid-a[i]);
-    }
-   }
-   return count;
-}
 void solve(){
 ll n,x;
 cin>>n>>x;
@@ -54,23 +43,72 @@ vll a(n);
 rep(i,0,n){
     cin>>a[i];
 }
-ll l=1;
-ll c=mine(a);
-ll h=x+c;
-ll ans=-1;
-while(l<=h){
-    ll mid=l+(h-l)/2;
-    ll u=getVal(mid,a,n);
-    if(u<=x){
-        ans=mid;
-        l=mid+1;
-    }else{
-        h=mid-1;
+vll b(n);
+rep(i,0,n){
+    cin>>b[i];
+}
+vll c(n);
+rep(i,0,n){
+    cin>>c[i];
+}
+int i=0;
+int j=0;
+int k=0;
+int know=0;
+while(i<n&&j<n&&k<n){
+     if(know==x){
+        cout<<"Yes"<<endl;
+        return;
+    }
+    ll m=min(a[i],min(b[j],c[k]));
+    if(m==a[i]){
+          know=know|a[i];
+          i++;
+    }
+    if(m==b[j]){
+        know=know|b[j];
+        j++;
+    }
+    if(m==c[k]){
+        know=know|c[k];
+        k++;
+    }
+   
+    if(know>x){
+        break;
     }
 }
-cout<<ans<<endl;
+while(i<n){
+    
+    know=know|a[i];
+    if(know==x){
+        cout<<"Yes"<<endl;
+        return;
+    }
+    i++;
+}
+while(j<n){
+    
+    know=know|b[j];
+    if(know==x){
+        cout<<"Yes"<<endl;
+        return;
+    }
+    j++;
+}
+while(k<n){
+    
+    know=know|c[k];
+    if(know==x){
+        cout<<"Yes"<<endl;
+        return;
+    }
+    k++;
 }
 
+cout<<"No"<<endl;
+
+}
 
 
 int main() {

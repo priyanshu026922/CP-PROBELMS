@@ -1,7 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-
 typedef long long ll;
 typedef unsigned long long ull;
 typedef pair<int, int> pii;
@@ -25,12 +24,11 @@ typedef map<ll, ll> mll;
 #define lb(v, x) (lower_bound(all(v), x) - (v).begin())
 #define ub(v, x) (upper_bound(all(v), x) - (v).begin())
 #define ispresent(v, x) (binary_search(all(v), x))
-
-
 #define rep(i, a, b) for (int i = (a); i < (b); ++i)
 #define repr(i, a, b) for (int i = (a); i >= (b); --i)
 #define ff first
 #define ss second
+#define mod 1000000007
 
 void fastio() {
     ios_base::sync_with_stdio(false);
@@ -38,39 +36,29 @@ void fastio() {
     cout.tie(NULL);
 }
 
-ll getVal(ll mid,vll &a,ll n){
-   ll count=0;
-   rep(i,0,n){
-    if(a[i]<=mid){
-        count+=(mid-a[i]);
-    }
-   }
-   return count;
-}
 void solve(){
-ll n,x;
-cin>>n>>x;
+int n;
+cin>>n;
 vll a(n);
 rep(i,0,n){
     cin>>a[i];
 }
-ll l=1;
-ll c=mine(a);
-ll h=x+c;
-ll ans=-1;
-while(l<=h){
-    ll mid=l+(h-l)/2;
-    ll u=getVal(mid,a,n);
-    if(u<=x){
-        ans=mid;
-        l=mid+1;
-    }else{
-        h=mid-1;
-    }
+vll b(n);
+rep(i,0,n){
+    cin>>b[i];
 }
-cout<<ans<<endl;
+sort(rbegin(b),rend(b));
+sort(begin(a),end(a));
+ll val=1;
+rep(i,0,n){
+    ll x=ub(a,b[i]);
+    ll u=n-x;
+    val=val*max(u-i,0LL)%mod;
 }
+cout<<val<<endl;
 
+
+}
 
 
 int main() {

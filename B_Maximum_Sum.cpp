@@ -1,7 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-
 typedef long long ll;
 typedef unsigned long long ull;
 typedef pair<int, int> pii;
@@ -25,8 +24,6 @@ typedef map<ll, ll> mll;
 #define lb(v, x) (lower_bound(all(v), x) - (v).begin())
 #define ub(v, x) (upper_bound(all(v), x) - (v).begin())
 #define ispresent(v, x) (binary_search(all(v), x))
-
-
 #define rep(i, a, b) for (int i = (a); i < (b); ++i)
 #define repr(i, a, b) for (int i = (a); i >= (b); --i)
 #define ff first
@@ -38,39 +35,33 @@ void fastio() {
     cout.tie(NULL);
 }
 
-ll getVal(ll mid,vll &a,ll n){
-   ll count=0;
-   rep(i,0,n){
-    if(a[i]<=mid){
-        count+=(mid-a[i]);
-    }
-   }
-   return count;
-}
 void solve(){
-ll n,x;
-cin>>n>>x;
+ll n,k;
+cin>>n>>k;
 vll a(n);
+
 rep(i,0,n){
     cin>>a[i];
 }
-ll l=1;
-ll c=mine(a);
-ll h=x+c;
-ll ans=-1;
-while(l<=h){
-    ll mid=l+(h-l)/2;
-    ll u=getVal(mid,a,n);
-    if(u<=x){
-        ans=mid;
-        l=mid+1;
-    }else{
-        h=mid-1;
-    }
+
+sort(begin(a),end(a));
+
+vll p(n);
+p[0]=a[0];
+rep(i,1,n){
+    p[i]=a[i]+p[i-1];
+}
+ll ans=0;
+for(int f=0;f<=k;f++){
+    int sec=k-f;
+    int left=2*f;
+    int right=n-sec-1;
+    ll sum=p[right]-(left==0?0:p[left-1]);
+    ans=max(ans,sum);
 }
 cout<<ans<<endl;
-}
 
+}
 
 
 int main() {

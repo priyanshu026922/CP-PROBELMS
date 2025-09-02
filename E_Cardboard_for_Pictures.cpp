@@ -25,8 +25,6 @@ typedef map<ll, ll> mll;
 #define lb(v, x) (lower_bound(all(v), x) - (v).begin())
 #define ub(v, x) (upper_bound(all(v), x) - (v).begin())
 #define ispresent(v, x) (binary_search(all(v), x))
-
-
 #define rep(i, a, b) for (int i = (a); i < (b); ++i)
 #define repr(i, a, b) for (int i = (a); i >= (b); --i)
 #define ff first
@@ -38,39 +36,22 @@ void fastio() {
     cout.tie(NULL);
 }
 
-ll getVal(ll mid,vll &a,ll n){
-   ll count=0;
-   rep(i,0,n){
-    if(a[i]<=mid){
-        count+=(mid-a[i]);
-    }
-   }
-   return count;
-}
 void solve(){
-ll n,x;
-cin>>n>>x;
-vll a(n);
+ll n,c;
+cin>>n>>c;
+vll s(n);
+ll sum=0;
+ll sumS=0;
 rep(i,0,n){
-    cin>>a[i];
-}
-ll l=1;
-ll c=mine(a);
-ll h=x+c;
-ll ans=-1;
-while(l<=h){
-    ll mid=l+(h-l)/2;
-    ll u=getVal(mid,a,n);
-    if(u<=x){
-        ans=mid;
-        l=mid+1;
-    }else{
-        h=mid-1;
-    }
-}
-cout<<ans<<endl;
+    cin>>s[i];
+    sum+=s[i];
+    sumS+=(s[i]*s[i]);
 }
 
+ long double D = 1.0L * sum * sum - 1.0L * n * (sumS - c);
+  long double x = (-sum + sqrt(D)) / (2.0L * n);
+ cout << (ll)x << endl;
+}
 
 
 int main() {

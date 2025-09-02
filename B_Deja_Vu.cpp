@@ -38,7 +38,6 @@ void fastio() {
     cout.tie(NULL);
 }
 
-
 void solve(){
 ll n,q;
 cin>>n>>q;
@@ -64,12 +63,8 @@ rep(i,0,n){
     cout<<a[i]<<" ";
 }
 cout<<endl;
-
-
-
-
-
 }
+
 
 
 int main() {
