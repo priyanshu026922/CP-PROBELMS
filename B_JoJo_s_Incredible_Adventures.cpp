@@ -37,30 +37,21 @@ void fastio() {
 }
 
 void solve(){
-ll n;
-cin>>n;
-
-vll c(n);
-rep(i,0,n){
-    cin>>c[i];
-}
-
-sort(begin(c),end(c));
-
- if(c[0]!=1){
-        cout<<"NO"<<endl;
-        return;
+string s;
+cin>>s;
+ int n=s.length();
+ int count=0;
+ int maxi=0;
+ rep(i,0,n){
+    if(s[i]=='1'){
+       count++;
+     maxi=max(maxi,((count+1)/2)*((count+2)/2));
+    }else{
+        count=0;
     }
-    
-ll sum=1;
-rep(i,1,n){
-  if(c[i]>sum){
-    cout<<"NO"<<endl;
-    return;
-  }
-  sum+=c[i];
-}
-cout<<"YES"<<endl;
+      
+ }
+ cout<<maxi<<endl;
 }
 
 

@@ -37,30 +37,45 @@ void fastio() {
 }
 
 void solve(){
-ll n;
-cin>>n;
-
-vll c(n);
+ll n ,k;
+cin>>n>>k;
+vvi a(n,vi(n));
 rep(i,0,n){
-    cin>>c[i];
-}
-
-sort(begin(c),end(c));
-
- if(c[0]!=1){
-        cout<<"NO"<<endl;
-        return;
+    rep(j,0,n){
+        cin>>a[i][j];
     }
-    
-ll sum=1;
-rep(i,1,n){
-  if(c[i]>sum){
-    cout<<"NO"<<endl;
-    return;
-  }
-  sum+=c[i];
 }
-cout<<"YES"<<endl;
+vvi v(n,vi(n));
+v=a;
+rep(j,0,n/2){
+    rep(i,0,n){
+       swap( v[i][n-j-1],v[i][j]);
+    }
+}
+reverse(begin(v),end(v));
+int count=0;
+rep(i,0,n){
+    rep(j,0,n){
+       if(v[i][j]!=a[i][j])count++;
+    }
+}
+count/=2;
+if(count>k){
+    cout<<"N0"<<endl;
+}
+
+else{
+int val=k-count;
+if(val%2==0)cout<<"YES"<<endl;
+else{
+     if(n%2==0){
+        cout<<"NO"<<endl;
+     }
+     else{
+        cout<<"YES"<<endl;
+     }
+}
+}
 }
 
 

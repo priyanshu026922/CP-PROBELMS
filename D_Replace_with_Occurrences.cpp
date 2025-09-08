@@ -37,30 +37,39 @@ void fastio() {
 }
 
 void solve(){
-ll n;
+int n;
 cin>>n;
-
-vll c(n);
+vi b(n);
 rep(i,0,n){
-    cin>>c[i];
+    cin>>b[i];
+}
+vector<vector<int>>ind(n+1);
+vi freq(n+1,0);
+rep(i,0,n){
+    freq[b[i]]++;
+    ind[b[i]].push_back(i);
 }
 
-sort(begin(c),end(c));
+vi a(n);
+int x=0;
 
- if(c[0]!=1){
-        cout<<"NO"<<endl;
+for(int i=1;i<=n;i++){
+    if(freq[i]==0)continue;
+    if(freq[i]%i){
+        cout<<"-1\n";
         return;
     }
-    
-ll sum=1;
-rep(i,1,n){
-  if(c[i]>sum){
-    cout<<"NO"<<endl;
-    return;
-  }
-  sum+=c[i];
+   for (int j = 0; j < freq[i]; j++) {
+            if (j % i == 0)
+                x++;
+            a[ind[i][j]] = x;
+        }
 }
-cout<<"YES"<<endl;
+for(auto it:a){
+cout<<it<<" ";
+}
+cout<<endl;
+
 }
 
 

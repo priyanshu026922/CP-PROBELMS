@@ -37,30 +37,21 @@ void fastio() {
 }
 
 void solve(){
-ll n;
+int n;
 cin>>n;
-
-vll c(n);
+vi p(n);
 rep(i,0,n){
-    cin>>c[i];
+    cin>>p[i];
 }
-
-sort(begin(c),end(c));
-
- if(c[0]!=1){
-        cout<<"NO"<<endl;
-        return;
-    }
-    
-ll sum=1;
-rep(i,1,n){
-  if(c[i]>sum){
-    cout<<"NO"<<endl;
-    return;
-  }
-  sum+=c[i];
+vi q(n);
+int val=mine(p)+maxe(p);
+rep(i,0,n){
+q[i]=val-p[i];
 }
-cout<<"YES"<<endl;
+rep(i,0,n){
+    cout<<q[i]<<" ";
+}
+cout<<endl;
 }
 
 
