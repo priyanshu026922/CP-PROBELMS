@@ -37,39 +37,35 @@ void fastio() {
 }
 
 void solve(){
-int n;
+ll n;
 cin>>n;
-vi b(n);
+vll a(n);
+int cp=0;
+int cn=0;
+ll miniN=LLONG_MAX;
+ll sum=0;
 rep(i,0,n){
-    cin>>b[i];
-}
-
-vector<vector<int>>ind(n+1);
-vi freq(n+1,0);
-rep(i,0,n){
-    freq[b[i]]++;
-    ind[b[i]].push_back(i);
-}
-
-vi a(n);
-int x=0;
-
-for(int i=1;i<=n;i++){
-    if(freq[i]==0)continue;
-    if(freq[i]%i){
-        cout<<"-1\n";
-        return;
+    cin>>a[i];
+    sum+=abs(a[i]);
+    if(a[i]<0){
+        cn++;
+        
     }
-    for (int j = 0; j < freq[i]; j++) {
-            if (j % i == 0)
-                x++;
-            a[ind[i][j]] = x;
-        }
+    miniN=min(miniN,abs(a[i]));
 }
-for(auto it:a){
-cout<<it<<" ";
+if(cn%2==0){
+cout<<sum<<endl;
+return;
 }
-cout<<endl;
+cout<<sum-2*abs(miniN)<<endl;
+
+
+
+
+
+
+
+
 
 }
 
