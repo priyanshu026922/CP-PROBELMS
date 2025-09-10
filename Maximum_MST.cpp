@@ -37,28 +37,31 @@ void fastio() {
 }
 
 void solve(){
-ll n;
+int n;
 cin>>n;
-vll a(n);
-int cp=0;
-int cn=0;
-ll miniN=LLONG_MAX;
-ll sum=0;
-rep(i,0,n){
-    cin>>a[i];
-    sum+=abs(a[i]);
-    if(a[i]<0){
-        cn++;
-        
-    }
-    miniN=min(miniN,abs(a[i]));
+int m=(n*(n-1))/2;
+vll w(m);
+rep(i,0,m){
+    cin>>w[i];
 }
-if(cn%2==0){
-cout<<sum<<endl;
-return;
-}
-cout<<sum-2*abs(miniN)<<endl;
+// if(n==2){
+//     cout<<w[0]<<endl;
+//     return;
+// }
 
+// if(n==3){
+//     sort(begin(w),end(w));
+//     cout<<w[0]+w[1]<<endl;
+//     return;
+// }
+
+
+sort(begin(w),end(w));
+ll sum=0;
+rep(i,0,n-1){
+sum+=w[i];
+}
+cout<<sum<<endl;
 }
 
 

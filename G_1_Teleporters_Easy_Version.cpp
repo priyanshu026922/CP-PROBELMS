@@ -48,11 +48,6 @@ for(int i=1;i<=n;i++){
     b[i]=(i+a[i-1]);
 }
 sort(begin(b),end(b));
-// for(int i=1;i<=n;i++){
-//    cout<<b[i]<<" ";
-// }
-// cout<<endl;
-
 ll count=0;
 ll sum=0;
 for(int i=1;i<=n;i++){
@@ -62,9 +57,6 @@ for(int i=1;i<=n;i++){
    }
 }
 cout<<count<<endl;
-
-
-
 }
 
 

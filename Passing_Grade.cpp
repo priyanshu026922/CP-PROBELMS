@@ -37,27 +37,23 @@ void fastio() {
 }
 
 void solve(){
-ll n;
+int n;
 cin>>n;
-vll a(n);
-int cp=0;
-int cn=0;
-ll miniN=LLONG_MAX;
-ll sum=0;
+vi a(n);
 rep(i,0,n){
     cin>>a[i];
-    sum+=abs(a[i]);
-    if(a[i]<0){
-        cn++;
-        
-    }
-    miniN=min(miniN,abs(a[i]));
 }
-if(cn%2==0){
-cout<<sum<<endl;
-return;
+int count=1;
+int val=a[0];
+rep(i,1,n){
+if(a[i]>=val)count++;
 }
-cout<<sum-2*abs(miniN)<<endl;
+
+cout<<count<<endl;
+
+
+
+
 
 }
 
