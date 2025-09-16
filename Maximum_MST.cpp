@@ -58,8 +58,10 @@ rep(i,0,m){
 
 sort(begin(w),end(w));
 ll sum=0;
-rep(i,0,n-1){
-sum+=w[i];
+ll x=0;
+rep(i,1,n){
+sum+=w[x];
+x+=i;
 }
 cout<<sum<<endl;
 }
