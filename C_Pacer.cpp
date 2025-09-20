@@ -59,8 +59,10 @@ int p=vec.size();
 rep(i,0,p-1){
     ll x1=vec[i].first;
     ll y1=vec[i].second;
+
      ll x2=vec[i+1].first;
     ll y2=vec[i+1].second;
+    
     ll len=x2-x1;
     if(y2==-1)ans+=len;
     else{

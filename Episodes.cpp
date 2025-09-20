@@ -36,25 +36,15 @@ void fastio() {
     cout.tie(NULL);
 }
 
+
 void solve(){
-int n;
-cin>>n;
-int m=(n*(n-1))/2;
-vll w(m);
-rep(i,0,m){
-    cin>>w[i];
+int n,k;
+cin>>n>>k;
+int t=n*k;
+int h=(n*k)/60;
+int m=n*k-(h*60);
+cout<<h<<" "<<m<<endl;
 }
-
-sort(begin(w),end(w));
-ll sum=0;
-ll x=0;
-rep(i,1,n){
-sum+=w[x];
-x+=i;
-}
-cout<<sum<<endl;
-}
-
 
 int main() {
     fastio();

@@ -36,25 +36,50 @@ void fastio() {
     cout.tie(NULL);
 }
 
+
+// ll s(vector<vector<ll>>&vec,ll n,int i,int j,vector<vector<ll>>&dp){
+// if(i==0&&j==0)return vec[0][0];
+// if(i<0||j<0){
+//     return LLONG_MIN;
+// }
+// if(dp[i][j]!=-1)return dp[i][j];
+
+// ll t1=(vec[i][j]+s(vec,n,i-1,j,dp))%mod;
+// ll t2=(vec[i][j]+s(vec,n,i,j-1,dp))%mod;
+// return dp[i][j]= max(t1,t2);
+// }
+
 void solve(){
-int n;
+ll n;
 cin>>n;
-int m=(n*(n-1))/2;
-vll w(m);
-rep(i,0,m){
-    cin>>w[i];
-}
+// vector<vector<ll>>vec(n+1,vector<ll>(n+1));
+// vector<vector<ll>>dp(n+1,vector<ll>(n+1,-1));
+//  rep(i,0,n){
+//     rep(j,0,n){
+//        vec[i][j]=(i+1)*(j+1);
+//     }
+//  }
+// ll ans=s(vec,n,n-1,n-1,dp);
+// cout<<(ans*2022)%mod<<endl;
 
-sort(begin(w),end(w));
-ll sum=0;
-ll x=0;
-rep(i,1,n){
-sum+=w[x];
-x+=i;
+// ll val=0;
+// int x=0;
+// ll i=1;
+// ll j=1;
+// rep(k,1,2*n){
+// if(x==0){
+//    val=(val+(1LL*i*j));
+//    j++;
+//    x=!x;
+// }else{
+//     val=(val+(1LL*i*j));
+//    i++;
+//    x=!x;
+// }
+// }
+ll ans=((((n*(n+1))%mod)*(4*n-1))%mod*337)%mod;
+    cout<<ans<<endl;
 }
-cout<<sum<<endl;
-}
-
 
 int main() {
     fastio();

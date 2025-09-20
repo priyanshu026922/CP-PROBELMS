@@ -36,24 +36,28 @@ void fastio() {
     cout.tie(NULL);
 }
 
+
 void solve(){
-int n;
-cin>>n;
-int m=(n*(n-1))/2;
-vll w(m);
+int n,m;
+cin>>n>>m;
+string s;
+cin>>s;
+int c2=0,c1=0;
 rep(i,0,m){
-    cin>>w[i];
+if(s[i]=='1')c1++;
+else c2++;
 }
 
-sort(begin(w),end(w));
-ll sum=0;
-ll x=0;
-rep(i,1,n){
-sum+=w[x];
-x+=i;
+
+int a=m-c1;
+int b=n-m;
+int val=abs(c1-a);
+if(val<=b&&(b-val)%2==0){
+    cout<<"YES"<<endl;
+    return;
 }
-cout<<sum<<endl;
-}
+cout<<"NO"<<endl;
+  }
 
 
 int main() {

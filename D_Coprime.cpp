@@ -36,25 +36,42 @@ void fastio() {
     cout.tie(NULL);
 }
 
+
 void solve(){
 int n;
 cin>>n;
-int m=(n*(n-1))/2;
-vll w(m);
-rep(i,0,m){
-    cin>>w[i];
+vi a(n);
+rep(i,0,n){
+    cin>>a[i];
 }
 
-sort(begin(w),end(w));
-ll sum=0;
-ll x=0;
-rep(i,1,n){
-sum+=w[x];
-x+=i;
-}
-cout<<sum<<endl;
+
+int countO=0;
+rep(i,0,n){
+    if(a[i]%2!=0)countO++;
 }
 
+
+if(countO==0){
+cout<<"-1"<<endl;
+return;
+}
+
+
+int maxi=INT_MIN;
+int i=0;
+int j=0;
+while(j<n){
+    int val=__gcd(a[i],a[j]);
+    if(val==1){
+        maxi=max(maxi,i+j);
+        i++;
+    }
+    j++;
+}
+cout<<maxi<<endl;
+
+}
 
 int main() {
     fastio();
