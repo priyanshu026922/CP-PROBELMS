@@ -38,30 +38,39 @@ void fastio() {
 
 
 void solve(){
-int n,m;
-cin>>n>>m;
+int n;
+cin>>n;
 vi a(n);
-int s=0;
 rep(i,0,n){
     cin>>a[i];
-    s+=a[i];
 }
 
-int sum=s;
-sort(begin(a),end(a));
-
+int cm1=0;
+int c0=0;
 rep(i,0,n){
-   int val=(m-a[i])%m;
-   int x=lb(a,m-val);
-   int t=s+n*val-(n-x)*m;
-   
-   sum=min(sum,t);
+    if(a[i]==0)c0++;
+    if(a[i]==-1)cm1++;
 }
 
-cout<<sum<<endl;
+if(c0==0&&cm1==0){
+    cout<<"0"<<endl;
+    return;
+}
+if(c0==0){
 
-
-
+    if(cm1%2==0){
+        cout<<"0"<<endl;
+        return;
+    }else{
+        cout<<"2"<<endl;
+        return;
+    }
+}
+else {
+   if(cm1%2!=0) cout<<c0+2<<endl;
+   else cout<<c0<<endl;
+    return;
+}
 
 }
 

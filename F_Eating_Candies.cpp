@@ -66,12 +66,6 @@ if(mp.find(s)!=mp.end()){
 
 }
 cout<<ans<<endl;
-
-
-
-
-
-
 }
 
 

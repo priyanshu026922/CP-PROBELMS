@@ -38,29 +38,44 @@ void fastio() {
 
 
 void solve(){
-int n,m;
-cin>>n>>m;
+int n,k;
+cin>>n>>k;
 vi a(n);
-int s=0;
 rep(i,0,n){
     cin>>a[i];
-    s+=a[i];
 }
-
-int sum=s;
 sort(begin(a),end(a));
 
+mii mp;
 rep(i,0,n){
-   int val=(m-a[i])%m;
-   int x=lb(a,m-val);
-   int t=s+n*val-(n-x)*m;
-   
-   sum=min(sum,t);
+mp[a[i]]++;
 }
 
-cout<<sum<<endl;
+int num=0;
+for(auto it:mp){
+    if(it.first!=num){
+       break;
+    }
+    num++;
+}
+// cout<<miss<<endl;
 
-
+if(num==k){
+  cout<<"0"<<endl;
+  return;
+}
+else if(num>k){
+    cout<<mp[k]<<endl;
+}
+else{ //num<k
+    int miss=0;
+    rep(i,0,k){
+        if(mp.find(i)==mp.end()){
+            miss++;
+        }
+    }
+    cout<<max(miss,mp[k])<<endl;
+}
 
 
 }

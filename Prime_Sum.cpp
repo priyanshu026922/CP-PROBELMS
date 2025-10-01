@@ -38,31 +38,21 @@ void fastio() {
 
 
 void solve(){
-int n,m;
-cin>>n>>m;
+int n;
+cin>>n;
 vi a(n);
-int s=0;
 rep(i,0,n){
     cin>>a[i];
-    s+=a[i];
 }
-
-int sum=s;
-sort(begin(a),end(a));
-
+int count=0;
 rep(i,0,n){
-   int val=(m-a[i])%m;
-   int x=lb(a,m-val);
-   int t=s+n*val-(n-x)*m;
-   
-   sum=min(sum,t);
+    rep(j,i+1,n){
+        if((a[i]==1&&a[j]==1)||(a[i]==1&&a[j]==2)||(a[i]==2&&a[j]==1)||(a[i]==2&&a[j]==3)||(a[i]==3&&a[j]==2)){
+            count++;
+        }
+    }
 }
-
-cout<<sum<<endl;
-
-
-
-
+cout<<count<<endl;
 }
 
 

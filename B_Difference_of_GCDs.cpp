@@ -51,7 +51,6 @@ for(int i=1;i<=n;i++){
             v[i]=-1;
         }
     }
-    // v[i]=(l%i==0?l:l-(l%i)+i);
 }
 
 for(int i=1;i<=n;i++){

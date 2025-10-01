@@ -38,31 +38,18 @@ void fastio() {
 
 
 void solve(){
-int n,m;
-cin>>n>>m;
-vi a(n);
-int s=0;
+int n;
+cin>>n;
+vll a(n);
 rep(i,0,n){
     cin>>a[i];
-    s+=a[i];
 }
-
-int sum=s;
 sort(begin(a),end(a));
-
-rep(i,0,n){
-   int val=(m-a[i])%m;
-   int x=lb(a,m-val);
-   int t=s+n*val-(n-x)*m;
-   
-   sum=min(sum,t);
+ll ans=0;
+for(int i=0;i<n;i+=2){
+    ans=max(ans,a[i+1]-a[i]);
 }
-
-cout<<sum<<endl;
-
-
-
-
+cout<<ans<<endl;
 }
 
 
