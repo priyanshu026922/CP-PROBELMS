@@ -44,7 +44,7 @@ ll x=1;
 ll t=-1;
 ll count=0;
 rep(i,0,65){
-    if((x<<i)<n){
+    if((1LL<<i)<n){
         count++;
     }else{
         t=i;

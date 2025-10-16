@@ -41,11 +41,23 @@ void solve(){
 int n;
 cin>>n;
 
-//there are exactly N cyclic shifts
-repr(i,n,1){
-    cout<<i<<" ";
+int x=n-1;
+int sum=n;
+int dir=-1;
+while(x>0){
+
+if(dir==-1){
+    sum-=x;
+    dir=1;
+}else{
+    dir=-1;
+    sum+=x;
 }
-cout<<endl;
+
+    x--;
+}
+cout<<sum<<endl;
+
 }
 
 

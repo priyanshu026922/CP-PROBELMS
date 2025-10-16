@@ -36,16 +36,30 @@ void fastio() {
     cout.tie(NULL);
 }
 
+// int countzeroes(int i,int j,string s){
+//     int count=0;
+//     for(int k=i;k<=j;k++){
+//     if(s[k])
+//     }
+// }
 
 void solve(){
 int n;
 cin>>n;
-
-//there are exactly N cyclic shifts
-repr(i,n,1){
-    cout<<i<<" ";
+string s;
+cin>>s;
+int count=0;
+for(int i=0;i<n;i++){
+    if(s[i]=='0')continue;
+    for(int j=i+1;j<n;j++){
+        if(s[i]=='1'&&s[j]=='1'){
+            count+=(j-i-1);
+            break;
+        }
+    }
 }
-cout<<endl;
+cout<<count<<endl;
+
 }
 
 

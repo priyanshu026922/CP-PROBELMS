@@ -38,16 +38,37 @@ void fastio() {
 
 
 void solve(){
-int n;
-cin>>n;
-
-//there are exactly N cyclic shifts
-repr(i,n,1){
-    cout<<i<<" ";
+ll n,c;
+cin>>n>>c;
+vll b(n);
+vll d(n);
+rep(i,0,n){
+    cin>>b[i];
 }
-cout<<endl;
+rep(i,0,n){
+    cin>>d[i];
 }
+vector<vector<ll>>dp(n+1,vector<ll>(n,0));
+rep(i,0,n){
+    dp[0][i]=b[i]*d[i];
+}
+ll ans=0;
+rep(i,0,n)ans+=dp[0][i];
 
+rep(i,1,n){
+    rep(j,0,n){
+        dp[i][j] = min(dp[i-1][(j)],d[j]*(b[(j-i+n)%n]));
+          }
+    ll curr=0;
+    rep(j,0,n){
+        curr+=dp[i][j];
+    }
+    ans=min(ans,i*c+curr);
+
+
+}
+cout<<ans<<endl;
+}
 
 int main() {
     fastio();

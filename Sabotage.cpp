@@ -38,14 +38,20 @@ void fastio() {
 
 
 void solve(){
-int n;
-cin>>n;
-
-//there are exactly N cyclic shifts
-repr(i,n,1){
-    cout<<i<<" ";
+ll n,x,k;
+cin>>n>>x>>k;
+vll a(n);
+rep(i,0,n){
+    cin>>a[i];
 }
-cout<<endl;
+
+ll val=x+100*k;
+ll c=0;
+rep(i,0,n){
+    if(a[i]>val)c++;
+}
+cout<<max(c-k+1,1LL)<<endl;
+
 }
 
 

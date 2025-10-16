@@ -36,16 +36,30 @@ void fastio() {
     cout.tie(NULL);
 }
 
-
 void solve(){
 int n;
 cin>>n;
-
-//there are exactly N cyclic shifts
-repr(i,n,1){
-    cout<<i<<" ";
+vi a(n);
+rep(i,0,n){
+    cin>>a[i];
 }
-cout<<endl;
+
+bool inc=true;
+rep(i,1,n){
+    if(a[i]<a[i-1]){
+        inc=false;
+    }
+}
+if(inc){
+    cout<<n<<endl;
+    repr(i,n,1){
+       cout<<i<<" ";
+    }
+    return;
+}
+
+
+
 }
 
 
