@@ -45,25 +45,24 @@ rep(i,0,n){
     cin>>a[i];
 }
 
-
-int count=1;
-int last=a[n-1];
-repr(i,n-2,0){
-  if(a[i]!=last)break;
-  else count++;
+int ans=0;
+int i=n-1;
+while(i>=0&&a[i]==a[n-1]){
+   i--;
 }
+ if(i==-1){
+    cout<<"0"<<endl;
+    return;
+ }
 
-cout<<count<<"huihui"<<endl;
-int c=2;
-int min=0;
-while(true){
-  
-    min++;
-    c=c*count;
-        if(c>=n/2)break;
-  
-}
-cout<<min<<endl;
+    while(i>=0){
+        i-=(n-1-i);//no of element on right side
+        ans++;
+        while(i>=0&&a[i]==a[n-1]){
+            i--;
+        }
+    }
+  cout<<ans<<endl;
 }
 
 
