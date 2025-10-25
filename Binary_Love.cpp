@@ -36,36 +36,75 @@ void fastio() {
     cout.tie(NULL);
 }
 
+// bool cmp(pair<int,int>&p1,pair<int,int>&p2){
+//     if(p1.first==p2.first){
+//         return p1.second < p2.second; 
+//     }
+//    return p1.first > p2.first;
+// }
 
 void solve(){
 int n;
 cin>>n;
-vi a(n);
-rep(i,0,n){
-    cin>>a[i];
+string s;
+cin>>s;
+int count1=0; //'01'
+int count2=0;//'10'
+
+rep(i,0,n-1){
+    if(s[i]=='0'&&s[i+1]=='1'){
+        count1++;
+    }
+    else if(s[i]=='1'&&s[i+1]=='0'){
+        count2++;
+    }
+}
+if(s.front()==s.back()&&count1>0){
+    cout<<"Alice"<<endl;
+}
+else{
+    cout<<"Bob"<<endl;
 }
 
+// if(count1==count2&&count1>0){
+//     cout<<"Alice"<<endl;
+//     return;
+// }
 
-int count=1;
-int last=a[n-1];
-repr(i,n-2,0){
-  if(a[i]!=last)break;
-  else count++;
-}
+// else if(count1>count2||count1<count2) {
+//     int c1=0;
+//     int c2=0;
+//    rep(i,0,n-2){
+//     if(s[i]=='0'&&s[i+1]=='1'){
+//         c1++;
+//     }
+//     else if(s[i]=='1'&&s[i+1]=='0'){
+//         c2++;
+//     }
+// }
+   
+// if(c1==c2&&c1>0){
+//     cout<<"Alice"<<endl;
+//     return;
+// }
 
-cout<<count<<"huihui"<<endl;
-int c=2;
-int min=0;
-while(true){
-  
-    min++;
-    c=c*count;
-        if(c>=n/2)break;
-  
-}
-cout<<min<<endl;
-}
+// int c3=0;
+// int c4=0;
+//   rep(i,1,n-1){
+//     if(s[i]=='0'&&s[i+1]=='1'){
+//         c3++;
+//     }
+//     else if(s[i]=='1'&&s[i+1]=='0'){
+//         c4++;
+//     }
+// }
+   
+// if(c4==c3&&c3>0){
+//     cout<<"Alice"<<endl;
+//     return;
+// }
 
+}
 
 int main() {
     fastio();

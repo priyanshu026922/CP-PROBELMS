@@ -44,28 +44,17 @@ vi a(n);
 rep(i,0,n){
     cin>>a[i];
 }
-
-
-int count=1;
-int last=a[n-1];
-repr(i,n-2,0){
-  if(a[i]!=last)break;
-  else count++;
+int maxi=INT_MIN;
+rep(i,0,n){
+    int sum=0;
+    rep(j,i,n){
+      sum+=a[j];
+       maxi=max(maxi,sum/(j-i+1));
+    }
+   
 }
-
-cout<<count<<"huihui"<<endl;
-int c=2;
-int min=0;
-while(true){
-  
-    min++;
-    c=c*count;
-        if(c>=n/2)break;
-  
+cout<<maxi<<endl;
 }
-cout<<min<<endl;
-}
-
 
 int main() {
     fastio();

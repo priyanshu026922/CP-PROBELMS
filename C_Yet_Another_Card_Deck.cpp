@@ -36,41 +36,44 @@ void fastio() {
     cout.tie(NULL);
 }
 
-
 void solve(){
-int n;
-cin>>n;
-vi a(n);
-rep(i,0,n){
+   int n,q;
+   cin>>n>>q;
+
+   vi a(n);
+   rep(i,0,n){
     cin>>a[i];
-}
+   }
 
+    vi pos(51,-1);
+    rep(i,0,n){
+        if(pos[a[i]]==-1){
+            pos[a[i]]=i;
+        }
+    }
 
-int count=1;
-int last=a[n-1];
-repr(i,n-2,0){
-  if(a[i]!=last)break;
-  else count++;
-}
+    vi v(q);
+    rep(i,0,q){
+        cin>>v[i];
+    }
 
-cout<<count<<"huihui"<<endl;
-int c=2;
-int min=0;
-while(true){
-  
-    min++;
-    c=c*count;
-        if(c>=n/2)break;
-  
-}
-cout<<min<<endl;
+    rep(i,0,q){
+        int x=pos[v[i]];
+        for(int i=0;i<51;i++){
+            if(pos[i]<x){
+                pos[i]++;
+            }
+        }
+        pos[v[i]]=0;
+        cout<<x+1<<" ";
+    }
+    cout<<endl;
 }
 
 
 int main() {
     fastio();
-    int t;
-    cin >> t;
+    int t=1;
     while (t--) {
         solve();
     }

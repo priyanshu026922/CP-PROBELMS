@@ -36,34 +36,58 @@ void fastio() {
     cout.tie(NULL);
 }
 
+bool isPalindrome(vi &a){
+      int i=0;
+    int j=a.size()-1;
+    int ans1=-1;
+    int ans2=-1;
+    while(i<=j){
+        if(a[i]!=a[j]){
+          return false;
+        }
+        i++;
+        j--;
+    }
+return true;
+}
 
 void solve(){
-int n;
-cin>>n;
-vi a(n);
-rep(i,0,n){
-    cin>>a[i];
-}
+    int n;
+    cin>>n;
+    vi a(n);
+    rep(i,0,n){
+        cin>>a[i];
+    }
+    int i=0;
+    int j=a.size()-1;
+    int ans1=-1;
+    int ans2=-1;
+    while(i<=j){
+        if(a[i]!=a[j]){
+            ans1=a[i];
+            ans2=a[j];
+            break;
+        }
+        i++;
+        j--;
+    }
 
+    vi a1;
+    vi a2;
+    rep(i,0,n){
+        if(a[i]!=ans1)a1.push_back(a[i]);
+    }
+    
+     rep(i,0,n){
+        if(a[i]!=ans2)a2.push_back(a[i]);
+    }
 
-int count=1;
-int last=a[n-1];
-repr(i,n-2,0){
-  if(a[i]!=last)break;
-  else count++;
-}
+    if(isPalindrome(a1)||isPalindrome(a2)){
+        cout<<"YES"<<endl;
+        return ;
+    }
 
-cout<<count<<"huihui"<<endl;
-int c=2;
-int min=0;
-while(true){
-  
-    min++;
-    c=c*count;
-        if(c>=n/2)break;
-  
-}
-cout<<min<<endl;
+    cout<<"NO"<<endl;
 }
 
 

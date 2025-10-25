@@ -40,30 +40,50 @@ void fastio() {
 void solve(){
 int n;
 cin>>n;
-vi a(n);
+
+vll a(n);
 rep(i,0,n){
     cin>>a[i];
 }
 
-
-int count=1;
-int last=a[n-1];
-repr(i,n-2,0){
-  if(a[i]!=last)break;
-  else count++;
+ll gcd1=0,gcd2=0;
+rep(i,0,n){
+   if(i&1){
+    gcd1=__gcd(gcd1,a[i]);//odd position
+   }else{
+    gcd2=__gcd(gcd2,a[i]);//even postion
+   }
 }
 
-cout<<count<<"huihui"<<endl;
-int c=2;
-int min=0;
-while(true){
-  
-    min++;
-    c=c*count;
-        if(c>=n/2)break;
-  
+bool  t=true;
+for(int i=0;i<n;i+=2){
+    if(a[i]%gcd1==0){
+        t=false;
+        break;
+    }
 }
-cout<<min<<endl;
+
+if(t){
+    cout<<gcd1<<endl;
+    return;
+}
+
+bool t1=true;
+for(int i=1;i<n;i+=2){
+    if(a[i]%gcd2==0){
+        t1=false;
+        break;
+    }
+}
+
+if(t1){
+    cout<<gcd2<<endl;
+    return;
+}
+
+
+    cout<<"0"<<endl;
+
 }
 
 

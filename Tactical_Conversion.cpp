@@ -36,36 +36,53 @@ void fastio() {
     cout.tie(NULL);
 }
 
+// bool cmp(pair<int,int>&p1,pair<int,int>&p2){
+//     if(p1.first==p2.first){
+//         return p1.second < p2.second; 
+//     }
+//    return p1.first > p2.first;
+// }
 
 void solve(){
 int n;
 cin>>n;
-vi a(n);
+string s;
+cin>>s;
+int last=-1;
 rep(i,0,n){
-    cin>>a[i];
+    if(s[i]=='1'){
+       last=i;
+       break;
+    }
 }
 
-
-int count=1;
-int last=a[n-1];
-repr(i,n-2,0){
-  if(a[i]!=last)break;
-  else count++;
+bool t1=true;
+rep(i,last+1,n){
+    if(s[i]=='1'){
+       if(abs(i-last)<=1){
+          t1=false;
+       }
+       last=i;
+    }
 }
+// bool t2=true;
+// int last2=s[n-1]=='1'?n-2:-1;
+// repr(i,n-2,0){
+//     if(s[i]=='1'){
+//         if(abs(i-last2)<=1){
+//              t2=false;
 
-cout<<count<<"huihui"<<endl;
-int c=2;
-int min=0;
-while(true){
-  
-    min++;
-    c=c*count;
-        if(c>=n/2)break;
-  
-}
-cout<<min<<endl;
-}
+//         }
+//         last2=i;
+//     }
+// }
 
+if(t1){
+    cout<<"Yes"<<endl;
+    return;
+}
+cout<<"No"<<endl;
+}
 
 int main() {
     fastio();

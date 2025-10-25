@@ -36,36 +36,49 @@ void fastio() {
     cout.tie(NULL);
 }
 
-
+bool cmp(pair<int,int>&p1,pair<int,int>&p2){
+    if(p1.first==p2.first){
+        return p1.second < p2.second; 
+    }
+   return p1.first > p2.first;
+}
 void solve(){
 int n;
 cin>>n;
-vi a(n);
+vpii vec;
 rep(i,0,n){
-    cin>>a[i];
+    vec.push_back({__gcd(i+1,n),i+1});
 }
 
+int x=vec.size();
 
-int count=1;
-int last=a[n-1];
-repr(i,n-2,0){
-  if(a[i]!=last)break;
-  else count++;
+// cout<<"vec"<<endl;
+
+// rep(i,0,x){
+//    cout<<vec[i].first<<" "<<vec[i].second<<endl;
+// }
+
+sort(begin(vec),end(vec),cmp);
+// cout<<"sorrted"<<endl;
+
+// rep(i,0,x){
+//    cout<<vec[i].first<<" "<<vec[i].second<<", ";
+// }
+
+// cout<<endl;
+
+
+vi v;
+
+rep(i,0,x){
+    v.push_back(vec[i].second);
 }
 
-cout<<count<<"huihui"<<endl;
-int c=2;
-int min=0;
-while(true){
-  
-    min++;
-    c=c*count;
-        if(c>=n/2)break;
-  
+rep(i,0,v.size()){
+    cout<<v[i]<<" ";
 }
-cout<<min<<endl;
+cout<<endl;
 }
-
 
 int main() {
     fastio();

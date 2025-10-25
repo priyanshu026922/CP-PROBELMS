@@ -48,25 +48,29 @@ rep(i,0,n){
 rep(i,0,n){
     cin>>d[i];
 }
+
+
+//dp[i][j]===>(min value for setting the jth ele when we do i cyclic shifts)===>>>
 vector<vector<ll>>dp(n+1,vector<ll>(n,0));
 rep(i,0,n){
     dp[0][i]=b[i]*d[i];
 }
+
 ll ans=0;
 rep(i,0,n)ans+=dp[0][i];
 
-rep(i,1,n){
-    rep(j,0,n){
-        dp[i][j] = min(dp[i-1][(j)],d[j]*(b[(j-i+n)%n]));
-          }
-    ll curr=0;
-    rep(j,0,n){
-        curr+=dp[i][j];
+    rep(i,1,n){
+        rep(j,0,n){
+            dp[i][j] = min(dp[i-1][(j)],d[j]*(b[(j-i+n)%n]));
+            }
+        ll curr=0;
+        rep(j,0,n){ 
+            curr+=dp[i][j];
+        }
+        ans=min(ans,i*c+curr);
+
+
     }
-    ans=min(ans,i*c+curr);
-
-
-}
 cout<<ans<<endl;
 }
 

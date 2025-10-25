@@ -38,34 +38,25 @@ void fastio() {
 
 
 void solve(){
-int n;
-cin>>n;
-vi a(n);
-rep(i,0,n){
-    cin>>a[i];
-}
+int x,y;
+cin>>x>>y;
 
-
-int count=1;
-int last=a[n-1];
-repr(i,n-2,0){
-  if(a[i]!=last)break;
-  else count++;
+int sumE=0,sumO=0;
+for(int i=x;i<=y;i++){
+  if(i%x==0){
+    if(i%2==0){
+        sumE+=i;
+    }else{
+        sumO+=i;
+    }
+  }
 }
-
-cout<<count<<"huihui"<<endl;
-int c=2;
-int min=0;
-while(true){
-  
-    min++;
-    c=c*count;
-        if(c>=n/2)break;
-  
+if(sumE>=sumO){
+    cout<<"YES"<<endl;
+    return;
 }
-cout<<min<<endl;
+cout<<"NO"<<endl;
 }
-
 
 int main() {
     fastio();

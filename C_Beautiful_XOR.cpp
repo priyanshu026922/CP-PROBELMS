@@ -38,34 +38,26 @@ void fastio() {
 
 
 void solve(){
-int n;
-cin>>n;
-vi a(n);
-rep(i,0,n){
-    cin>>a[i];
+ll a,b;
+cin>>a>>b;
+vll x;
+if(a==b){
+    cout<<"0"<<endl;
+    return;
+}else if(a>b){
+  x.push_back(a^b);
+}else {
+    x.push_back(0);
+    x.push_back(a);
+    x.push_back(b);
 }
 
-
-int count=1;
-int last=a[n-1];
-repr(i,n-2,0){
-  if(a[i]!=last)break;
-  else count++;
+cout<<x.size()<<endl;
+rep(i,0,x.size()){
+    cout<<x[i]<<" ";
 }
-
-cout<<count<<"huihui"<<endl;
-int c=2;
-int min=0;
-while(true){
-  
-    min++;
-    c=c*count;
-        if(c>=n/2)break;
-  
+cout<<endl;
 }
-cout<<min<<endl;
-}
-
 
 int main() {
     fastio();

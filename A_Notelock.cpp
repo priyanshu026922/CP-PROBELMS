@@ -38,34 +38,26 @@ void fastio() {
 
 
 void solve(){
-int n;
-cin>>n;
-vi a(n);
-rep(i,0,n){
-    cin>>a[i];
-}
-
-
+int n,k;
+cin>>n>>k;
+string s;
+cin>>s;
 int count=1;
-int last=a[n-1];
-repr(i,n-2,0){
-  if(a[i]!=last)break;
-  else count++;
-}
+rep(i,k,n){
+    if(s[i]=='0')continue;
+    bool b=true;
+    repr(j,i-1,max(0,i-k)){
+        if(s[j]=='1'){
+             b=false;
+             break;
+        }
+    }
+    if(b)count++;
 
-cout<<count<<"huihui"<<endl;
-int c=2;
-int min=0;
-while(true){
-  
-    min++;
-    c=c*count;
-        if(c>=n/2)break;
-  
 }
-cout<<min<<endl;
-}
+cout<<count<<endl;
 
+}
 
 int main() {
     fastio();

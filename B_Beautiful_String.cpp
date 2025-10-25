@@ -35,37 +35,44 @@ void fastio() {
     cin.tie(NULL);
     cout.tie(NULL);
 }
-
+bool isPalindrome(string s) {
+    int i = 0, j = s.size() - 1;
+    while (i < j) {
+        if (s[i] != s[j]) return false;
+        i++;
+        j--;
+    }
+    return true;
+}
 
 void solve(){
 int n;
 cin>>n;
-vi a(n);
+string s;
+cin>>s;
 rep(i,0,n){
-    cin>>a[i];
+    vector<pair<int,int>>v;
+    string q="";
+    int last=-1;
+    rep(j,i,n){
+        if(s[j]>=last){
+            v.push_back({s[j],j});
+            last=s[j];
+        }else{
+          q+=s[j];
+        }
+    }
+    if(isPalindrome(q)){
+        cout<<v.size()<<endl;
+        for(int i=0;i<v.size();i++){
+            cout<<v[i].second+1<<" ";
+        }
+        cout<<endl;
+        return;
+    }
 }
-
-
-int count=1;
-int last=a[n-1];
-repr(i,n-2,0){
-  if(a[i]!=last)break;
-  else count++;
+cout<<"-1"<<endl;
 }
-
-cout<<count<<"huihui"<<endl;
-int c=2;
-int min=0;
-while(true){
-  
-    min++;
-    c=c*count;
-        if(c>=n/2)break;
-  
-}
-cout<<min<<endl;
-}
-
 
 int main() {
     fastio();

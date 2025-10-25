@@ -47,11 +47,11 @@ rep(i,0,n){
     mp[a[i]]++;
 }
 if(mp.size()>2){
-    cout<<mp.end()->first-1<<endl;
+    cout<<prev(mp.end())->first-1<<endl;
 }
 else if(mp.size()==1){
     cout<<mp.begin()->first-1<<endl;
-}else{
+}else{ //only 2 values
     ll a=mp.begin()->first;
     ll b=prev(mp.end())->first;
     if(a!=b-1){

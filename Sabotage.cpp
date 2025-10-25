@@ -38,19 +38,19 @@ void fastio() {
 
 
 void solve(){
-ll n,x,k;
+int n,x,k;
 cin>>n>>x>>k;
-vll a(n);
+vi a(n);
 rep(i,0,n){
     cin>>a[i];
 }
 
-ll val=x+100*k;
-ll c=0;
+int val=x+100*k;
+int c=0;
 rep(i,0,n){
     if(a[i]>val)c++;
 }
-cout<<max(c-k+1,1LL)<<endl;
+cout<<max(c-k+1,1)<<endl;
 
 }
 
