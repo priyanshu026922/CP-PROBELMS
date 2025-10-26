@@ -45,15 +45,16 @@ rep(i,0,n){
     cin>>a[i];
 }
 
-int ans=0;
-int i=n-1;
-while(i>=0&&a[i]==a[n-1]){
-   i--;
-}
- if(i==-1){
-    cout<<"0"<<endl;
-    return;
- }
+    int ans=0;
+    int i=n-1;
+    while(i>=0&&a[i]==a[n-1]){
+    i--;
+    }
+
+    if(i==-1){
+        cout<<"0"<<endl;
+        return;
+    }
 
     while(i>=0){
         i-=(n-1-i);//no of element on right side
@@ -62,7 +63,7 @@ while(i>=0&&a[i]==a[n-1]){
             i--;
         }
     }
-  cout<<ans<<endl;
+    cout<<ans<<endl;
 }
 
 
