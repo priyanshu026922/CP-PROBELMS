@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
-
+ 
 typedef long long ll;
 typedef unsigned long long ull;
 typedef pair<int, int> pii;
@@ -29,26 +29,26 @@ typedef map<ll, ll> mll;
 #define ff first
 #define ss second
 #define mod 1000000007
-
+ 
 void fastio() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     cout.tie(NULL);
 }
-
+ 
 // bool cmp(pair<ll,ll>&p1,pair<ll,ll>&p2){
 //     if(p1.first==p2.first){
 //         return p1.second<p2.second;
 //     }
-
+ 
 //     return p1.first>p2.first;
 // }
-
-
+ 
+ 
 void solve(){
 int n;
 cin>>n;
-
+ 
 vll a(n);
 rep(i,0,n){
     cin>>a[i];
@@ -56,7 +56,7 @@ rep(i,0,n){
 int countO=0;
 int countE=0;
 rep(i,0,n){
-    if(a[i]%2==1){
+    if(a[i]&1){
         countO++;
     }else{
         countE++;
@@ -66,10 +66,9 @@ if(countO>0&&countE>0){
     cout<<"2"<<endl;
     return;
 }
-
-for(int i=0;i<=60;i++){
+for(int i=0;i<=57;i++){
  ll x=1LL<<i;
-si s;
+set<ll>s;
  for(int i=0;i<n;i++){
     s.insert(a[i]%x);
  }
@@ -78,12 +77,12 @@ si s;
     return;
  }
 }
-
+ 
 }
-
-
-
-
+ 
+ 
+ 
+ 
 int main() {
     fastio();
     int t;
