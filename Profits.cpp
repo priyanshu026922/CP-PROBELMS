@@ -49,16 +49,18 @@ void fastio() {
 //  }
 
 void solve(){
-ll n,k,x;
-cin>>n>>k>>x;
+int n,x;
+cin>>n>>x;
 
-vll a(n);
-rep(i,0,n){
-    cin>>a[i];
+int sum=0;
+int count=0;
+for(int i=1;i<=n;i++){
+    if(i>x){
+        sum+=i;
+        count++;
+    }
 }
-
-
-
+cout<<max(0,sum-x*count)<<endl;
 
 }
  

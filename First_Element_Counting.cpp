@@ -49,13 +49,45 @@ void fastio() {
 //  }
 
 void solve(){
-ll n,k,x;
-cin>>n>>k>>x;
+
+int n;
+cin>>n;
 
 vll a(n);
 rep(i,0,n){
     cin>>a[i];
 }
+
+
+
+ll maxi=maxe(a);
+ll mini=mine(a);
+vll b(n);
+b=a;
+sort(begin(b),end(b));
+unordered_map<ll,ll>mp1;
+unordered_map<ll,ll>mp2;
+rep(i,0,n){
+ if(i+1<n) mp1[b[i]]=b[i+1];
+if(i-1>=0)  mp2[b[i]]=b[i-1];
+}
+rep(i,0,n){
+    if(a[i]==mini||a[i]==maxi){
+        cout<<"-1"<<" ";
+        continue;
+    }
+
+    else {
+        
+          ll x=(a[i]+mp2[a[i]])/2;
+          ll y=((mp1[a[i]]+a[i])/2)-x;
+        //   ll y=((maxi+a[i])/2)-x;
+          cout<<y<<" ";
+    }
+}
+cout<<endl;
+
+
 
 
 

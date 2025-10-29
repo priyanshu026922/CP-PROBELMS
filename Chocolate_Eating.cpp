@@ -49,17 +49,11 @@ void fastio() {
 //  }
 
 void solve(){
-ll n,k,x;
-cin>>n>>k>>x;
-
-vll a(n);
-rep(i,0,n){
-    cin>>a[i];
-}
-
-
-
-
+ll a,b;
+cin>>a>>b;
+ll y=max(a,b);
+ll z=min(a,b);
+ cout<<y+min(y-1,z)<<endl;
 }
  
  
