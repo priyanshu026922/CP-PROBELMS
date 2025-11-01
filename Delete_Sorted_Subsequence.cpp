@@ -70,6 +70,7 @@ rep(i,0,n){
         ans=1;
     }
 }
+
 if(bal2>0)ans++;
 
 cout<<ans<<endl;

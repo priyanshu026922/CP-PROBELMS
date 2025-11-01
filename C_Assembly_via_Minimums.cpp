@@ -49,10 +49,27 @@ void solve(){
 int n;
 cin>>n;
 int x=(n*(n-1))/2;
-vi a(x);
+vll b(x);
+
 rep(i,0,x){
-cin>>a[i];
+cin>>b[i];
 }
+sort(begin(b),end(b));
+// vll a;
+
+int y=n-1;
+int i=0;
+while(y>0){
+    cout<<b[i]<<" ";
+    i+=y;
+    y--;
+}
+cout<<"1000000000"<<" ";
+cout<<endl;
+
+
+
+
  
 }
  
