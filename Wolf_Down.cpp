@@ -43,24 +43,28 @@ void fastio() {
  
 //     return p1.first>p2.first;
 // }
- ll calsum(ll s,ll e){
-    return ((s+e)*(e-s+1))/2;
- }
+ 
  
 void solve(){
-    ll n,x,y;
-    cin>>n>>x>>y;
-    ll x1=(x*y)/(__gcd(x,y));
-    ll count1=(n/x)-(n/x1);
-    ll count2=(n/y)-(n/x1);
+int n;
+cin>>n;
+string s;
+cin>>s;
+int count=0;
+int ans=0;
+rep(i,0,n){
+    if(s[i]=='0')ans++;
+}
 
-    ll ans=calsum(n-count1+1,n)-calsum(1LL,count2);
-    cout<<ans<<endl;
-
-
-
-
- 
+for(int i=0;i<n-1;i++ ){
+   if(s[i]=='1'&&s[i+1]=='0'){
+    s[i]=='-1';
+    s[i+1]='1';
+    count++;
+    continue;
+   }
+}
+cout<<ans-count<<endl;
 }
  
  
