@@ -45,49 +45,34 @@ void fastio() {
 // }
 
 void solve(){
-int n,k;
-cin>>n>>k;
-
-vi c(n);
+int n;
+cin>>n;
+vll a(n);
 rep(i,0,n){
-    cin>>c[i];
+    cin>>a[i];
 }
 
-vvi col(k+1);
-for(int i=1;i<=k;i++){
-   col[i].push_back(0);
-}
-rep(i,0,n){
-    col[c[i]].push_back(i+1);
-}
-for(int i=1;i<=k;i++){
-   col[i].push_back(n+1);
+if(n==1){
+    cout<<"1"<<endl;
+    return;
 }
 
- 
-int ans=INT_MAX;
-priority_queue<int>jumps[k+1];
-for(int i=1;i<=k;i++){
-
-    for(int j=0;j<col[i].size()-1;j++){
-         jumps[i].push(col[i][j+1]-col[i][j]-1);
+int prev=a[0];
+int dir=0;
+int count=0;
+rep(i,1,n){
+    if(a[i]>prev){
+        if(dir<=0)count++;
+        dir=1;
+        
     }
-    int maxi=jumps[i].top();
-    jumps[i].pop();
-    if(maxi%2==0){
-      jumps[i].push(maxi / 2);
-				jumps[i].push((maxi/ 2) - 1);
-    }else{
-       jumps[i].push(maxi / 2);
-		jumps[i].push(maxi / 2);
+    else if(a[i]<prev){
+        if(dir>=0)count++;
+        dir=-1;
     }
-    ans=min(ans,jumps[i].top());
+prev=a[i];
 }
-
-cout<<ans<<endl;
-
-
- 
+cout<<count+1<<endl;
 }
  
  

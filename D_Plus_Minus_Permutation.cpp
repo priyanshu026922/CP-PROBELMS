@@ -43,6 +43,12 @@ void fastio() {
  
 //     return p1.first>p2.first;
 // }
+
+
+
+///
+//ARITHMETIC SUM//
+///
  ll calsum(ll s,ll e){
     return ((s+e)*(e-s+1))/2;
  }
@@ -56,10 +62,6 @@ void solve(){
 
     ll ans=calsum(n-count1+1,n)-calsum(1LL,count2);
     cout<<ans<<endl;
-
-
-
-
  
 }
  
