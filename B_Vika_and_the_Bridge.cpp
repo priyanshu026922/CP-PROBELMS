@@ -64,7 +64,6 @@ for(int i=1;i<=k;i++){
    col[i].push_back(n+1);
 }
 
- 
 int ans=INT_MAX;
 priority_queue<int>jumps[k+1];
 for(int i=1;i<=k;i++){
@@ -72,14 +71,15 @@ for(int i=1;i<=k;i++){
     for(int j=0;j<col[i].size()-1;j++){
          jumps[i].push(col[i][j+1]-col[i][j]-1);
     }
+
     int maxi=jumps[i].top();
     jumps[i].pop();
     if(maxi%2==0){
       jumps[i].push(maxi / 2);
-				jumps[i].push((maxi/ 2) - 1);
+	  jumps[i].push((maxi/ 2) - 1);
     }else{
        jumps[i].push(maxi / 2);
-		jumps[i].push(maxi / 2);
+	   jumps[i].push(maxi / 2);
     }
     ans=min(ans,jumps[i].top());
 }

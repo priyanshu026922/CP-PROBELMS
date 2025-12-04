@@ -44,36 +44,43 @@ void fastio() {
 //     return p1.first>p2.first;
 // }
 
-
 void solve(){
-int n;
-cin>>n;
-vll a(n);
+int n,m;
+cin>>n>>m;
+
+vvi c(n,vi(m));
+
 rep(i,0,n){
-    cin>>a[i];
+    rep(j,0,m){
+        cin>>c[i][j];
+    }
 }
 
-if(n==1){
-    cout<<"1"<<endl;
-    return;
+
+int sum=0;
+
+rep(j,0,m){
+        vi temp;
+        rep(i,0,n){
+        temp.push_back(c[i][j]);
+        }
+        sort(begin(temp),end(temp));
+
+        for(int i=0;i<n;i++){
+           c[i][j]=temp[i];
+        }
 }
 
-int prev=a[0];
-int dir=0;
-int count=0;
-rep(i,1,n){
-    if(a[i]>prev){
-        if(dir<=0)count++;
-        dir=1;
-        
+rep(i,0,n){
+   rep(j,0,m){
+        sum-=(1LL*(n-i-1)*c[i][j]);
+        sum+=(1LL*i*c[i][j]);
+        // c[i][j]+=c[i-1][j];
     }
-    else if(a[i]<prev){
-        if(dir>=0)count++;
-        dir=-1;
-    }
-prev=a[i];
 }
-cout<<count+1<<endl;
+
+cout<<sum<<endl;
+
 }
  
  

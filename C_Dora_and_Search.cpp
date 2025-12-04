@@ -44,36 +44,42 @@ void fastio() {
 //     return p1.first>p2.first;
 // }
 
+bool isPos(int val,set<int>&s){
+    if(*s.begin()==val)return true;
+    if(*s.rbegin()==val)return true;
+    return false;
+}
 
 void solve(){
 int n;
 cin>>n;
-vll a(n);
+vi a(n);
 rep(i,0,n){
     cin>>a[i];
 }
 
-if(n==1){
-    cout<<"1"<<endl;
-    return;
+set<int>s(begin(a),end(a));
+int i=0;
+int j=n-1;
+while(i<j){
+  if(isPos(a[i],s)){
+     s.erase(a[i]);
+      i++;;
+      continue;
+  }  
+  if(isPos(a[j],s)){
+      s.erase(a[j]);
+      j--;
+      continue;
+  }
+  break;
+}
+if(i<j){
+    cout<<i+1<<" "<<j+1<<endl;
+}else{
+    cout<<"-1"<<endl;
 }
 
-int prev=a[0];
-int dir=0;
-int count=0;
-rep(i,1,n){
-    if(a[i]>prev){
-        if(dir<=0)count++;
-        dir=1;
-        
-    }
-    else if(a[i]<prev){
-        if(dir>=0)count++;
-        dir=-1;
-    }
-prev=a[i];
-}
-cout<<count+1<<endl;
 }
  
  
