@@ -44,42 +44,39 @@ void fastio() {
 //     return p1.first>p2.first;
 // }
 
-bool isPos(int val,set<int>&s){
-    if(*s.begin()==val)return true;
-    if(*s.rbegin()==val)return true;
-    return false;
-}
+
 
 void solve(){
-int n;
+ll n;
 cin>>n;
-vi a(n);
+vll a(n);
 rep(i,0,n){
     cin>>a[i];
 }
-set<int>s(begin(a),end(a));
-int i=0;
-int j=n-1;
-while(i<j){
-  if(isPos(a[i],s)){
-     s.erase(a[i]);
-      i++;;
-      continue;
-  }  
-  if(isPos(a[j],s)){
-      s.erase(a[j]);
-      j--;
-      continue;
-  }
-  break;
-}
- 
-if(i<j){
-    cout<<i+1<<" "<<j+1<<endl;
-}else{
-    cout<<"-1"<<endl;
-}
 
+
+// sort(begin(a),end(a));
+// ll x=a[0];
+// ll maxi=a[n-1];
+int c=0;
+map<ll, ll> mp;
+for (auto &val : a) mp[val]++;
+
+   while(!mp.empty()){
+        ll y=mp.begin()->first;
+        bool t=true;
+            while(mp.find(y)!=mp.end()){
+                if(t){
+                    c++;
+                    t=false;
+                }
+                mp[y]--;
+                if(mp[y]==0)mp.erase(y);
+                y++;
+            }
+    }
+
+    cout<<c<<endl;
 }
  
  
