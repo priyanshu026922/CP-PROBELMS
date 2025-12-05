@@ -44,47 +44,53 @@ void fastio() {
 //     return p1.first>p2.first;
 // }
 
-
+ll bs(vll &pmax,int n,int val){
+    ll l=0;
+    ll h=n-1;
+    ll ans=-1;
+    while(l<=h){
+        ll mid=(l+h)/2;
+        if(pmax[mid]<=val){
+            l=mid+1;
+            ans=mid;
+        }else{
+            h=mid-1;
+        }
+    }
+    return ans;
+}
 
 void solve(){
-ll n;
-cin>>n;
+int n,q;
+cin>>n>>q;
 vll a(n);
 rep(i,0,n){
     cin>>a[i];
 }
 
-int c=0;
-map<ll, ll> mp;
-for (auto &val : a) mp[val]++;
+vll k(q);
+rep(i,0,q){
+    cin>>k[i];
+}
+ vll psum(n),pmax(n,0);
+ psum[0]=a[0];
+ pmax[0]=a[0];
+ rep(i,1,n){
+    psum[i]=(a[i]+psum[i-1]);
+    pmax[i]=max(a[i],pmax[i-1]);
+ }
 
-//    while(!mp.empty()){
-//         ll y=mp.begin()->first;
-//         bool t=true;
-//             while(mp.find(y)!=mp.end()){
-//                 if(t){
-//                     c++;
-//                     t=false;
-//                 }
-//                 mp[y]--;
-//                 if(mp[y]==0)mp.erase(y);
-//                 y++;
-//             }
-//     }
-
-//     cout<<c<<endl;
-int ans = 0; // Final answer
-
-		// Calculate result based on frequency difference with previous element
-		for (auto &[ele, fre] : cnt) {
-			// ele = current element
-			// fre = frequency of current element
-			// max(0, current frequency - previous frequency)
-			ans += max(0, cnt[ele] - cnt[ele - 1]);
-		}
-		// O(N log N) due to iterating over sorted map
-
-		cout << ans << "\n";
+rep(i,0,q){
+   int val=k[i];
+   int ind=bs(pmax,n,val);
+   if(ind==-1){
+    cout<<"0"<<" ";
+    
+   }else{
+    cout<<psum[ind]<<" ";
+   }
+}
+cout<<endl;
 }
  
  

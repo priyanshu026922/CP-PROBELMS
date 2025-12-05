@@ -1,5 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
+using std::cin;
+using std::cout;
  
 typedef long long ll;
 typedef unsigned long long ull;
@@ -45,46 +47,49 @@ void fastio() {
 // }
 
 
-
 void solve(){
 ll n;
 cin>>n;
-vll a(n);
-rep(i,0,n){
-    cin>>a[i];
+string s;
+cin>>s;
+// set<ll>st;
+
+// rep(i,0,n){
+//     if(s[i]=='0')st.insert(i+1);
+// }
+
+// int sum=0;
+// for(int k=1;k<=n;k++){
+//     // char c=s[i];
+//     int j=k;
+//     int x=1;
+//     int c=0;
+// //    if(st.count(j)>0) sum+=j;
+//         while(st.count(j)>0){
+//             c++;
+//             st.erase(j);
+//             x++;
+//             j*=x;
+//         }
+//     sum+=(c*(k));
+//     cout<<sum<<"--"<<endl;
+// }
+
+// //    cout<<sum<<endl;
+ll ans=0;
+vector<bool>remove(n+1,false);
+
+for(int i=1;i<=n;i++){
+    for(int j=i;j<=n;j+=i){
+        if(s[j-1]=='1')break;
+        if(remove[j])continue;
+        else{
+            remove[j]=true;
+            ans+=i;
+        }
+    }
 }
-
-int c=0;
-map<ll, ll> mp;
-for (auto &val : a) mp[val]++;
-
-//    while(!mp.empty()){
-//         ll y=mp.begin()->first;
-//         bool t=true;
-//             while(mp.find(y)!=mp.end()){
-//                 if(t){
-//                     c++;
-//                     t=false;
-//                 }
-//                 mp[y]--;
-//                 if(mp[y]==0)mp.erase(y);
-//                 y++;
-//             }
-//     }
-
-//     cout<<c<<endl;
-int ans = 0; // Final answer
-
-		// Calculate result based on frequency difference with previous element
-		for (auto &[ele, fre] : cnt) {
-			// ele = current element
-			// fre = frequency of current element
-			// max(0, current frequency - previous frequency)
-			ans += max(0, cnt[ele] - cnt[ele - 1]);
-		}
-		// O(N log N) due to iterating over sorted map
-
-		cout << ans << "\n";
+cout<<ans<<endl;
 }
  
  
