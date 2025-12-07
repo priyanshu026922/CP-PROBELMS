@@ -54,7 +54,10 @@ rep(i,0,n){
 }
 
 sort(begin(v),end(v));
-int x=ub(v,a);
+rep(i,0,n){
+    
+}
+
  
 // cout<<x<<endl;
 
@@ -63,11 +66,11 @@ int x=ub(v,a);
 //     return;
 // }
 
-if(x<=n/2){
-    cout<<a+1<<endl;
-}else{
-    cout<<a-1<<endl;
-}
+// if(x<=n/2){
+//     cout<<a+1<<endl;
+// }else{
+//     cout<<a-1<<endl;
+// }
 
 
 }

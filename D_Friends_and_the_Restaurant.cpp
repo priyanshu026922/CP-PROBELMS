@@ -1,7 +1,5 @@
 #include <bits/stdc++.h>
 using namespace std;
-using std::cin;
-using std::cout;
  
 typedef long long ll;
 typedef unsigned long long ull;
@@ -50,25 +48,33 @@ void fastio() {
 void solve(){
 ll n;
 cin>>n;
-string s;
-cin>>s;
-ll ans=0;
-vector<bool>remove(n+1,false);
+vll x(n);
+rep(i,0,n){
+    cin>>x[i];
+}
+vll y(n);
+rep(i,0,n){
+    cin>>y[i];
+}
 
-for(int i=1;i<=n;i++){
-    for(int j=i;j<=n;j+=i){
-        if(s[j-1]=='1')break;
-        if(remove[j])continue; 
-        else{
-            remove[j]=true;
-            ans+=i;
-        }
-    }
+multiset<int>ms;
+rep(i,0,n){
+    ms.insert(y[i]-x[i]);
+}
+
+int ans=0;
+while(ms.size()>1){
+    int val1=*ms.begin();
+    ms.erase(ms.begin());
+    auto it=ms.lower_bound(-val1);
+    if(it==ms.end())continue;
+    ans++;
+    ms.erase(it);
 }
 cout<<ans<<endl;
 }
- 
- 
+
+
  
  
 int main() {

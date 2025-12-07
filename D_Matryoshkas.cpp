@@ -58,33 +58,32 @@ int c=0;
 map<ll, ll> mp;
 for (auto &val : a) mp[val]++;
 
-//    while(!mp.empty()){
-//         ll y=mp.begin()->first;
-//         bool t=true;
-//             while(mp.find(y)!=mp.end()){
-//                 if(t){
-//                     c++;
-//                     t=false;
-//                 }
-//                 mp[y]--;
-//                 if(mp[y]==0)mp.erase(y);
-//                 y++;
-//             }
-//     }
+   while(!mp.empty()){
+        ll y=mp.begin()->first;
+        bool t=true;
+            while(mp.find(y)!=mp.end()){
+                if(t){
+                    c++;
+                    t=false;
+                }
+                mp[y]--;
+                if(mp[y]==0)mp.erase(y);
+                y++;
+            }
+    }
 
-//     cout<<c<<endl;
-int ans = 0; // Final answer
+    cout<<c<<endl;
 
-		// Calculate result based on frequency difference with previous element
-		for (auto &[ele, fre] : cnt) {
-			// ele = current element
-			// fre = frequency of current element
-			// max(0, current frequency - previous frequency)
-			ans += max(0, cnt[ele] - cnt[ele - 1]);
-		}
-		// O(N log N) due to iterating over sorted map
 
-		cout << ans << "\n";
+
+    
+// ll ans = 0; 
+
+// 		for (auto &[ele, fre] : mp) {
+// 			ans += max(0*1LL, mp[ele] - mp[ele - 1]);
+// 		}
+
+// 		cout << ans << "\n";
 }
  
  

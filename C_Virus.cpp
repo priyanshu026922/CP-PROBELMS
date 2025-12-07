@@ -1,7 +1,5 @@
 #include <bits/stdc++.h>
 using namespace std;
-using std::cin;
-using std::cout;
  
 typedef long long ll;
 typedef unsigned long long ull;
@@ -48,27 +46,39 @@ void fastio() {
 
 
 void solve(){
-ll n;
-cin>>n;
-string s;
-cin>>s;
-ll ans=0;
-vector<bool>remove(n+1,false);
-
-for(int i=1;i<=n;i++){
-    for(int j=i;j<=n;j+=i){
-        if(s[j-1]=='1')break;
-        if(remove[j])continue; 
-        else{
-            remove[j]=true;
-            ans+=i;
+ll n,m;
+cin>>n>>m;
+vll a(m);
+rep(i,0,m){
+    cin>>a[i];
+}
+sort(begin(a),end(a));
+vll b(m);
+rep(i,1,m){
+    b[i-1]=a[i]-a[i-1]-1;
+}
+b[m-1]=(n+a[0]-a[m-1]-1);
+// for(int i=0;i<m;i++){
+//     std::cout<<b[i]<<" ";
+// }
+// std::cout<<std::endl;
+sort(rbegin(b),rend(b));
+int saved=0,days=0;
+for(auto gap:b){
+    int currgap=gap-days*2;
+    if(currgap>0){
+        saved++;
+        currgap-=2;
+        if(currgap>0){
+            saved+=currgap;
         }
+        days+=2;
     }
 }
-cout<<ans<<endl;
+cout<<n-saved<<endl;
 }
- 
- 
+
+
  
  
 int main() {
