@@ -46,48 +46,18 @@ void fastio() {
 
 
 
-
-
-
-//binary search on prefix sum array on days
-ll bs(ll val,int ind,ll x){
-    ll l=1;
-    ll h=1e9+5;
-    ll ans=0;
-    while(l<=h){
-       ll mid=l+(h-l)/2;
-       if(val+(1LL*(mid-1)*(ind+1))<=x){//(mid-1)----->price starts inc from 2nd day
-          ans=mid;
-          l=mid+1;
-        }else{
-            h=mid-1;
-        }
-    }
-    return ans;
-}
-
 void solve(){
-ll n,x;
-cin>>n>>x;
-
-vll a(n);
+int n;
+cin>>n;
+vi a(n);
 rep(i,0,n){
     cin>>a[i];
 }
-
-sort(begin(a),end(a));
-vector<ll>pref(n+1);
-pref[0]=a[0];
-for(int i=1;i<n;i++){
-    pref[i]=pref[i-1]+a[i];
+int mini=INT_MAX;
+rep(i,0,n-1){
+    mini=min(mini,a[i]+a[i+1]);
 }
-
-
-ll ans=0;
-for(int i=0;i<n;i++){
-    ans+=bs(pref[i],i,x);
-}
-cout<<ans<<endl;
+cout<<mini<<endl;
 }
 
 
@@ -102,68 +72,3 @@ int main() {
     }
     return 0;
 }
-
-
-////////////////////////////ALTERNATE SOLUTION///////////////////////////////
-
-
-#include <bits/stdc++.h>
-
-using namespace std;
-
-int main()
-
-{
-
-ios::sync_with_stdio(false);
-
-cin.tie(nullptr);
-
-int t;
-
-cin>>t;
-
-while(t--)
-
-{
-
-  int n;
-
-  cin>>n;
-
-  long long x;
-
-  cin>>x;
-
-  vector<int>a(n);
-
-  for(int i=0;i<n;i++) cin>>a[i];
-
-  sort(a.begin(),a.end());
-
-  vector<long long>b(n);
-
-  b[0]=a[0];
-
-  for(int i=1;i<n;i++) b[i]=b[i-1]+a[i];
-
-  long long res=0;
-
-  for(int i=0;i<n;i++)
-
-  {
-
-    if(b[i]<=x) res+=((x-b[i])/(i+1))+1;
-
-  }
-
-  cout<<res<<"\n";
-
-}
-
-  return 0;
-
-}
-
-
-

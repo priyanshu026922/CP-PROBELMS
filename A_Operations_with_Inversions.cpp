@@ -44,50 +44,25 @@ void fastio() {
 //     return p1.first>p2.first;
 // }
 
-
-
-
-
-
-//binary search on prefix sum array on days
-ll bs(ll val,int ind,ll x){
-    ll l=1;
-    ll h=1e9+5;
-    ll ans=0;
-    while(l<=h){
-       ll mid=l+(h-l)/2;
-       if(val+(1LL*(mid-1)*(ind+1))<=x){//(mid-1)----->price starts inc from 2nd day
-          ans=mid;
-          l=mid+1;
-        }else{
-            h=mid-1;
+void solve(){
+int n;
+cin>>n;
+vi a(n);
+rep(i,0,n){
+  cin>>a[i]; 
+}
+int count=0;
+unordered_set<int>s;
+for(int i=n-2;i>=0;i--){
+    if(s.count(i))continue;
+    for(int j=n-1;j>i;j--){
+        if(a[i]>a[j]&&!s.count(j)){
+            count++;
+            s.insert(j);
         }
     }
-    return ans;
 }
-
-void solve(){
-ll n,x;
-cin>>n>>x;
-
-vll a(n);
-rep(i,0,n){
-    cin>>a[i];
-}
-
-sort(begin(a),end(a));
-vector<ll>pref(n+1);
-pref[0]=a[0];
-for(int i=1;i<n;i++){
-    pref[i]=pref[i-1]+a[i];
-}
-
-
-ll ans=0;
-for(int i=0;i<n;i++){
-    ans+=bs(pref[i],i,x);
-}
-cout<<ans<<endl;
+cout<<count<<endl;
 }
 
 
@@ -102,68 +77,3 @@ int main() {
     }
     return 0;
 }
-
-
-////////////////////////////ALTERNATE SOLUTION///////////////////////////////
-
-
-#include <bits/stdc++.h>
-
-using namespace std;
-
-int main()
-
-{
-
-ios::sync_with_stdio(false);
-
-cin.tie(nullptr);
-
-int t;
-
-cin>>t;
-
-while(t--)
-
-{
-
-  int n;
-
-  cin>>n;
-
-  long long x;
-
-  cin>>x;
-
-  vector<int>a(n);
-
-  for(int i=0;i<n;i++) cin>>a[i];
-
-  sort(a.begin(),a.end());
-
-  vector<long long>b(n);
-
-  b[0]=a[0];
-
-  for(int i=1;i<n;i++) b[i]=b[i-1]+a[i];
-
-  long long res=0;
-
-  for(int i=0;i<n;i++)
-
-  {
-
-    if(b[i]<=x) res+=((x-b[i])/(i+1))+1;
-
-  }
-
-  cout<<res<<"\n";
-
-}
-
-  return 0;
-
-}
-
-
-
