@@ -107,63 +107,61 @@ int main() {
 ////////////////////////////ALTERNATE SOLUTION///////////////////////////////
 
 
-#include <bits/stdc++.h>
+// #include <bits/stdc++.h>
 
-using namespace std;
+// using namespace std;
 
-int main()
+// int main()
 
-{
+// {
 
-ios::sync_with_stdio(false);
+// ios::sync_with_stdio(false);
 
-cin.tie(nullptr);
+// cin.tie(nullptr);
 
-int t;
+// int t;
 
-cin>>t;
+// cin>>t;
 
-while(t--)
+// while(t--)
 
-{
+// {
 
-  int n;
+//   int n;
 
-  cin>>n;
+//   cin>>n;
 
-  long long x;
+//   long long x;
 
-  cin>>x;
+//   cin>>x;
 
-  vector<int>a(n);
+//   vector<int>a(n);
 
-  for(int i=0;i<n;i++) cin>>a[i];
+//   for(int i=0;i<n;i++) cin>>a[i];
 
-  sort(a.begin(),a.end());
+//   sort(a.begin(),a.end());
 
-  vector<long long>b(n);
+//   vector<long long>b(n);
 
-  b[0]=a[0];
+//   b[0]=a[0];
 
-  for(int i=1;i<n;i++) b[i]=b[i-1]+a[i];
+//   for(int i=1;i<n;i++) b[i]=b[i-1]+a[i];
 
-  long long res=0;
+//   long long res=0;
 
-  for(int i=0;i<n;i++)
 
-  {
+//   for(int i=0;i<n;i++)
+//   {
+//     if(b[i]<=x) res+=((x-b[i])/(i+1))+1;
+//   }
 
-    if(b[i]<=x) res+=((x-b[i])/(i+1))+1;
+//   cout<<res<<"\n";
 
-  }
+// }
 
-  cout<<res<<"\n";
+//   return 0;
 
-}
-
-  return 0;
-
-}
+// }
 
 
 

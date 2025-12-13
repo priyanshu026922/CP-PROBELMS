@@ -59,28 +59,28 @@ rep(i,0,n){
 }
 
 for (int j= 1; j <= q;j++){
-   ll t;
-    cin>>t;
-     
-    if(t==1){
-        ll i,x;
-        cin>>i>>x;
-        i--;
-        if(a[i].second>globalVal.second){
-            sum+=(x-a[i].first);
+        ll t;
+        cin>>t;
+        
+        if(t==1){
+            ll i,x;
+            cin>>i>>x;
+            i--;
+            if(a[i].second>globalVal.second){
+                sum+=(x-a[i].first);
+            }else{
+                sum+=(x-globalVal.first);
+            }
+            a[i].first=x;
+            a[i].second=j;
         }else{
-            sum+=(x-globalVal.first);
+            ll x;
+            cin>>x;
+            globalVal.first=x;
+            globalVal.second=q;
+            sum=1LL*x*n;
         }
-        a[i].first=x;
-        a[i].second=j;
-    }else{
-        ll x;
-        cin>>x;
-        globalVal.first=x;
-        globalVal.second=q;
-        sum=1LL*x*n;
-    }
- cout<<sum<<endl;
+    cout<<sum<<endl;
 }
 
 }

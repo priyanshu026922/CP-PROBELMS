@@ -77,15 +77,12 @@ int m=a.size();
 if(s[0]=='0'&&s[n-1]=='0'){
     int z=a[0]+a[m-1];
     rep(i,1,m-1){
-    //   b.push_back(a[i]);
       mp[a[i]]++;
     }
 
     mp[(z)]++;
-    //  b.push_back(z);
 }else{
     rep(i,0,m){
-    //   b.push_back(a[i]);
       mp[a[i]]++;
     }
 }
@@ -100,8 +97,6 @@ for(auto &it:mp){
 }
 
 cout<<sum<<endl;
-
-
 
 }
 
