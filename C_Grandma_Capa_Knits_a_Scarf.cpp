@@ -1,0 +1,102 @@
+#include <bits/stdc++.h>
+using namespace std;
+ 
+typedef long long ll;
+typedef unsigned long long ull;
+typedef pair<int, int> pii;
+typedef pair<ll, ll> pll;
+typedef vector<int> vi;
+typedef vector<ll> vll;
+typedef vector<string> vs;
+typedef vector<pii> vpii;
+typedef vector<pll> vpll;
+typedef vector<vi> vvi;
+typedef set<int> si;
+typedef multiset<int> msi;
+typedef map<int, int> mii;
+typedef map<ll, ll> mll;
+#define all(x) (x).begin(), (x).end()
+#define rall(x) (x).rbegin(), (x).rend()
+#define sz(x) ((int)(x).size())
+#define maxe(v) (*max_element(all(v)))
+#define mine(v) (*min_element(all(v)))
+#define sumv(v) (accumulate(all(v), 0LL))
+#define lb(v, x) (lower_bound(all(v), x) - (v).begin())
+#define ub(v, x) (upper_bound(all(v), x) - (v).begin())
+#define ispresent(v, x) (binary_search(all(v), x))
+#define rep(i, a, b) for (int i = (a); i < (b); ++i)
+#define repr(i, a, b) for (int i = (a); i >= (b); --i)
+#define ff first
+#define ss second
+#define mod 1000000007
+ 
+void fastio() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+}
+ 
+// bool cmp(pair<ll,ll>&p1,pair<ll,ll>&p2){
+//     if(p1.first==p2.first){
+//         return p1.second<p2.second;
+//     }
+ 
+//     return p1.first>p2.first;
+// }
+
+void solve(){
+int n;
+cin>>n;
+string s;
+cin>>s;
+int ans=INT_MAX;
+for(char ch='a';ch<='z';ch++){
+int i=0;
+int j=n-1;
+int tmp=0;
+bool isPos=true;
+while(i<j){
+    if(s[i]==s[j]){
+        i++;
+        j--;
+        continue;
+    }
+    if(s[i]==ch){
+            tmp++;
+           i++;
+        }
+        else if(s[j]==ch){
+            tmp++;
+           j--;
+        }
+        else{
+           isPos=false;
+           break;
+        }
+    }
+    if(!isPos){
+        tmp=INT_MAX;
+    }
+    ans=min(ans,tmp);
+
+}
+if(ans==INT_MAX){
+    cout<<"-1"<<endl;
+    return;
+}
+cout<<ans<<endl;
+}
+
+
+
+ 
+ 
+int main() {
+    fastio();
+    int t;
+    cin>>t;
+    while (t--) {
+        solve();
+    }
+    return 0;
+}
