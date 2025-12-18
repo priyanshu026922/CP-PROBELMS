@@ -51,23 +51,25 @@ vll a(n);
 rep(i,0,n){
     cin>>a[i];
 }
+
 sort(begin(a),end(a));
 ll c=0;
- rep(i,1,n){
-   ll val1=a[i];
-   ll val2=a[i-1];
-   if(val1-val2<=x)continue;
-   ll j=2;
-   while(val1-val2>x*j){
-     j++;
+vll diff;
+ rep(i,0,n-1){
+   if(a[i+1]-a[i]>x){
+    diff.push_back(a[i+1]-a[i]);
    }
-   if(k-(j-1)>0){
-     k=1LL*(k-(j-1));
-     continue;
-   }
-    c++;
  }
- cout<<c<<endl;
+   int ans=diff.size()+1;
+ sort(begin(diff),end(diff));
+ for(auto d:diff){
+  ll val=((d+x-1)/x)-1;
+  if(k>=val){
+     ans--;
+     k-=val;
+  }
+ }
+ cout<<ans<<endl;
 }
   
 
@@ -76,8 +78,7 @@ ll c=0;
  
 int main() {
     fastio();
-    int t;
-    cin>>t;
+    int t=1;
     while (t--) {
         solve();
     }

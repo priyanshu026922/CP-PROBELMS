@@ -44,12 +44,7 @@ void fastio() {
 //     return p1.first>p2.first;
 // }
 
-// bool isPos(vll &a,ll mid,ll n){
 
-//     ll i=0;
-//     ll x=a[0];
-//     while(x!)
-// }
 void solve(){
 ll n;
 cin>>n;
@@ -69,26 +64,12 @@ ll x=0;
 rep(i,0,n-1){
   x=__gcd(diff[i],x);
 }
-// cout<<x<<endl;
 int ans=0;
 rep(i,0,n-1){
 ll y=1LL*(a[i+1]-a[i])/x;
 if(y>0)ans=1LL*(ans+y-1);
 }
 cout<<ans<<endl;
-// ll l=0;
-// ll h=m;
-// ll ans=-1;
-// while(l<=h){
-//     ll mid=(l+(h-l)/2);
-//     if(isPos(a,mid,n)){
-//        ans=mid;
-//        l=mid+1;
-//     }else{
-//         h=mid-1;
-//     }
-// }
-
 }
   
 
