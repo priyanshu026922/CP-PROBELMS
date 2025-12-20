@@ -57,27 +57,17 @@ rep(i,0,n){
     cin>>b[i];
 }
 
+
 ll mini=min(n,m);
 
-ll maxi=max(1+b[0],a[0]);
-cout<<maxi<<endl;
-ll ans=maxi;
-rep(i,1,mini){
- ans=1LL*(ans+max(maxi+b[i]+i+1,a[i]));
- maxi=max(maxi+b[i],a[i]);
- cout<<maxi<<endl;
-}
-cout<<" ";
-if(m>n){
-    ll x=m-n;
-    ans=1LL*(ans+x*maxi);
-}
-// cout<<ans<<endl;
+
+
+
 }
   
 
 
- 
+
  
 int main() {
     fastio();

@@ -13,7 +13,7 @@ typedef vector<pll> vpll;
 typedef vector<vi> vvi;
 typedef set<int> si;
 typedef multiset<int> msi;
-typedef map<int, int> mii;
+typedef map<int, int> mii; 
 typedef map<ll, ll> mll;
 #define all(x) (x).begin(), (x).end()
 #define rall(x) (x).rbegin(), (x).rend()
@@ -44,55 +44,19 @@ void fastio() {
 //     return p1.first>p2.first;
 // }
 
+
 void solve(){
 int n;
-char ch;
-cin>>n>>ch;
+cin>>n;
 string s;
 cin>>s;
-map<char,int >mp;
-
-rep(i,0,n){
-   mp[s[i]]++;
+string s="";
+for(char ch='a';ch<='z';ch++){
+ 
 }
 
-bool pos=true;
-for(int i=0;i<n;i++){
-    if(s[i]!=ch){
-        pos=false;
-        break;
-    }
 }
-if(pos){
-    cout<<"0"<<endl;
-    return;
-}
-int val=-1;
-for(int i=2;i<=n;i++){
-    bool pos=true;
-    for(int j=i;j<=n;j+=i){
-        if(s[j-1]!=ch){
-            pos=false;
-            break;
-        }
-    }
-    if(pos){
-       val=i;
-       break;
-    }
-}
-if(val!=-1){
-    cout<<"1"<<endl;
-    cout<<val<<endl;
-    return;
-}
-
-cout<<"2"<<endl;
-cout<<n-1<<" "<<n<<endl;
-
-
-}
-
+  
 
 
  

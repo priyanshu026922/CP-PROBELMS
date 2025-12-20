@@ -13,7 +13,7 @@ typedef vector<pll> vpll;
 typedef vector<vi> vvi;
 typedef set<int> si;
 typedef multiset<int> msi;
-typedef map<int, int> mii;
+typedef map<int, int> mii; 
 typedef map<ll, ll> mll;
 #define all(x) (x).begin(), (x).end()
 #define rall(x) (x).rbegin(), (x).rend()
@@ -44,57 +44,50 @@ void fastio() {
 //     return p1.first>p2.first;
 // }
 
+
 void solve(){
-int n;
-char ch;
-cin>>n>>ch;
-string s;
-cin>>s;
-map<char,int >mp;
+ll n,k;
+cin>>n>>k;
 
-rep(i,0,n){
-   mp[s[i]]++;
+if(k%2==1){//odd
+    
+ rep(i,0,k){
+    cout<<n<<" ";
+ }
+ cout<<endl;
+  return;
 }
-
-bool pos=true;
-for(int i=0;i<n;i++){
-    if(s[i]!=ch){
-        pos=false;
-        break;
-    }
-}
-if(pos){
-    cout<<"0"<<endl;
-    return;
-}
-int val=-1;
-for(int i=2;i<=n;i++){
-    bool pos=true;
-    for(int j=i;j<=n;j+=i){
-        if(s[j-1]!=ch){
-            pos=false;
-            break;
+ll tight=k;
+ vi ans(k);
+ int idx=31- __builtin_clz(n);
+ for(int i=idx;i>=0;i--){
+    if((n>>i)&1){
+         ll leave;
+         if(tight>0){
+            leave=tight-1;
+            tight--;
+         }else{
+            leave=0;
+         }
+         rep(j,0,k){
+            if(j==leave)continue;
+            ans[j]|=(1<<i);
+         }
+    }else{
+        ll rem=k-tight;
+        ll up=rem-rem%2;
+        for(int j=k-1;up;j--,up--){
+            ans[j]|=(1<<i);
         }
     }
-    if(pos){
-       val=i;
-       break;
-    }
+ }
+ rep(i,0,k){
+    cout<<ans[i]<<" ";
+ }
+ 
+
+cout<<endl;
 }
-if(val!=-1){
-    cout<<"1"<<endl;
-    cout<<val<<endl;
-    return;
-}
-
-cout<<"2"<<endl;
-cout<<n-1<<" "<<n<<endl;
-
-
-}
-
-
-
  
  
 int main() {

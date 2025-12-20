@@ -13,7 +13,7 @@ typedef vector<pll> vpll;
 typedef vector<vi> vvi;
 typedef set<int> si;
 typedef multiset<int> msi;
-typedef map<int, int> mii;
+typedef map<int, int> mii; 
 typedef map<ll, ll> mll;
 #define all(x) (x).begin(), (x).end()
 #define rall(x) (x).rbegin(), (x).rend()
@@ -58,8 +58,8 @@ rep(i,0,n){
 }
 ll c=0;
 sort(begin(a),end(a));
-for(int j=n-1;j>=0;j--){
-    for(int i=j-1;i>=0;i--){
+for(int i=0;i<n;i++){
+    for(int j=i+1;j<n;j++){
         ll x=a[i];
         ll y=a[j];
         ll ind1=mp[x];

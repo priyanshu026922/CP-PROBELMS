@@ -70,33 +70,6 @@ else if(a[n-1]>=0){
     }
 }
 
-// unordered_map<ll,ll>mp;
-// set<ll>s;
-// s.insert(a[n-1]);
-// s.insert(a[n-2]);
-// vector<pair<ll,pair<ll,ll>>>vec;
-// mp[a[n-1]]=n-1;
-// mp[a[n-2]]=n-2;
-// ll count=0;
-// for(int i=n-3;i>=0;i--){
-//   ll val=a[i+1];
-//     if(a[i]<=val)continue;
-//   auto it = lower_bound(s.begin(), s.end(),0LL);
-
-// //   if(mp.find(val)==mp.end()){
-//       mp[val]=i;
-// //   }
-
-//   if(it!=s.end()){
-//        ll x=*it;
-//        ll ind=mp[x];
-//        a[i]=val-x;
-//        vec.push_back({i+1,{i+2,ind+1}});
-//        count++;
-//   }else{
-//     cout<<"-1"<<endl;
-//     return;
-//   }
 }
 
 

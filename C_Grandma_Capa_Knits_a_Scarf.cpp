@@ -46,7 +46,7 @@ void fastio() {
 
 void solve(){
 int n;
-cin>>n;
+cin>>n; 
 string s;
 cin>>s;
 int ans=INT_MAX;
@@ -58,12 +58,12 @@ bool isPos=true;
 while(i<j){
     if(s[i]==s[j]){
         i++;
-        j--;
+        j--; 
         continue;
-    }
-    if(s[i]==ch){
+    } 
+        if(s[i]==ch){
             tmp++;
-           i++;
+            i++;
         }
         else if(s[j]==ch){
             tmp++;
