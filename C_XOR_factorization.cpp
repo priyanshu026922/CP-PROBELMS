@@ -65,16 +65,16 @@ ll tight=k;
          ll leave;
          if(tight>0){
             leave=tight-1;
-            tight--;
+            tight--; 
          }else{
             leave=0;
          }
          rep(j,0,k){
             if(j==leave)continue;
-            ans[j]|=(1<<i);
+            ans[j]|=(1<<i); 
          }
     }else{
-        ll rem=k-tight;
+        ll rem=k-tight;// non tight ones
         ll up=rem-rem%2;
         for(int j=k-1;up;j--,up--){
             ans[j]|=(1<<i);

@@ -48,12 +48,43 @@ void fastio() {
 void solve(){
 int n;
 cin>>n;
-string s;
+string s;  
 cin>>s;
-string s="";
 for(char ch='a';ch<='z';ch++){
- 
+ if(s.find(ch)==string::npos){
+    cout<<ch<<endl;
+    return;
+ }
 }
+for(char ch ='a';ch<='z';ch++){
+   
+   for(char ch1='a';ch1<='z';ch1++){
+     string st="";
+    st+=ch;
+    st+=ch1;
+    if(s.find(st)==string::npos){
+        cout<<st<<endl;
+        return;
+    }
+   }
+}
+for(char ch ='a';ch<='z';ch++){
+  
+   for(char ch1='a';ch1<='z';ch1++){
+     for(char ch2='a';ch2<='z';ch2++){
+          string st="";
+          
+    st+=ch;
+    st+=ch1;
+    st+=ch2;
+    if(s.find(st)==string::npos){
+        cout<<st<<endl;
+        return;
+    }
+}
+   }
+}
+
 
 }
   

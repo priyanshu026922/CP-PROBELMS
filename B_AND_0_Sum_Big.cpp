@@ -46,25 +46,17 @@ void fastio() {
 
 
 void solve(){
-int n;
-cin>>n;
-string s="";
-vector<string> a(n);
-rep(i,0,n){
-    cin>>a[i];
+ll n,k;
+cin>>n>>k;
+ll ans=1;
+for(int i=1;i<=k;i++){
+   ans=(ans*n)%mod;
 }
+cout<<ans<<endl;
+}
+  
 
-rep(i,0,n){
-string s1=s+a[i];
-string s2=a[i]+s;
-if(s1<s2){
-    s=s1;
-}else{
-    s=s2;
-}
-}
-cout<<s<<endl;
-}
+
  
  
 int main() {

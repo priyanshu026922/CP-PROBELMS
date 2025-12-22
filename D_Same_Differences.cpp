@@ -46,25 +46,28 @@ void fastio() {
 
 
 void solve(){
-int n;
+ll n;
 cin>>n;
-string s="";
-vector<string> a(n);
+vll a(n);
 rep(i,0,n){
     cin>>a[i];
 }
+unordered_map<ll,ll>mp;
+ll ans=0;
+for(int i=n-1;i>=0;i--){
+    ll y=a[i]-i;
+    if(mp.find(y)==mp.end()){
+        mp[y]++;
+    }else{
+        ans=(ans+mp[y])*1LL;
+        mp[y]++;
+    }
+}
+cout<<ans<<endl;
+}
+  
 
-rep(i,0,n){
-string s1=s+a[i];
-string s2=a[i]+s;
-if(s1<s2){
-    s=s1;
-}else{
-    s=s2;
-}
-}
-cout<<s<<endl;
-}
+
  
  
 int main() {

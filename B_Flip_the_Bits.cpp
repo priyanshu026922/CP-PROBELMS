@@ -1,5 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
+using std::cout;
+using std::cin;
+using std::endl;
  
 typedef long long ll;
 typedef unsigned long long ull;
@@ -48,23 +51,52 @@ void fastio() {
 void solve(){
 int n;
 cin>>n;
-string s="";
-vector<string> a(n);
+string a,b;
+cin>>a>>b;
+unordered_map<int,int>mp;
 rep(i,0,n){
-    cin>>a[i];
+    mp[a[i]-'0']++;
+}
+int count=0;
+for(int i=n-1;i>=0;){
+    if(a[i]==b[i]){
+      if(mp[(a[i]-'0')]>0)  mp[(a[i]-'0')]--;
+      i--;
+    }else{
+        if(mp[0]!=mp[1]){
+            cout<<"NO"<<endl;
+            return;
+        }
+
+        count++;
+        while(i>=0&&b[i]-'0'==!(a[i]-'0')&&count%2!=0){
+            mp[!(a[i]-'0')]--;
+            if( mp[!(a[i]-'0')]==0)mp.erase(!(a[i]-'0'));
+            i--;
+        }
+         if(mp[0]!=mp[1]){
+            cout<<"NO"<<endl;
+            return;
+        }
+
+         while(i>=0&&b[i]-'0'==(a[i]-'0')&&count%2==0){
+            mp[(a[i]-'0')]--;
+            if( mp[a[i]-'0']==0)mp.erase(a[i]-'0');
+            i--;
+        }
+        if(mp[0]!=mp[1]){
+            cout<<"NO"<<endl;
+            return;
+        }
+
+    }
 }
 
-rep(i,0,n){
-string s1=s+a[i];
-string s2=a[i]+s;
-if(s1<s2){
-    s=s1;
-}else{
-    s=s2;
+cout<<"YES"<<endl;
 }
-}
-cout<<s<<endl;
-}
+  
+
+
  
  
 int main() {

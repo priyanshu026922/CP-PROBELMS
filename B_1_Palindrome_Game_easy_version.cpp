@@ -48,23 +48,23 @@ void fastio() {
 void solve(){
 int n;
 cin>>n;
-string s="";
-vector<string> a(n);
+string s;
+cin>>s;
+int c0=0;
+int c1=0;
 rep(i,0,n){
-    cin>>a[i];
+    if(s[i]=='0')c0++;
 }
+if(c0%2==0||c0==1){
+     cout<<"BOB"<<endl;
+    return;
+}
+ cout<<"ALICE"<<endl;
+ 
+}
+  
 
-rep(i,0,n){
-string s1=s+a[i];
-string s2=a[i]+s;
-if(s1<s2){
-    s=s1;
-}else{
-    s=s2;
-}
-}
-cout<<s<<endl;
-}
+
  
  
 int main() {
