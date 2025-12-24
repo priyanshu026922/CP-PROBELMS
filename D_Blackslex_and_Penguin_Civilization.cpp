@@ -49,51 +49,23 @@ void fastio() {
 
 
 void solve(){
-int n;
+ll n;
 cin>>n;
-string a,b;
-cin>>a>>b;
-unordered_map<int,int>mp;
-rep(i,0,n){
-    mp[a[i]-'0']++;
-}
+ll x = (1LL << n);
+vll vis(x,0);
 
-int count=0;
-for(int i=n-1;i>=0;){
-    if(a[i]==b[i]){
-      if(mp[(a[i]-'0')]>0)  mp[(a[i]-'0')]--;
-      i--;
-    }else{
-        if(mp[0]!=mp[1]){
-            cout<<"NO"<<endl;
-            return;
+for(ll i=n;i>=0;i--){
+    ll mask=(1LL<<i)-1;
+    for(ll j=0;j<x;j++){
+        if(!vis[j]){
+            if((j&mask)==mask){
+                cout<<j<<" ";
+                vis[j]=1;
+            }
         }
-
-        count++;
-        while(i>=0&&b[i]-'0'==!(a[i]-'0')&&count%2!=0){
-            mp[!(a[i]-'0')]--;
-            if( mp[!(a[i]-'0')]==0)mp.erase(!(a[i]-'0'));
-            i--;
-        }
-         if(mp[0]!=mp[1]){
-            cout<<"NO"<<endl;
-            return;
-        }
-
-         while(i>=0&&b[i]-'0'==(a[i]-'0')&&count%2==0){
-            mp[(a[i]-'0')]--;
-            if( mp[a[i]-'0']==0)mp.erase(a[i]-'0');
-            i--;
-        }
-        if(mp[0]!=mp[1]){
-            cout<<"NO"<<endl;
-            return;
-        }
-
     }
 }
-
-cout<<"YES"<<endl;
+cout<<endl;
 }
   
 

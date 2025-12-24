@@ -49,51 +49,20 @@ void fastio() {
 
 
 void solve(){
-int n;
+ll n;
 cin>>n;
-string a,b;
-cin>>a>>b;
-unordered_map<int,int>mp;
+vll a(n);
 rep(i,0,n){
-    mp[a[i]-'0']++;
+    cin>>a[i];
 }
-
-int count=0;
-for(int i=n-1;i>=0;){
-    if(a[i]==b[i]){
-      if(mp[(a[i]-'0')]>0)  mp[(a[i]-'0')]--;
-      i--;
-    }else{
-        if(mp[0]!=mp[1]){
-            cout<<"NO"<<endl;
-            return;
-        }
-
-        count++;
-        while(i>=0&&b[i]-'0'==!(a[i]-'0')&&count%2!=0){
-            mp[!(a[i]-'0')]--;
-            if( mp[!(a[i]-'0')]==0)mp.erase(!(a[i]-'0'));
-            i--;
-        }
-         if(mp[0]!=mp[1]){
-            cout<<"NO"<<endl;
-            return;
-        }
-
-         while(i>=0&&b[i]-'0'==(a[i]-'0')&&count%2==0){
-            mp[(a[i]-'0')]--;
-            if( mp[a[i]-'0']==0)mp.erase(a[i]-'0');
-            i--;
-        }
-        if(mp[0]!=mp[1]){
-            cout<<"NO"<<endl;
-            return;
-        }
-
-    }
+sort(a.begin(), a.end());
+ll x=a[0];
+ll y=a[1];
+if(1LL*(y-x)>x){
+    cout<<1LL*(y-x)<<endl;
+}else{
+    cout<<x<<endl;
 }
-
-cout<<"YES"<<endl;
 }
   
 

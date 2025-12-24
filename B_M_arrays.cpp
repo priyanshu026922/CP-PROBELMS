@@ -49,51 +49,51 @@ void fastio() {
 
 
 void solve(){
-int n;
-cin>>n;
-string a,b;
-cin>>a>>b;
-unordered_map<int,int>mp;
+ll n,m;
+cin>>n>>m;
+vll a(n);
 rep(i,0,n){
-    mp[a[i]-'0']++;
+    cin>>a[i];
 }
 
-int count=0;
-for(int i=n-1;i>=0;){
-    if(a[i]==b[i]){
-      if(mp[(a[i]-'0')]>0)  mp[(a[i]-'0')]--;
-      i--;
-    }else{
-        if(mp[0]!=mp[1]){
-            cout<<"NO"<<endl;
-            return;
-        }
+if(n==1){
+    cout<<"1"<<endl;
+    return;
+}
 
-        count++;
-        while(i>=0&&b[i]-'0'==!(a[i]-'0')&&count%2!=0){
-            mp[!(a[i]-'0')]--;
-            if( mp[!(a[i]-'0')]==0)mp.erase(!(a[i]-'0'));
-            i--;
-        }
-         if(mp[0]!=mp[1]){
-            cout<<"NO"<<endl;
-            return;
-        }
+map<ll,ll>mp;
+rep(i,0,n){
+    ll y=a[i]%m;
+    mp[y]++;
+}
 
-         while(i>=0&&b[i]-'0'==(a[i]-'0')&&count%2==0){
-            mp[(a[i]-'0')]--;
-            if( mp[a[i]-'0']==0)mp.erase(a[i]-'0');
-            i--;
-        }
-        if(mp[0]!=mp[1]){
-            cout<<"NO"<<endl;
-            return;
-        }
+ll count=0;
+if(mp[0]>0)count++;
 
+for(ll i=1;i<=m/2;i++){
+    if(i==m-i){
+        if(mp[i]>0)count++;
+        continue;
     }
-}
+    ll x=mp[i];
+    ll y=mp[m-i];
+    // if(x>0||y>0){
+    //     count=(count+1+max(0LL,abs(x-y)-1));
+    // }
+    // if(mp.find(i)==mp.end())continue;
 
-cout<<"YES"<<endl;
+    // ll x=mp[i];
+   if(x==0||y==0){
+    count=1LL*(count+max(x,y));
+    continue;
+   }
+    // ll y=mp[m-i];
+    ll mini=min(x,y);
+    count=1LL*(count+1+max(0LL,abs(x-y)-1));
+        // mp[i]=min(0LL,);
+        // if(mp[i]>0)count=1LL*(count+mp[i]);
+}
+cout<<count<<endl;
 }
   
 

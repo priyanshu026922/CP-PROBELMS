@@ -50,6 +50,7 @@ int n;
 cin>>n;
 string s;  
 cin>>s;
+
 for(char ch='a';ch<='z';ch++){
  if(s.find(ch)==string::npos){
     cout<<ch<<endl;

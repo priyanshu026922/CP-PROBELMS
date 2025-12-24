@@ -49,51 +49,27 @@ void fastio() {
 
 
 void solve(){
-int n;
+ll n;
 cin>>n;
-string a,b;
-cin>>a>>b;
-unordered_map<int,int>mp;
+vll a(n);
 rep(i,0,n){
-    mp[a[i]-'0']++;
+    cin>>a[i];
 }
-
-int count=0;
-for(int i=n-1;i>=0;){
-    if(a[i]==b[i]){
-      if(mp[(a[i]-'0')]>0)  mp[(a[i]-'0')]--;
-      i--;
-    }else{
-        if(mp[0]!=mp[1]){
-            cout<<"NO"<<endl;
-            return;
-        }
-
-        count++;
-        while(i>=0&&b[i]-'0'==!(a[i]-'0')&&count%2!=0){
-            mp[!(a[i]-'0')]--;
-            if( mp[!(a[i]-'0')]==0)mp.erase(!(a[i]-'0'));
-            i--;
-        }
-         if(mp[0]!=mp[1]){
-            cout<<"NO"<<endl;
-            return;
-        }
-
-         while(i>=0&&b[i]-'0'==(a[i]-'0')&&count%2==0){
-            mp[(a[i]-'0')]--;
-            if( mp[a[i]-'0']==0)mp.erase(a[i]-'0');
-            i--;
-        }
-        if(mp[0]!=mp[1]){
-            cout<<"NO"<<endl;
-            return;
-        }
-
-    }
+ll sum=0;
+rep(i,0,n-1){
+    sum+=abs(a[i]-a[i+1]);
 }
+ll x=sum-abs(a[0]-a[1]);
+ll y=sum-abs(a[n-1]-a[n-2]);
 
-cout<<"YES"<<endl;
+ll mini=min(sum,min(x,y));
+for(int i=1;i<n-1;i++){
+   
+        ll z=abs(a[i-1]-a[i+1]);
+        ll q=abs(a[i-1]-a[i])+abs(a[i]-a[i+1]);
+        mini=min(mini,sum-q+z);
+}
+cout<<mini<<endl;
 }
   
 
