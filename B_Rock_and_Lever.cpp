@@ -1,5 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
+using std::cout;
+using std::cin;
+using std::endl;
  
 typedef long long ll;
 typedef unsigned long long ull;
@@ -13,7 +16,7 @@ typedef vector<pll> vpll;
 typedef vector<vi> vvi;
 typedef set<int> si;
 typedef multiset<int> msi;
-typedef map<int, int> mii;
+typedef map<int, int> mii; 
 typedef map<ll, ll> mll;
 #define all(x) (x).begin(), (x).end()
 #define rall(x) (x).rbegin(), (x).rend()
@@ -28,7 +31,8 @@ typedef map<ll, ll> mll;
 #define repr(i, a, b) for (int i = (a); i >= (b); --i)
 #define ff first
 #define ss second
-#define mod 1000000007
+#define mod  998244353
+
  
 void fastio() {
     ios_base::sync_with_stdio(false);
@@ -46,85 +50,47 @@ void fastio() {
 
 
 void solve(){
-int n,m;
-cin>>n>>m;
- 
-vector<vector<long long>> c(n, vector<long long>(m));
- 
+ll n;
+cin>>n;
+vll a(n);
 rep(i,0,n){
-    rep(j,0,m){
-        cin>>c[i][j];
-    }
+    cin>>a[i];
 }
- 
- 
-int sum=0;
- 
-rep(j,0,m){
-        vi temp;
-        rep(i,0,n){
-        temp.push_back(c[i][j]);
-        }
-        sort(begin(temp),end(temp));
- 
-        for(int i=0;i<n;i++){
-           c[i][j]=temp[i];
-        }
-}
- 
-rep(i,0,n){
-   rep(j,0,m){
-        sum-=(1LL*(n-i-1)*c[i][j]);
-        sum+=(1LL*i*c[i][j]);
-        // c[i][j]+=c[i-1][j];
-    }
-}
- 
-cout<<sum<<endl;
+ll ans=0;
+unordered_map<ll,ll>mp;
+ ll q=64-__builtin_clz(a[n-1]);
+ mp[q]++;
+for(int i=n-2;i>=0;i--){
+ ll k=64-__builtin_clz(a[i]);
+ if(mp.find(k)!=mp.end()){
+  ans+=(mp[k]);
+ }
+    mp[k]++;
  
 }
-// void solve(){
-// ll n,m;
-// cin>>n>>m;
-
-// vector<vector<long long>> c(m, vector<long long>(n));
-
-// rep(j,0,n){
-//     rep(i,0,m){
-//         cin>>c[i][j];
-//     }
-// }
+cout<<ans<<endl;
 
 
-// ll sum=0;
-
-// rep(i,0,m){
-//         sort(c[i].begin(),c[i].end());
-     
-// }
-
-// for (int i = 0; i < m; i++)
-// 		{
-// 			for (int j = 0; j < n; j++)
-// 			{
-// 				// Calculate the contribution of v[i][j] to the total winnings
-// 				sum -= (c[i][j] * (n - j - 1));
-// 				sum+= (c[i][j] * j);
-// 			}
-// 		} // Time complexity: O(n * m)
 
 
-// cout<<sum<<endl;
 
-// }
- 
- 
+
+
+
+
+
+
+
+}
+  
+
+
  
  
 int main() {
     fastio();
     int t;
-    cin >> t;
+    cin>>t;
     while (t--) {
         solve();
     }
