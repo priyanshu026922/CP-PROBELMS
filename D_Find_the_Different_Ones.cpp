@@ -47,38 +47,19 @@ void fastio() {
 
 
 void solve(){
-ll n,m;
-cin>>n>>m;
-
-vector<vector<long long>> c(m, vector<long long>(n));
-
-rep(j,0,n){
-    rep(i,0,m){
-        cin>>c[i][j];
-    }
+int n;
+cin>>n;
+vll a(n);
+rep(i,0,n){
+    cin>>a[i];
 }
-
-
-ll sum=0;
-
-rep(i,0,m){
-        sort(c[i].begin(),c[i].end());
-     
+int q;
+cin>>q;
+rep(i,0,q){
+    int l,r;
+    cin>>l>>r;
+    
 }
-
-for (int i = 0; i < m; i++)
-		{
-			for (int j = 0; j < n; j++)
-			{
-				// Calculate the contribution of v[i][j] to the total winnings
-				sum -= (c[i][j] * (n - j - 1));
-				sum+= (c[i][j] * j);
-			}
-		} // Time complexity: O(n * m)
-
-
-cout<<sum<<endl;
-
 }
  
  

@@ -44,41 +44,27 @@ void fastio() {
 //     return p1.first>p2.first;
 // }
 
-
+ll s(vll &a,int ind1,int ind2,ll n,vector<vector<ll>>&dp){
+    if(ind2==n){
+         return 0;
+    }
+    if(dp[ind1][ind2]!=-1)return dp[ind1][ind2];
+       ll t1=a[ind1]+s(a,ind2,ind2+1,n,dp);
+       ll t2=-a[ind2]+s(a,ind1,ind2+1,n,dp);
+    
+    return dp[ind1][ind2]=max(t1,t2);
+}
 
 void solve(){
-ll n,m;
-cin>>n>>m;
-
-vector<vector<long long>> c(m, vector<long long>(n));
-
-rep(j,0,n){
-    rep(i,0,m){
-        cin>>c[i][j];
-    }
+ll n;
+cin>>n;
+vll a(n);
+rep(i,0,n){
+    cin>>a[i];
 }
-
-
-ll sum=0;
-
-rep(i,0,m){
-        sort(c[i].begin(),c[i].end());
-     
-}
-
-for (int i = 0; i < m; i++)
-		{
-			for (int j = 0; j < n; j++)
-			{
-				// Calculate the contribution of v[i][j] to the total winnings
-				sum -= (c[i][j] * (n - j - 1));
-				sum+= (c[i][j] * j);
-			}
-		} // Time complexity: O(n * m)
-
-
-cout<<sum<<endl;
-
+vector<vector<ll>>dp(n+1,vector<ll>(n+1,-1));
+ll x=s(a,0,1,n,dp);
+cout<<x<<endl;
 }
  
  
