@@ -44,16 +44,7 @@ void fastio() {
 //     return p1.first>p2.first;
 // }
 
-ll s(vll &a,int ind1,int ind2,ll n,vector<vector<ll>>&dp){
-    if(ind2==n){
-         return 0;
-    }
-    if(dp[ind1][ind2]!=-1)return dp[ind1][ind2];
-       ll t1=a[ind1]+s(a,ind2,ind2+1,n,dp);
-       ll t2=-a[ind2]+s(a,ind1,ind2+1,n,dp);
-    
-    return dp[ind1][ind2]=max(t1,t2);
-}
+
 
 void solve(){
 ll n;
@@ -62,9 +53,20 @@ vll a(n);
 rep(i,0,n){
     cin>>a[i];
 }
-vector<vector<ll>>dp(n+1,vector<ll>(n+1,-1));
-ll x=s(a,0,1,n,dp);
-cout<<x<<endl;
+
+vll ssum(n+1,0);
+ssum[n-1]=a[n-1];
+for(int i=n-2;i>=0;i--){
+    ssum[i]=ssum[i+1]+a[i];
+}
+ll sum=(a[0]);
+ll maxi=-ssum[1];
+rep(i,1,n){
+   
+   maxi=max(maxi,sum-ssum[i+1]);
+    sum+=abs(a[i]);
+}
+cout<<maxi<<endl;
 }
  
  
