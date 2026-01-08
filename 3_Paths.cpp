@@ -47,7 +47,7 @@ void fastio() {
 void count(int i,int j,int n,vector<vector<int>>&vis,int &c){
     if(i<0||j<0||i>=n||j>=n){
         return ;
-    }
+    }\
     if(vis[i][j]==1)return ;
     if(i==n-1&&j==n-1){
         c++;

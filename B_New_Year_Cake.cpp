@@ -65,15 +65,11 @@ ll solve(ll a,ll b,bool top){
         d+=size;
     }
      size=2*size;
-    layers++;
+     layers++;
      wt=!wt;
 }
-
 return layers;
 }
- 
- 
- 
  
 int main() {
     fastio();

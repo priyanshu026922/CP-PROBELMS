@@ -28,7 +28,7 @@ typedef map<ll, ll> mll;
 #define repr(i, a, b) for (int i = (a); i >= (b); --i)
 #define ff first
 #define ss second
-#define mod 1000000007
+#define mod 998244353
  
 void fastio() {
     ios_base::sync_with_stdio(false);
@@ -47,8 +47,21 @@ void fastio() {
 
 
 void solve(){
-
-    
+int n;
+cin>>n;
+string s;
+cin>>s;
+unordered_map<char,int>mp;
+rep(i,0,n){
+    mp[s[i]]++;
+}
+for(auto it:mp){
+    if(it.second>=2){
+        cout<<"YES"<<endl;
+        return;
+    }
+}
+cout<<"NO"<<endl;
 }
  
  

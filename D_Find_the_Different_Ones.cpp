@@ -53,13 +53,40 @@ vll a(n);
 rep(i,0,n){
     cin>>a[i];
 }
+
+vi b(n);
+b[0]=-1;
+rep(i,1,n){
+    if(a[i]!=a[i-1]){
+        b[i]=i-1;
+    }else{
+        b[i]=b[i-1];
+    }
+}
+// rep(i,0,n){
+//     cout<<b[i]<<" ";
+// }
+// cout<<"END"<<endl;
+
 int q;
 cin>>q;
 rep(i,0,q){
     int l,r;
     cin>>l>>r;
     
+    int val1=b[l-1];
+    int val2=b[r-1];
+    if(val2==-1||val2+1<l){
+        cout<<"-1"<<" "<<"-1"<<endl;
+    }
+    else{
+        cout<<val2+1<<" "<<r<<endl;
+    }
 }
+
+
+cout<<endl;
+
 }
  
  

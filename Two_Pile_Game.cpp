@@ -28,7 +28,7 @@ typedef map<ll, ll> mll;
 #define repr(i, a, b) for (int i = (a); i >= (b); --i)
 #define ff first
 #define ss second
-#define mod 1000000007
+#define mod 998244353
  
 void fastio() {
     ios_base::sync_with_stdio(false);
@@ -47,8 +47,17 @@ void fastio() {
 
 
 void solve(){
+ll x,y;//x-->biscuits,,,,,,//y===cakes
+cin>>x>>y;
+//if(biscuits==0)---bob win
+//if(cake==0)//if bis%2==0--->bob,,,,,alice
+//else  
 
-    
+if(x%2==0){
+    cout<<"Bob"<<endl;
+    return;
+}
+cout<<"Alice"<<endl;
 }
  
  

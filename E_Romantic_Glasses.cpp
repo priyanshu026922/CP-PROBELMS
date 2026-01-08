@@ -47,8 +47,33 @@ void fastio() {
 
 
 void solve(){
+ll n;
+cin>>n;
+vll a(n);
+rep(i,0,n){
+    cin>>a[i];
+}
 
+
+ll s1=0;
+ll s2=0;
+unordered_set<ll>s;
+rep(i,0,n){
+    if(i%2==0){
+        s1+=a[i];
+    }else{
+        s2+=a[i];
+    }
+    if((s2-s1)==0||s.count(1LL*(s2-s1))>0){
+        cout<<"YES"<<endl;
+        return;
+    }
     
+    s.insert(1LL*(s2-s1));
+
+}
+cout<<"NO"<<endl;
+
 }
  
  

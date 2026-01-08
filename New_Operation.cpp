@@ -71,11 +71,18 @@ rep(i,0,n){
 }
 cout<<mini<<" "<<maxi<<endl;
 // int sum=0;
-// vi s(n,0);
-// s[n-1]=a[n-1];
-// for(int i=n-2;i>=0;i--){
-//    s[i]=a[i]+s[i+1];
-// }
+vi s(n,0);
+s[n-1]=a[n-1];
+for(int i=n-2;i>=0;i--){
+   s[i]=a[i]+s[i+1];
+}
+vi p(n,0);
+p[0]=a[0];
+for(int i=1;i<n;i++){
+    p[i]=p[i-1]+a[i];
+}
+
+
 // int val1=0;
 // int val2=0;
 // int maxi=INT_MIN;

@@ -28,7 +28,7 @@ typedef map<ll, ll> mll;
 #define repr(i, a, b) for (int i = (a); i >= (b); --i)
 #define ff first
 #define ss second
-#define mod 1000000007
+#define mod 998244353
  
 void fastio() {
     ios_base::sync_with_stdio(false);
@@ -44,11 +44,41 @@ void fastio() {
 //     return p1.first>p2.first;
 // }
 
-
+bool s(vvi &a,int i,int j,bool left,bool up){
+    if(i<0||j<0){
+        return false;
+    }
+    if(i==0&&j==0){
+        return true;
+    }
+    bool l=false,r=false;
+    if(up){
+      l=s(a,i,j-1,left,true);
+    }else{
+       r= s(a,i-1,j,left,true)||s(a,i,j-1,left,up);
+    }
+    return l||r;
+}
 
 void solve(){
+ll n;
+cin>>n;
+vvi a(2,vi(n));
+rep(i,0,2){
+    rep(j,0,n){
+      cin>>a[i][j];
+}
+}
+a[0][1]=min(a[0][1],a[1][1]);
+a[1][1]=max(a[0][1],a[1][1]);
+a[0][n-1]=min(a[0][n-1],a[1][n-1]);
+a[1][n-1]=max(a[0][n-1],a[1][n-1]);
 
-    
+if(s(a,0,0,false,false)){
+    cout<<"Yes"<<endl;
+}else{
+    cout<<"No"<<endl;
+}
 }
  
  

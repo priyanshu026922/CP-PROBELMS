@@ -47,8 +47,40 @@ void fastio() {
 
 
 void solve(){
+int n;
+cin>>n;
+vll a(n);
+rep(i,0,n){
+    cin>>a[i];
+}
+ 
+unordered_map<ll,ll>mp;
+rep(i,0,n){
+    for(int j=2;j*j<=a[i];j++){
+        while(a[i]%j==0){
+            mp[j]++;
+            a[i]/=j;
+        }
+    }
+    if(a[i]>1){
+        mp[a[i]]++;
+    }
+}
 
-    
+
+for(auto it:mp){
+    if(it.second%n!=0){
+        cout<<"NO"<<endl;
+        return;
+    }
+}
+cout<<"YES"<<endl;
+
+
+
+
+
+
 }
  
  
