@@ -28,7 +28,7 @@ typedef map<ll, ll> mll;
 #define repr(i, a, b) for (int i = (a); i >= (b); --i)
 #define ff first
 #define ss second
-#define mod 998244353
+#define mod 1000000007
  
 void fastio() {
     ios_base::sync_with_stdio(false);
@@ -45,57 +45,63 @@ void fastio() {
 // }
 
 
+
 void solve(){
 ll n;
 cin>>n;
-vll a(n),b(n);
-rep(j,0,n){
-      cin>>a[j];
-}
-rep(j,0,n){
-      cin>>b[j];
-}
 
-vll pr(n,1e9);
-vll sf(n,-1);
-pr[0]=min(a[0],b[0]);
-sf[n-1]=max(a[n-1],b[n-1]);
-
-for(ll i=1;i<n;i++){
-    if(max(a[i],b[i])<pr[i-1]){
-            break;
-    }
-    if(min(a[i],b[i])>=pr[i-1]){
-          pr[i]=min(a[i],b[i]);
-    }else{
-           pr[i]=max(a[i],b[i]);
-    }
-}
-
-for(ll i=n-2;i>=0;i--){
-    if(min(a[i],b[i])>sf[i+1]){
-            break;
-    }
-    if(max(a[i],b[i])<=sf[i+1]){
-          sf[i]=max(a[i],b[i]);
-    }else{
-           sf[i]=min(a[i],b[i]);
-    }
-}
-
-bool ans=(sf[0]==max(a[0],b[0]))||(pr[n-1]==min(a[n-1],b[n-1]));
-
-for(ll i=1;i<n-1;i++){
-    if(min(a[i],b[i])>=pr[i-1]&&max(a[i],b[i])<=sf[i+1])ans=true;
-}
-
-if(ans){
-    cout<<"Yes"<<endl;
+if(n%2!=0){
+    cout<<"0"<<endl;
     return;
 }
 
-cout<<"No"<<endl;
+if(n<10){
+    cout<<"-1"<<endl;
+    return;
+}
 
+
+
+// if(n%10==0){
+//     cout<<"1"<<endl;
+//     return;
+// }
+
+
+bool cntodd=false;
+ll p=n;
+while(p>0){
+   int x=p%10;
+  if(x%2!=0){
+     cntodd=true;
+     break;
+  }
+   p/=10;
+}
+
+
+if(cntodd){
+     cout<<"1"<<endl;
+     return;
+}
+
+string s=to_string(n);
+bool t=false;
+ll last=n%10;
+for(char ch:s){
+    int d=ch-'0';
+    if(d>last){
+        t=true;
+        break;
+    }
+}
+
+if(t){
+    cout<<"2"<<endl;
+    return;
+}
+
+cout<<"3"<<endl;
 
 }
  

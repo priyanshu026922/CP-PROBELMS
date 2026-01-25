@@ -49,21 +49,45 @@ void fastio() {
 void solve(){
 string s;
 cin>>s;
-int n=s.length();
-int op=0;
-int seq=0;
-int i=0;
-while(i<n){
-    char ch=s[i];
-    int x=i;
-    
-    while(i<n&&ch==s[i]){
-        i++;
+ll n=s.length();
+ll op=0;
+ll seq=0;
+ll c=1;
+ll q=1;
+ll ans=0;
+
+rep(i,1,n){
+    if(s[i]==s[i-1]){
+        c++;
+        q++;
+        if(seq==0){
+            seq=1;
+        }
+        seq=1LL*seq*q;
+       
+    }else{
+         ans+=seq;
+    //    if(seq>1 ) ans+=seq;
+       seq=0;
+        op=(op+(c-1))*1LL;
+        q=1;
+        c=1;
     }
-    op+=(i-x);
-    i++;
+    // cout<<i<<" -->"<<ans<<endl;
 }
 
+
+if(c>1){
+    op+=(c-1);
+    if(seq)ans+=seq;                    
+}
+
+if(op==0){
+    cout<<op<<" "<<"1"<<endl;
+    return;
+}
+
+cout<<op<<" "<<ans%mod<<endl;
 }
  
  

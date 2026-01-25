@@ -53,51 +53,19 @@ vi a(n);
 rep(i,0,n){
     cin>>a[i];
 }
-vi b(n);
-b=a;
 
-sort(begin(b),end(b));
-ll mini=0;
+int val=0;
+rep(i,1,n){
+    val+=2*a[i];
+}
+val+=a[0];
+
+int val1=0;
 rep(i,0,n){
-    ll x=1LL<<(n-i-1);
-    mini+=(x*b[i]);
-}
-sort(rbegin(a),rend(a));
-ll maxi=0;
-rep(i,0,n){
-  ll y=1LL<<(i);
-   maxi+=(y*a[i]);
-
-}
-cout<<mini<<" "<<maxi<<endl;
-// int sum=0;
-vi s(n,0);
-s[n-1]=a[n-1];
-for(int i=n-2;i>=0;i--){
-   s[i]=a[i]+s[i+1];
-}
-vi p(n,0);
-p[0]=a[0];
-for(int i=1;i<n;i++){
-    p[i]=p[i-1]+a[i];
+val1+=(1<<i)*a[i];
 }
 
-
-// int val1=0;
-// int val2=0;
-// int maxi=INT_MIN;
-// int mini=INT_MAX;
-// rep(i,0,n){
-//     sum+=a[i];
-//     val1=sum+2*(s[i]-a[i]);
-//     val2=(sum-a[i])+2*(s[i]);
-//      maxi=max(maxi,val1);
-//      mini=min(mini,val1);
-//       maxi=max(maxi,val2);
-//      mini=min(mini,val2);
-// }
-
-//    cout<<mini<<" "<<maxi<<endl;
+cout<<val<<" "<<val1<<endl;
 }
  
  

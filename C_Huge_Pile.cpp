@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
- 
+
+
 typedef long long ll;
 typedef unsigned long long ull;
 typedef pair<int, int> pii;
@@ -15,98 +16,80 @@ typedef set<int> si;
 typedef multiset<int> msi;
 typedef map<int, int> mii;
 typedef map<ll, ll> mll;
+typedef map<char, int> mci;
 #define all(x) (x).begin(), (x).end()
 #define rall(x) (x).rbegin(), (x).rend()
 #define sz(x) ((int)(x).size())
 #define maxe(v) (*max_element(all(v)))
 #define mine(v) (*min_element(all(v)))
 #define sumv(v) (accumulate(all(v), 0LL))
+#define sortasc(v) sort(all(v))
+#define sortdesc(v) sort(rall(v))
 #define lb(v, x) (lower_bound(all(v), x) - (v).begin())
 #define ub(v, x) (upper_bound(all(v), x) - (v).begin())
 #define ispresent(v, x) (binary_search(all(v), x))
+#define freqmap(mp, v) for (auto &el : v) mp[el]++
+
+
 #define rep(i, a, b) for (int i = (a); i < (b); ++i)
+#define repi(i, a, b) for (int i = (a); i <=(b); ++i)
 #define repr(i, a, b) for (int i = (a); i >= (b); --i)
 #define ff first
 #define ss second
-#define mod 998244353
- 
+
 void fastio() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     cout.tie(NULL);
 }
- 
-// bool cmp(pair<ll,ll>&p1,pair<ll,ll>&p2){
-//     if(p1.first==p2.first){
-//         return p1.second<p2.second;
-//     }
- 
-//     return p1.first>p2.first;
-// }
+
+bool cmp(pair<ll,ll>&a,pair<ll,ll>&b){
+  if(a.first!=b.first){
+    return a.ff>b.ff;
+  }
+  return a.ss<b.ss;
+}
+
+
+ll next_prime(ll n ){
+   
+    for (ll i=n;;i++){
+         bool isPrime=true;
+         for (ll j=2;j*j<=i;j++){
+            if(i%j==0){
+                isPrime=false;
+                break;
+            }
+         }
+         if(isPrime)return i;
+
+    }
+}
 
 
 void solve(){
-ll n;
-cin>>n;
-vll a(n),b(n);
-rep(j,0,n){
-      cin>>a[j];
-}
-rep(j,0,n){
-      cin>>b[j];
-}
-
-vll pr(n,1e9);
-vll sf(n,-1);
-pr[0]=min(a[0],b[0]);
-sf[n-1]=max(a[n-1],b[n-1]);
-
-for(ll i=1;i<n;i++){
-    if(max(a[i],b[i])<pr[i-1]){
-            break;
-    }
-    if(min(a[i],b[i])>=pr[i-1]){
-          pr[i]=min(a[i],b[i]);
-    }else{
-           pr[i]=max(a[i],b[i]);
-    }
-}
-
-for(ll i=n-2;i>=0;i--){
-    if(min(a[i],b[i])>sf[i+1]){
-            break;
-    }
-    if(max(a[i],b[i])<=sf[i+1]){
-          sf[i]=max(a[i],b[i]);
-    }else{
-           sf[i]=min(a[i],b[i]);
-    }
-}
-
-bool ans=(sf[0]==max(a[0],b[0]))||(pr[n-1]==min(a[n-1],b[n-1]));
-
-for(ll i=1;i<n-1;i++){
-    if(min(a[i],b[i])>=pr[i-1]&&max(a[i],b[i])<=sf[i+1])ans=true;
-}
-
-if(ans){
-    cout<<"Yes"<<endl;
+ll n,k;
+cin>>n>>k;
+if(k>n){
+    cout<<"-1"<<endl;
     return;
 }
-
-cout<<"No"<<endl;
-
-
+if(k==n){
+    cout<<"0"<<endl;
+    return;
 }
- 
- 
- 
- 
+ll x1=log2(n);
+ll x2=log2(k);
+
+
+cout<<x1-x2<<endl;
+}
+
 int main() {
     fastio();
-    int t;
-    cin >> t;
-    while (t--) {
+    int n;
+    cin >> n;
+    while (n--) {
         solve();
     }
     return 0;
