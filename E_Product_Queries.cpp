@@ -48,7 +48,7 @@ int solveP(vi &a,int num,vi &pref){
     }
     return ans==INT_MAX?-1:ans;
 }
-
+ 
 void solve(){
 int n;
 cin>>n;
@@ -60,12 +60,12 @@ unordered_set<int>s;
 rep(i,0,n){
     s.insert(a[i]);
 }
-
+ 
 vi pref(n,-1);
 pref[0]=(s.count(1)>0?1:-1);
-pref[1]=(s.count(2)>0?1:-1);
-pref[2]=(s.count(3)>0?1:-1);
-
+if(1<n)pref[1]=(s.count(2)>0?1:-1);
+if(2<n)pref[2]=(s.count(3)>0?1:-1);
+ 
 rep(i,3,n){
     if(s.count(i+1)>0){
         pref[i]=1;
