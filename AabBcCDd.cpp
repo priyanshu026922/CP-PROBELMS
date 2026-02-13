@@ -35,31 +35,52 @@ void fastio() {
     cin.tie(NULL);
     cout.tie(NULL);
 }
+
+void solve(){
+int n;
+cin>>n;
+string s;
+cin>>s;
+
+for(int i=0;i<n;i++){
+    s[i]=tolower(s[i]);
+}
+
+unordered_map<char,int>mp;
+rep(i,0,n){
+    mp[s[i]]++;
+}
+
+char ch;
+int maxi=0;
+for(auto it:mp){
+maxi=max(maxi,it.second);
+}
+
+for(auto it:mp){
+    if(it.second==maxi){
+        ch=it.first;
+        break;
+    }
+}
+mp.erase(ch);
+
+int maxi2=0;
+for(auto it:mp){
+maxi2=max(maxi2,it.second);
+}
+cout<<maxi+maxi2<<endl;
+}
+ 
  
  
  
 int main() {
     fastio();
-    vll isPos(1e6+1,0);
-    for(ll i=2;i<=1e6;i++){
-        ll curr=i*i*i;
-        ll curr1=(curr-1)/(i-1);
-        while(curr1<=1e6){
-            isPos[curr1]=1;
-            curr*=i;
-            curr1=(curr-1)/(i-1);
-        }
-    }
     int t;
     cin >> t;
     while (t--) {
-        int n;
-        cin>>n;
-        if(isPos[n]){ 
-            cout<<"YES"<<endl;
-        }else{
-            cout<<"NO"<<endl;
-        }
+        solve();
     }
     return 0;
 }

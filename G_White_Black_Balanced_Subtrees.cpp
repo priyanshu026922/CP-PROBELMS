@@ -35,31 +35,62 @@ void fastio() {
     cin.tie(NULL);
     cout.tie(NULL);
 }
- 
+
+int dfs(string &s,int node,vector<vector<ll>>&adj,ll &ans){
+  
+    int cnt=0;
+
+    if(s[node-1]=='W'){
+        cnt++;
+    }else{
+        cnt--;
+    }
+
+    
+    for(auto it:adj[node]){
+        cnt+=dfs(s,it,adj,ans);   
+    }
+
+      if(cnt==0){
+        ans++;
+       }
+
+
+    return cnt;
+  
+}
+
+
+void solve(){
+ll n;
+cin>>n;
+
+vll a(n);
+for(int i=1;i<=n-1;i++){
+    cin>>a[i];
+}
+
+string s;
+cin>>s;
+vector<vector<ll>>adj(n+1);
+
+for(int i=1;i<=n-1;i++ ){
+    adj[a[i]].push_back(i+1);
+}
+
+ll ans=0;
+
+dfs(s,1,adj,ans);
+cout<<ans<<endl;
+}
  
  
 int main() {
     fastio();
-    vll isPos(1e6+1,0);
-    for(ll i=2;i<=1e6;i++){
-        ll curr=i*i*i;
-        ll curr1=(curr-1)/(i-1);
-        while(curr1<=1e6){
-            isPos[curr1]=1;
-            curr*=i;
-            curr1=(curr-1)/(i-1);
-        }
-    }
     int t;
     cin >> t;
     while (t--) {
-        int n;
-        cin>>n;
-        if(isPos[n]){ 
-            cout<<"YES"<<endl;
-        }else{
-            cout<<"NO"<<endl;
-        }
+        solve();
     }
     return 0;
 }

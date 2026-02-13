@@ -35,31 +35,31 @@ void fastio() {
     cin.tie(NULL);
     cout.tie(NULL);
 }
- 
- 
+
+void solve(){
+ll b,g,x,y,n;
+cin>>b>>g>>x>>y>>n;
+if(x+y>n){
+    cout<<"-1"<<endl;
+    return;
+}
+ll t=b+g;
+ll mini=(t+n-1)/n;
+ll boys=mini*x;
+ll girls=mini*y;
+if(boys<=b&&girls<=g){
+    cout<<mini<<endl;
+    return;
+}
+ cout<<"-1"<<endl;
+}
  
 int main() {
     fastio();
-    vll isPos(1e6+1,0);
-    for(ll i=2;i<=1e6;i++){
-        ll curr=i*i*i;
-        ll curr1=(curr-1)/(i-1);
-        while(curr1<=1e6){
-            isPos[curr1]=1;
-            curr*=i;
-            curr1=(curr-1)/(i-1);
-        }
-    }
     int t;
     cin >> t;
     while (t--) {
-        int n;
-        cin>>n;
-        if(isPos[n]){ 
-            cout<<"YES"<<endl;
-        }else{
-            cout<<"NO"<<endl;
-        }
+        solve();
     }
     return 0;
 }

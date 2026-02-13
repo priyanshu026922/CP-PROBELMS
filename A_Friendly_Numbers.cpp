@@ -35,31 +35,37 @@ void fastio() {
     cin.tie(NULL);
     cout.tie(NULL);
 }
- 
+
+
+ll digit(ll n){
+    ll s=0;
+    while(n>0){
+        s+=(n%10);
+        n/=10;
+
+    }
+    return s;
+}
+void solve(){
+ll x;
+cin>>x;
+
+int cnt=0;
+for(ll y=x;y<=x+162;y++){
+    if(y-digit(y)==x){
+        cnt++;
+    }
+}
+cout<<cnt<<endl;
+}
  
  
 int main() {
     fastio();
-    vll isPos(1e6+1,0);
-    for(ll i=2;i<=1e6;i++){
-        ll curr=i*i*i;
-        ll curr1=(curr-1)/(i-1);
-        while(curr1<=1e6){
-            isPos[curr1]=1;
-            curr*=i;
-            curr1=(curr-1)/(i-1);
-        }
-    }
     int t;
     cin >> t;
     while (t--) {
-        int n;
-        cin>>n;
-        if(isPos[n]){ 
-            cout<<"YES"<<endl;
-        }else{
-            cout<<"NO"<<endl;
-        }
+        solve();
     }
     return 0;
 }

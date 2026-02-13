@@ -35,31 +35,53 @@ void fastio() {
     cin.tie(NULL);
     cout.tie(NULL);
 }
- 
+
+
+void solve(){
+ll n,k;
+cin>>n>>k;
+vll a(n);
+rep(i,0,n){
+    cin>>a[i];
+}
+
+sort(rbegin(a),rend(a));
+
+vi bits(31,0); 
+vi active(31,1);
+rep(i,0,n){
+    for(int j=0;j<=30;j++){
+        if((a[i] & (1<<j)) == 0){
+            bits[j]++;
+            active[j]=0;
+        }
+    }
+}
+
+ll ans=0;
+
+reverse(begin(bits),end(bits));
+reverse(begin(active),end(active));
+for(int i=0;i<=30;i++){
+    if(active[i]){
+        ans+=(1LL<<(30-i));
+    }
+    else if(k>=bits[i]){
+       ans+=(1LL<<(30-i));
+       k-=bits[i];
+    }
+}
+
+cout<<ans<<endl;
+}
  
  
 int main() {
     fastio();
-    vll isPos(1e6+1,0);
-    for(ll i=2;i<=1e6;i++){
-        ll curr=i*i*i;
-        ll curr1=(curr-1)/(i-1);
-        while(curr1<=1e6){
-            isPos[curr1]=1;
-            curr*=i;
-            curr1=(curr-1)/(i-1);
-        }
-    }
     int t;
     cin >> t;
     while (t--) {
-        int n;
-        cin>>n;
-        if(isPos[n]){ 
-            cout<<"YES"<<endl;
-        }else{
-            cout<<"NO"<<endl;
-        }
+        solve();
     }
     return 0;
 }

@@ -35,31 +35,35 @@ void fastio() {
     cin.tie(NULL);
     cout.tie(NULL);
 }
+
+void solve(){
+int n;
+cin>>n;
+vi a(n);
+rep(i,0,n){
+    cin>>a[i];
+}
+int maxi=0;
+rep(i,0,n){
+    int cnt=0;
+    rep(j,i,n){
+      if(a[j]>=1)cnt++;
+      else break;
+    }
+    maxi=max(maxi,cnt);
+}
+cout<<maxi<<endl;
+}
+ 
  
  
  
 int main() {
     fastio();
-    vll isPos(1e6+1,0);
-    for(ll i=2;i<=1e6;i++){
-        ll curr=i*i*i;
-        ll curr1=(curr-1)/(i-1);
-        while(curr1<=1e6){
-            isPos[curr1]=1;
-            curr*=i;
-            curr1=(curr-1)/(i-1);
-        }
-    }
     int t;
     cin >> t;
     while (t--) {
-        int n;
-        cin>>n;
-        if(isPos[n]){ 
-            cout<<"YES"<<endl;
-        }else{
-            cout<<"NO"<<endl;
-        }
+        solve();
     }
     return 0;
 }

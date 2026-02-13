@@ -36,30 +36,60 @@ void fastio() {
     cout.tie(NULL);
 }
  
+// int findLIS(vi &a,int ind){
+//     vector<int>temp;
+//     temp.push_back(a[0]);
+//     int len=1;
+//     for(int i=1;i<=ind;i++){
+//         if(a[i]>=temp.back()){
+//             temp.push_back(a[i]);
+//             len++;
+//         }else{
+//             int ind=lower_bound(all(temp), a[i]) - (temp).begin();
+//             temp[ind]=a[i];
+//         }
+//     }
+//     return len;
+// }
+
+void solve(){
+int n;
+cin>>n;
+vi a(n);
+rep(i,0,n){
+    cin>>a[i];
+}
+
+vi ans;
+for(int i=0;i<n;i++){
+    int l=1;
+    int r=i+1;
+    while(l<=r){
+        int mid=(l+r)/2;
+        if(a[i-mid+1]>=mid){
+            l=mid+1;
+        }else{
+            r=mid-1;
+        }
+    }
+    ans.push_back(r);
+}
+
+for(auto x:ans){
+    cout<<x<<" ";
+}
+cout<<endl;
+}
+
+ 
  
  
 int main() {
     fastio();
-    vll isPos(1e6+1,0);
-    for(ll i=2;i<=1e6;i++){
-        ll curr=i*i*i;
-        ll curr1=(curr-1)/(i-1);
-        while(curr1<=1e6){
-            isPos[curr1]=1;
-            curr*=i;
-            curr1=(curr-1)/(i-1);
-        }
-    }
     int t;
     cin >> t;
     while (t--) {
-        int n;
-        cin>>n;
-        if(isPos[n]){ 
-            cout<<"YES"<<endl;
-        }else{
-            cout<<"NO"<<endl;
-        }
+        solve();
     }
     return 0;
 }

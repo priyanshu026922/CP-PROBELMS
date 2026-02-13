@@ -35,31 +35,54 @@ void fastio() {
     cin.tie(NULL);
     cout.tie(NULL);
 }
- 
+
+
+void solve(){
+ll n;
+cin>>n;
+vll p(n);
+rep(i,0,n){
+    cin>>p[i];
+}
+vll a(n);
+rep(i,0,n){
+    cin>>a[i];
+}
+
+vll pos(n+1);
+rep(i,0,n){
+    pos[p[i]]=i;
+}
+int last=-1;
+int i=0;
+while(i<n){
+    int curr=a[i];
+    int l=i;
+    while(i<n&&a[i]==curr){
+        i++;
+    }
+    int r=i-1;
+    int idx=pos[curr];
+    if(idx<=last){
+        cout<<"NO"<<endl;
+        return;
+    }
+    if(idx<l||idx>r){
+        cout<<"NO"<<endl;
+        return;
+    }
+    last=idx;
+}
+cout<<"YES"<<endl;
+}
  
  
 int main() {
     fastio();
-    vll isPos(1e6+1,0);
-    for(ll i=2;i<=1e6;i++){
-        ll curr=i*i*i;
-        ll curr1=(curr-1)/(i-1);
-        while(curr1<=1e6){
-            isPos[curr1]=1;
-            curr*=i;
-            curr1=(curr-1)/(i-1);
-        }
-    }
     int t;
     cin >> t;
     while (t--) {
-        int n;
-        cin>>n;
-        if(isPos[n]){ 
-            cout<<"YES"<<endl;
-        }else{
-            cout<<"NO"<<endl;
-        }
+        solve();
     }
     return 0;
 }

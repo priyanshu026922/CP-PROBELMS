@@ -35,31 +35,44 @@ void fastio() {
     cin.tie(NULL);
     cout.tie(NULL);
 }
- 
- 
+
+
+ll solve(int i,int state,vll &p,ll n,ll k){
+    if(i==n){
+       if(state==0) return 0;
+       return LLONG_MIN/2;
+    }
+    
+     ll ans=solve(i+1,state,p,n,k);
+    if(state==1){//sell today
+           if(solve(i+1,0,p,n,k)>-p[i])ans=max(ans,p[i]+(solve(i+1,0,p,n,k)));
+    }
+    else if(state==2){//buy today
+            if(solve(i+1,0,p,n,k)>p[i])ans=max(ans,-p[i]+solve(i+1,0,p,n,k));
+    }else{//start fresh transaction today
+        ans=max(ans,p[i]-k+solve(i+1,2,p,n,k));
+        ans=max(ans,-p[i]-k+solve(i+1,1,p,n,k));
+    }
+    return ans;
+}
+
+void s(){
+ll n,k;
+cin>>n>>k;
+vll p(n);
+rep(i,0,n){
+    cin>>p[i];
+}
+ll ans=solve(0,0,p,n,k);
+cout<<ans<<endl;
+}
  
 int main() {
     fastio();
-    vll isPos(1e6+1,0);
-    for(ll i=2;i<=1e6;i++){
-        ll curr=i*i*i;
-        ll curr1=(curr-1)/(i-1);
-        while(curr1<=1e6){
-            isPos[curr1]=1;
-            curr*=i;
-            curr1=(curr-1)/(i-1);
-        }
-    }
     int t;
     cin >> t;
     while (t--) {
-        int n;
-        cin>>n;
-        if(isPos[n]){ 
-            cout<<"YES"<<endl;
-        }else{
-            cout<<"NO"<<endl;
-        }
+        s();
     }
     return 0;
 }

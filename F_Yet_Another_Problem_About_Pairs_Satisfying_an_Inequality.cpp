@@ -35,31 +35,53 @@ void fastio() {
     cin.tie(NULL);
     cout.tie(NULL);
 }
- 
+
+// bool cmp(pair<ll,ll>&p1,pair<ll,ll>&p2){
+//     if(p1.first<p2.first){
+//         return p1.first<p2.first;
+//     }
+
+
+// }
+void solve(){
+ll n;
+cin>>n;
+vll a(n+1);
+for(int i=1;i<=n;i++){
+    cin>>a[i];
+}
+
+vll valid(n+1,0);
+
+for(int i=1;i<=n;i++){
+    valid[i] = valid[i-1];
+    if(a[i]<i){
+        valid[i]++;
+    }
+}
+
+ll cnt=0;
+for(int i=1;i<=n;i++){
+    
+    if(a[i]<i){
+       ll ind=a[i]-1;
+       if(ind>=1){
+        cnt+=valid[ind];
+       }
+    }
+}
+
+cout<<cnt<<endl;
+
+}
  
  
 int main() {
     fastio();
-    vll isPos(1e6+1,0);
-    for(ll i=2;i<=1e6;i++){
-        ll curr=i*i*i;
-        ll curr1=(curr-1)/(i-1);
-        while(curr1<=1e6){
-            isPos[curr1]=1;
-            curr*=i;
-            curr1=(curr-1)/(i-1);
-        }
-    }
     int t;
     cin >> t;
     while (t--) {
-        int n;
-        cin>>n;
-        if(isPos[n]){ 
-            cout<<"YES"<<endl;
-        }else{
-            cout<<"NO"<<endl;
-        }
+        solve();
     }
     return 0;
 }
