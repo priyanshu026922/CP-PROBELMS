@@ -36,38 +36,21 @@ void fastio() {
     cout.tie(NULL);
 }
 
-ll cal(ll mid,ll k,ll x){
-    if(mid>k){
-         ll inc = (k * (k + 1)) / 2;
-         ll extra = mid - k;
-         ll dec = extra * k - (extra * (extra + 1)) / 2;
-        return inc + dec;
-    }else{//(mid<=k)
-        ll val=(mid*(mid+1))/2;
-        return val;
-    }
-    return 0;
-}
 
 void solve(){
-ll k,x;
-cin>>k>>x;
-
-ll l=1;
-ll r=2*k-1;
-ll ans=2*k-1;
-while(l<=r){
-    //let suppose till mid messages we can use emote
-    ll mid=l+(r-l)/2;
-    ll sum=cal(mid,k,x);
-    if(sum>=x){
-       ans=mid;
-       r=mid-1;
-    }else{
-       l=mid+1;
+int n;
+cin>>n;
+vi a(n);
+rep(i,0,n){
+    cin>>a[i];
+}
+rep(i,0,n){
+    if(a[i]==67){
+        cout<<"YES"<<endl;
+        return;
     }
 }
-cout<<ans<<endl;
+  cout<<"NO"<<endl;
 }
  
  

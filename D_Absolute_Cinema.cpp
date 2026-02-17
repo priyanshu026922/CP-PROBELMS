@@ -36,45 +36,46 @@ void fastio() {
     cout.tie(NULL);
 }
 
-ll cal(ll mid,ll k,ll x){
-    if(mid>k){
-         ll inc = (k * (k + 1)) / 2;
-         ll extra = mid - k;
-         ll dec = extra * k - (extra * (extra + 1)) / 2;
-        return inc + dec;
-    }else{//(mid<=k)
-        ll val=(mid*(mid+1))/2;
-        return val;
-    }
-    return 0;
-}
 
 void solve(){
-ll k,x;
-cin>>k>>x;
-
-ll l=1;
-ll r=2*k-1;
-ll ans=2*k-1;
-while(l<=r){
-    //let suppose till mid messages we can use emote
-    ll mid=l+(r-l)/2;
-    ll sum=cal(mid,k,x);
-    if(sum>=x){
-       ans=mid;
-       r=mid-1;
-    }else{
-       l=mid+1;
-    }
+ll n;
+std::cin>>n;
+vll f(n);
+rep(i,0,n){
+    std::cin>>f[i];
 }
-cout<<ans<<endl;
+vll a(n);
+rep(i,1,n-1){
+    a[i]=(f[i+1]+f[i-1]-2*f[i])/2;
+}
+ll s1=0;
+ll x=1;
+rep(i,1,n-1){
+    s1+=(x*a[i]);
+    x++;
+}
+a[n-1]=(f[0]-s1)/(n-1);
+
+ll s2=0;
+x=1;
+for(int i=n-2;i>=1;i--){
+    s2+=(x*a[i]);
+    x++;
+}
+a[0]=(f[n-1]-s2)/(n-1);
+
+rep(i,0,n){
+    cout<<a[i]<<" ";
+}
+cout<<endl;
+
 }
  
  
 int main() {
     fastio();
     int t;
-    cin >> t;
+    std::cin >> t;
     while (t--) {
         solve();
     }

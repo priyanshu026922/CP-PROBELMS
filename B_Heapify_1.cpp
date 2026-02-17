@@ -36,38 +36,40 @@ void fastio() {
     cout.tie(NULL);
 }
 
-ll cal(ll mid,ll k,ll x){
-    if(mid>k){
-         ll inc = (k * (k + 1)) / 2;
-         ll extra = mid - k;
-         ll dec = extra * k - (extra * (extra + 1)) / 2;
-        return inc + dec;
-    }else{//(mid<=k)
-        ll val=(mid*(mid+1))/2;
-        return val;
-    }
-    return 0;
-}
 
 void solve(){
-ll k,x;
-cin>>k>>x;
-
-ll l=1;
-ll r=2*k-1;
-ll ans=2*k-1;
-while(l<=r){
-    //let suppose till mid messages we can use emote
-    ll mid=l+(r-l)/2;
-    ll sum=cal(mid,k,x);
-    if(sum>=x){
-       ans=mid;
-       r=mid-1;
-    }else{
-       l=mid+1;
-    }
+int n;
+cin>>n;
+vi a(n+1);
+for(int i=1;i<=n;i++){
+   cin>>a[i]; 
 }
-cout<<ans<<endl;
+// if(n%2!=0){
+//     if(a[n]!=n){
+//         cout<<"NO"<<endl;
+//         return;
+//     }
+// }
+vector<int>isDone(n+1,0);
+for(int i=1;i<=n;i++){
+    if(isDone[i])continue;
+    unordered_set<int>s1;
+    unordered_set<int>s2;
+    int val=i;
+    while(val<=n){
+         s1.insert(val);
+         s2.insert(a[val]);
+         isDone[val]=1;
+         val*=2;
+    }
+    if(s1!=s2){
+        cout<<"NO"<<endl;
+        return;
+    }
+
+}
+ cout<<"YES"<<endl;
+
 }
  
  

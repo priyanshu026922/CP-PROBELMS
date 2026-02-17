@@ -36,38 +36,32 @@ void fastio() {
     cout.tie(NULL);
 }
 
-ll cal(ll mid,ll k,ll x){
-    if(mid>k){
-         ll inc = (k * (k + 1)) / 2;
-         ll extra = mid - k;
-         ll dec = extra * k - (extra * (extra + 1)) / 2;
-        return inc + dec;
-    }else{//(mid<=k)
-        ll val=(mid*(mid+1))/2;
-        return val;
-    }
-    return 0;
-}
 
 void solve(){
-ll k,x;
-cin>>k>>x;
+int n;
+cin>>n;
+vi a(n);
+rep(i,0,n){
+    cin>>a[i];
+}
 
-ll l=1;
-ll r=2*k-1;
-ll ans=2*k-1;
-while(l<=r){
-    //let suppose till mid messages we can use emote
-    ll mid=l+(r-l)/2;
-    ll sum=cal(mid,k,x);
-    if(sum>=x){
-       ans=mid;
-       r=mid-1;
-    }else{
-       l=mid+1;
+int cnt=1e9;
+vvi dp(n,vi (7,1e9));
+for(int i=1;i<=6;i++){
+    dp[0][i]=((a[0]==i)?0:1);
+}
+for(int i=1;i<n;i++){
+    for(int j=1;j<=6;j++){
+        for(int k=1;k<=6;k++){
+            if(j==k||k+j==7)continue;
+            dp[i][j]=min(dp[i][j],dp[i-1][k]+(a[i]==j?0:1));
+        }
     }
 }
-cout<<ans<<endl;
+for(int i=1;i<=6;i++){
+    cnt=min(cnt,dp[n-1][i]);
+}
+cout<<cnt<<endl;
 }
  
  
