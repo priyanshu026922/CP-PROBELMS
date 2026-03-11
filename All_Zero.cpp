@@ -1,0 +1,96 @@
+#include <bits/stdc++.h>
+using namespace std;
+ 
+typedef long long ll;
+typedef unsigned long long ull;
+typedef pair<int, int> pii;
+typedef pair<ll, ll> pll;
+typedef vector<int> vi;
+typedef vector<ll> vll;
+typedef vector<string> vs;
+typedef vector<pii> vpii;
+typedef vector<pll> vpll;
+typedef vector<vi> vvi;
+typedef set<int> si;
+typedef multiset<int> msi;
+typedef map<int, int> mii;
+typedef map<ll, ll> mll;
+#define all(x) (x).begin(), (x).end()
+#define rall(x) (x).rbegin(), (x).rend()
+#define sz(x) ((int)(x).size())
+#define maxe(v) (*max_element(all(v)))
+#define mine(v) (*min_element(all(v)))
+#define sumv(v) (accumulate(all(v), 0LL))
+#define lb(v, x) (lower_bound(all(v), x) - (v).begin())
+#define ub(v, x) (upper_bound(all(v), x) - (v).begin())
+#define ispresent(v, x) (binary_search(all(v), x))
+#define rep(i, a, b) for (int i = (a); i < (b); ++i)
+#define repr(i, a, b) for (int i = (a); i >= (b); --i)
+#define ff first
+#define ss second
+#define mod 1000000007
+ 
+
+long long power(long long base, long long exp, const long long m) {
+    long long res = 1;
+    base %= m;
+    while (exp > 0) {
+        if (exp & 1)
+            res = (res * base) % m;
+        base = (base * base) % m;
+        exp >>= 1;
+    }
+    return res;
+}
+
+long long modularInverse(long long n, long long m) {
+    return power(n, m - 2, m);
+}
+
+bool isPrime(ll n) {
+    if (n <= 3) return n > 1;
+    if (n % 2 == 0 || n % 3 == 0) return false;
+    for (ll i = 5; i * i <= n; i += 6) {
+        if (n % i == 0 || n % (i + 2) == 0) {
+            return false;
+        }
+    }
+    return true;
+}
+
+void fastio() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+}
+
+
+void solve(){
+int a,b,c;
+cin>>a>>b>>c;
+
+int op_req=a;
+int left=b-2*a;
+if(left<0){
+    cout<<"NO"<<endl;
+    return;
+}
+int req=left;
+int l=c-3*req;
+if(l!=0){
+    cout<<"NO"<<endl;
+    return;
+}
+cout<<"YES"<<endl;
+}
+ 
+ 
+int main() {
+    fastio();
+    int t;
+    std::cin >> t;
+    while (t--) {
+        solve();
+    }
+    return 0;
+}
