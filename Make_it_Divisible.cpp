@@ -64,28 +64,10 @@ void fastio() {
     cout.tie(NULL);
 }
 
-// int countDigit(int x,int n){
-//     int cnt=0;
-//     while(x>0){
-//         cnt++;
-//         x/=10;
-//     }
-//     return cnt;
-// }
 
 void solve(){
 ll n;
 cin>>n;
-
-// ll x=3;
-// n--;
-// while(n>1){
-//     x=10*x;
-//     n--;
-// }
-// if(n==1){
-// x=x*10+3;
-// }
 
 for(int i=1;i<=n;i++){
     if(i==1||i==n){

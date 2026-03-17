@@ -68,7 +68,7 @@ void solve(){
 ll n,q;
 cin>>n>>q;
 
-ll err=(n+q)/(q+1);
+ll err=(n+q)/(q+1); //ceil value Of [n/(q+1)]
 cout<<err/2<<endl;
 }
  
