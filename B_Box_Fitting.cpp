@@ -30,81 +30,62 @@ typedef map<ll, ll> mll;
 #define ss second
 #define mod 1000000007
  
+
+
 void fastio() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     cout.tie(NULL);
 }
- 
-// bool cmp(pair<ll,ll>&p1,pair<ll,ll>&p2){
-//     if(p1.first==p2.first){
-//         return p1.second<p2.second;
-//     }
- 
-//     return p1.first>p2.first;
-// }
+
+int isPos(vll &w,int n,int mid,int W){
+    priority_queue<ll>pq;
+    for(int i=0;i<mid;i++){
+        pq.push(W-w[i]);
+    }
+    for(int i=mid;i<n;i++){
+       
+        int x=pq.top();
+        pq.pop();
+        if(x<w[i]){
+            return false;
+        }
+        pq.push(x-w[i]);
+    }
+    return true;
+}
 
 void solve(){
-int n;
-cin>>n;
-vll a(n);
+ll n,W;
+cin>>n>>W;
+vll w(n);
 rep(i,0,n){
-    cin>>a[i];
+    cin>>w[i];
 }
-map<int,int>bits;
-rep(i,0,n){
-    for(int j=0;j<32;j++){
-        if(a[i]&(1<<j)){
-            bits[j]++;
-        }
-    }
-}
+sort(rbegin(w),rend(w));
 
-int ans=0;
-bool t=true;
-for(auto & it:bits){
-     t=false;
-    if(ans==0){
-        ans=it.second;
+ll l=1;
+ll r=n;
+
+ll ans=n;
+while(l<=r){
+    ll mid=l+(r-l)/2;
+    if(isPos(w,n,mid,W)){
+        ans=mid;
+        r=mid-1;
     }else{
-        ans=__gcd(ans,it.second);
+        l=mid+1;
     }
 }
 
-if(t){
-    rep(i,0,n){
-        cout<<i+1<<" ";
-    }
-    cout<<endl;
-    return;
+cout<<ans<<endl;
 }
-
-vi factors;
-for(int i=1;i*i<=ans;i++){
-    if(ans%i==0){
-         factors.push_back(i);
-        if(i!=ans/i){
-            factors.push_back(ans/i);
-        }
-    }
-   
-}
-
-sort(begin(factors),end(factors));
-for(auto it:factors){
-    cout<<it<<" ";
-}
-cout<<endl;
-}
-
-
-
  
  
 int main() {
     fastio();
     int t;
-    cin>>t;
+    std::cin >> t;
     while (t--) {
         solve();
     }

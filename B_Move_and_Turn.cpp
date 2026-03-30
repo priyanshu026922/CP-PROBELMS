@@ -30,81 +30,33 @@ typedef map<ll, ll> mll;
 #define ss second
 #define mod 1000000007
  
+
+
 void fastio() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     cout.tie(NULL);
 }
- 
-// bool cmp(pair<ll,ll>&p1,pair<ll,ll>&p2){
-//     if(p1.first==p2.first){
-//         return p1.second<p2.second;
-//     }
- 
-//     return p1.first>p2.first;
-// }
+
+
 
 void solve(){
-int n;
-cin>>n;
-vll a(n);
-rep(i,0,n){
-    cin>>a[i];
-}
-map<int,int>bits;
-rep(i,0,n){
-    for(int j=0;j<32;j++){
-        if(a[i]&(1<<j)){
-            bits[j]++;
-        }
-    }
-}
-
-int ans=0;
-bool t=true;
-for(auto & it:bits){
-     t=false;
-    if(ans==0){
-        ans=it.second;
+    int n;
+    cin>>n;
+    int k=n/2;
+    ll ans=0;
+    if(n%2==0){
+        ans=(k+1)*(k+1);
     }else{
-        ans=__gcd(ans,it.second);
+        ans=2*(k+1)*(k+2);
     }
+    cout<<ans<<endl;
 }
-
-if(t){
-    rep(i,0,n){
-        cout<<i+1<<" ";
-    }
-    cout<<endl;
-    return;
-}
-
-vi factors;
-for(int i=1;i*i<=ans;i++){
-    if(ans%i==0){
-         factors.push_back(i);
-        if(i!=ans/i){
-            factors.push_back(ans/i);
-        }
-    }
-   
-}
-
-sort(begin(factors),end(factors));
-for(auto it:factors){
-    cout<<it<<" ";
-}
-cout<<endl;
-}
-
-
-
  
  
 int main() {
     fastio();
-    int t;
-    cin>>t;
+    int t=1;
     while (t--) {
         solve();
     }

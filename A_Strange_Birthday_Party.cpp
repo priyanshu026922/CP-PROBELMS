@@ -30,81 +30,56 @@ typedef map<ll, ll> mll;
 #define ss second
 #define mod 1000000007
  
+
+
 void fastio() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     cout.tie(NULL);
 }
- 
-// bool cmp(pair<ll,ll>&p1,pair<ll,ll>&p2){
-//     if(p1.first==p2.first){
-//         return p1.second<p2.second;
-//     }
- 
-//     return p1.first>p2.first;
-// }
+
 
 void solve(){
-int n;
-cin>>n;
-vll a(n);
-rep(i,0,n){
-    cin>>a[i];
-}
-map<int,int>bits;
-rep(i,0,n){
-    for(int j=0;j<32;j++){
-        if(a[i]&(1<<j)){
-            bits[j]++;
-        }
-    }
-}
-
-int ans=0;
-bool t=true;
-for(auto & it:bits){
-     t=false;
-    if(ans==0){
-        ans=it.second;
-    }else{
-        ans=__gcd(ans,it.second);
-    }
-}
-
-if(t){
+    ll n,m;
+    cin>>n>>m;
+    vll k(n);
     rep(i,0,n){
-        cout<<i+1<<" ";
+        cin>>k[i];
     }
-    cout<<endl;
-    return;
-}
 
-vi factors;
-for(int i=1;i*i<=ans;i++){
-    if(ans%i==0){
-         factors.push_back(i);
-        if(i!=ans/i){
-            factors.push_back(ans/i);
-        }
+    vll c(m);
+    rep(i,0,m){
+        cin>>c[i];
     }
-   
+    
+    vll q(m);
+    q=c;
+    sort(rbegin(q),rend(q));
+    sort(rbegin(k),rend(k));
+    
+    ll ans=0;
+    rep(i,0,n){
+        ll val=k[i];
+         if(q.back()<c[val-1]){
+            if(!q.empty()){
+                ans+=q.back();
+                q.pop_back();
+            }
+         }else{
+            ans+=c[val-1];
+         }
+    }
+cout<<ans<<endl;
+
+
+
 }
-
-sort(begin(factors),end(factors));
-for(auto it:factors){
-    cout<<it<<" ";
-}
-cout<<endl;
-}
-
-
-
  
  
 int main() {
     fastio();
     int t;
-    cin>>t;
+    std::cin >> t;
     while (t--) {
         solve();
     }

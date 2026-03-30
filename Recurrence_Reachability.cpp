@@ -30,81 +30,59 @@ typedef map<ll, ll> mll;
 #define ss second
 #define mod 1000000007
  
+
+
 void fastio() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     cout.tie(NULL);
 }
- 
-// bool cmp(pair<ll,ll>&p1,pair<ll,ll>&p2){
-//     if(p1.first==p2.first){
-//         return p1.second<p2.second;
-//     }
- 
-//     return p1.first>p2.first;
-// }
 
 void solve(){
-int n;
-cin>>n;
-vll a(n);
-rep(i,0,n){
-    cin>>a[i];
-}
-map<int,int>bits;
-rep(i,0,n){
-    for(int j=0;j<32;j++){
-        if(a[i]&(1<<j)){
-            bits[j]++;
-        }
-    }
-}
+int n,m;
+cin>>n>>m;
 
-int ans=0;
-bool t=true;
-for(auto & it:bits){
-     t=false;
-    if(ans==0){
-        ans=it.second;
-    }else{
-        ans=__gcd(ans,it.second);
-    }
-}
-
-if(t){
-    rep(i,0,n){
-        cout<<i+1<<" ";
-    }
-    cout<<endl;
+if(m==1){
+    //if we take suppose x==1 && y==2,
+    //f(0)=x=1,
+    //f(1)=y=2,
+    //we want f(k)=M,
+    //so k must be 0 i.e x=1 and y>x.....min val pos is [2]
+    cout<<"1 2"<<endl;
     return;
 }
 
-vi factors;
-for(int i=1;i*i<=ans;i++){
-    if(ans%i==0){
-         factors.push_back(i);
-        if(i!=ans/i){
-            factors.push_back(ans/i);
-        }
+if(m<=n){
+    cout <<1<<" "<<m<<endl;;
+    return;
+}
+
+int p=4;
+while(p<=m){
+    int t=p-1;
+  
+
+    int l=(m-n+p-3)/(p-2); //ceil value
+
+    int r=(m-1)/(p-1);//floor value
+
+    if(l<=r){//valid D exists
+        int x=m-l*(p-1);
+        int y=x+l;
+
+        cout<<x<<" "<<y<<endl;
+        return;
     }
-   
+    p*=2;
 }
-
-sort(begin(factors),end(factors));
-for(auto it:factors){
-    cout<<it<<" ";
+cout<<"-1"<<endl;
 }
-cout<<endl;
-}
-
-
-
  
  
 int main() {
     fastio();
     int t;
-    cin>>t;
+    std::cin >> t;
     while (t--) {
         solve();
     }

@@ -30,81 +30,68 @@ typedef map<ll, ll> mll;
 #define ss second
 #define mod 1000000007
  
+
+long long power(long long base, long long exp, const long long m) {
+    long long res = 1;
+    base %= m;
+    while (exp > 0) {
+        if (exp & 1)
+            res = (res * base) % m;
+        base = (base * base) % m;
+        exp >>= 1;
+    }
+    return res;
+}
+
+long long modularInverse(long long n, long long m) {
+    return power(n, m - 2, m);
+}
+
+bool isPrime(ll n) {
+    if (n <= 3) return n > 1;
+    if (n % 2 == 0 || n % 3 == 0) return false;
+    for (ll i = 5; i * i <= n; i += 6) {
+        if (n % i == 0 || n % (i + 2) == 0) {
+            return false;
+        }
+    }
+    return true;
+}
+
 void fastio() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     cout.tie(NULL);
 }
- 
-// bool cmp(pair<ll,ll>&p1,pair<ll,ll>&p2){
-//     if(p1.first==p2.first){
-//         return p1.second<p2.second;
-//     }
- 
-//     return p1.first>p2.first;
-// }
+
 
 void solve(){
-int n;
-cin>>n;
-vll a(n);
-rep(i,0,n){
-    cin>>a[i];
-}
-map<int,int>bits;
-rep(i,0,n){
-    for(int j=0;j<32;j++){
-        if(a[i]&(1<<j)){
-            bits[j]++;
-        }
-    }
-}
+int x,y,z;
+cin>>x>>y>>z;
 
-int ans=0;
-bool t=true;
-for(auto & it:bits){
-     t=false;
-    if(ans==0){
-        ans=it.second;
-    }else{
-        ans=__gcd(ans,it.second);
-    }
+int cnt=0;
+if(x>=50){
+    cnt++;
 }
-
-if(t){
-    rep(i,0,n){
-        cout<<i+1<<" ";
-    }
-    cout<<endl;
-    return;
-}
-
-vi factors;
-for(int i=1;i*i<=ans;i++){
-    if(ans%i==0){
-         factors.push_back(i);
-        if(i!=ans/i){
-            factors.push_back(ans/i);
-        }
-    }
+if(y>=50){
+    cnt++;
    
 }
-
-sort(begin(factors),end(factors));
-for(auto it:factors){
-    cout<<it<<" ";
+ if(z>=50){
+        cnt++;
+    }
+if(cnt>=2){
+    cout<<"Yes"<<endl;
+    return;
 }
-cout<<endl;
+  cout<<"No"<<endl;
 }
-
-
-
  
  
 int main() {
     fastio();
     int t;
-    cin>>t;
+    std::cin >> t;
     while (t--) {
         solve();
     }

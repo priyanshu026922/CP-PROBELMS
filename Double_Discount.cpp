@@ -30,81 +30,72 @@ typedef map<ll, ll> mll;
 #define ss second
 #define mod 1000000007
  
+
+
+
 void fastio() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     cout.tie(NULL);
 }
- 
-// bool cmp(pair<ll,ll>&p1,pair<ll,ll>&p2){
-//     if(p1.first==p2.first){
-//         return p1.second<p2.second;
+
+// bool cmp(pair<int,int>&p1,pair<int,int>&p2){
+//     if(p1.second==p2.second){
+//         return p1.first<p2.first;
 //     }
- 
-//     return p1.first>p2.first;
+
+//     return p1.second<p2.second;
 // }
 
 void solve(){
-int n;
-cin>>n;
-vll a(n);
+int n,k;
+cin>>n>>k;
+vi a(n);
 rep(i,0,n){
     cin>>a[i];
 }
-map<int,int>bits;
+vi b(n);
 rep(i,0,n){
-    for(int j=0;j<32;j++){
-        if(a[i]&(1<<j)){
-            bits[j]++;
-        }
+    cin>>b[i];
+}
+vpii vec(n);
+rep(i,0,n){
+    vec[i]={a[i],b[i]};
+}
+
+sort(begin(vec),end(vec));
+
+
+// cout<<"||||||"<<endl;
+// rep(i,0,n){
+//     cout<<vec[i].first<<" :::"<<vec[i].second<<" ????";
+// }
+// cout<<endl;
+// cout<<"|||||"<<endl;
+
+
+int maxi=0;
+for(int i=n-1;i>=0;i--){
+    int val=k-(vec[i].first-min(100,vec[i].first/2));
+    if(val<0)continue;
+
+    for(int j=i-1;j>=0;j--){
+       if(vec[j].first<=val){
+         maxi=max(maxi,vec[i].second+vec[j].second);
+       }
     }
 }
+cout<<maxi<<endl;
 
-int ans=0;
-bool t=true;
-for(auto & it:bits){
-     t=false;
-    if(ans==0){
-        ans=it.second;
-    }else{
-        ans=__gcd(ans,it.second);
-    }
+
+
 }
-
-if(t){
-    rep(i,0,n){
-        cout<<i+1<<" ";
-    }
-    cout<<endl;
-    return;
-}
-
-vi factors;
-for(int i=1;i*i<=ans;i++){
-    if(ans%i==0){
-         factors.push_back(i);
-        if(i!=ans/i){
-            factors.push_back(ans/i);
-        }
-    }
-   
-}
-
-sort(begin(factors),end(factors));
-for(auto it:factors){
-    cout<<it<<" ";
-}
-cout<<endl;
-}
-
-
-
  
  
 int main() {
     fastio();
     int t;
-    cin>>t;
+    std::cin >> t;
     while (t--) {
         solve();
     }

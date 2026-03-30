@@ -47,54 +47,32 @@ void fastio() {
 void solve(){
 int n;
 cin>>n;
-vll a(n);
+vpii a;
 rep(i,0,n){
-    cin>>a[i];
-}
-map<int,int>bits;
-rep(i,0,n){
-    for(int j=0;j<32;j++){
-        if(a[i]&(1<<j)){
-            bits[j]++;
-        }
+    int k;
+    cin>>k;
+      
+    vi v;
+    rep(j,0,k){
+        int x;
+        cin>>x;
+        v.push_back(x-j+1);
     }
+    sort(begin(v),end(v));
+    a.push_back({v[k-1],k});//(taking max value,len)
+    
+}
+sort(begin(a),end(a));
+int ans=a[0].first;
+int inc=a[0].second;
+
+rep(i,1,n){
+    ans=max(ans,a[i].first-inc);
+    inc+=a[i].second;
 }
 
-int ans=0;
-bool t=true;
-for(auto & it:bits){
-     t=false;
-    if(ans==0){
-        ans=it.second;
-    }else{
-        ans=__gcd(ans,it.second);
-    }
-}
+cout<<ans<<endl;
 
-if(t){
-    rep(i,0,n){
-        cout<<i+1<<" ";
-    }
-    cout<<endl;
-    return;
-}
-
-vi factors;
-for(int i=1;i*i<=ans;i++){
-    if(ans%i==0){
-         factors.push_back(i);
-        if(i!=ans/i){
-            factors.push_back(ans/i);
-        }
-    }
-   
-}
-
-sort(begin(factors),end(factors));
-for(auto it:factors){
-    cout<<it<<" ";
-}
-cout<<endl;
 }
 
 
