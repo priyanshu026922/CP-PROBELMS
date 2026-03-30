@@ -50,7 +50,6 @@ void solve(){
     q[i]={l,r};
   }
 
-  bool t=false;
   int L=x;
   int R=x;
   
@@ -61,13 +60,6 @@ void solve(){
 
         L=min(L,l);
         R=max(R,r);
-        // if(L>=l&&r<=R){
-        //     L=l;
-        // }
-
-        // else if(l<=R&&R<=r){
-        //     R=r;
-        // }
     }
 
   cout<<R-L+1<<endl;

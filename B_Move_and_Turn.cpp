@@ -39,7 +39,6 @@ void fastio() {
 }
 
 
-
 void solve(){
     int n;
     cin>>n;
@@ -48,6 +47,9 @@ void solve(){
     if(n%2==0){
         ans=(k+1)*(k+1);
     }else{
+        //both (up/down--->left/right)
+        //and (left/right--->up/down) are completely independent
+        //no common cases amongst them
         ans=2*(k+1)*(k+2);
     }
     cout<<ans<<endl;

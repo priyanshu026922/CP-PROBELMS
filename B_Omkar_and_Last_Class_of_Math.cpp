@@ -43,12 +43,16 @@ void solve(){
    ll n;
    cin>>n;
    int ans=-1;
-   int g=0;
    for(int i=2;i*i<=n;i++){
        if(n%i==0){
          ans=n/i;
          break;
        }
+   }
+   
+   if(ans==-1){
+    cout<<"1"<<" "<<n-1<<endl;
+    return;
    }
    cout<<ans<<" "<<n-ans<<endl; 
 }
