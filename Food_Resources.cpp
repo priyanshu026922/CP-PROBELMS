@@ -1,0 +1,80 @@
+#include <bits/stdc++.h>
+using namespace std;
+ 
+typedef long long ll;
+typedef unsigned long long ull;
+typedef pair<int, int> pii;
+typedef pair<ll, ll> pll;
+typedef vector<int> vi;
+typedef vector<ll> vll;
+typedef vector<string> vs;
+typedef vector<pii> vpii;
+typedef vector<pll> vpll;
+typedef vector<vi> vvi;
+typedef set<int> si;
+typedef multiset<int> msi;
+typedef map<int, int> mii;
+typedef map<ll, ll> mll;
+#define all(x) (x).begin(), (x).end()
+#define rall(x) (x).rbegin(), (x).rend()
+#define sz(x) ((int)(x).size())
+#define maxe(v) (*max_element(all(v)))
+#define mine(v) (*min_element(all(v)))
+#define sumv(v) (accumulate(all(v), 0LL))
+#define lb(v, x) (lower_bound(all(v), x) - (v).begin())
+#define ub(v, x) (upper_bound(all(v), x) - (v).begin())
+#define ispresent(v, x) (binary_search(all(v), x))
+#define rep(i, a, b) for (int i = (a); i < (b); ++i)
+#define repr(i, a, b) for (int i = (a); i >= (b); --i)
+#define ff first
+#define ss second
+#define mod 1000000007
+ 
+
+
+void fastio() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+}
+
+bool isPos(vi &a,int mid,int n,int m){
+    int cnt=0;
+    rep(i,0,n){
+        cnt+=(a[i]/mid);
+    }
+   return cnt>=m;
+}
+
+void solve(){
+int n,m;
+cin>>n>>m;
+vi a(n);
+rep(i,0,n){
+    cin>>a[i];
+}
+int ans=0;
+int l=1;
+int r=sumv(a);
+while(l<=r){
+    int mid=l+(r-l)/2;
+    if(isPos(a,mid,n,m)){
+        ans=mid;
+        l=mid+1;
+    }else{
+        r=mid-1;
+    }
+}
+cout<<ans<<endl;
+
+}
+ 
+ 
+int main() {
+    fastio();
+    int t=1;
+    while (t--) {
+        solve();
+    }
+    return 0;
+}
