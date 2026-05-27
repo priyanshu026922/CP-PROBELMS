@@ -36,37 +36,30 @@ void fastio() {
     cout.tie(NULL);
 }
 
-void solve(){
-	int n;
-		cin >> n; // Read the size of the array for each test case
-		map<int, int> mp; // Map to count occurrences of each bit position
-		vector<vector<int>> v; // Vector to store the bit positions for each number
-		for (int i = 0; i < n; i++) { // Loop through each number in the array
-			int x;
-			cin >> x; // Read the number of set bits in the current number
-			vector<int> temp(x); // Temporary vector to store the bit positions
-			for (int j = 0; j < x; j++) {
-				cin >> temp[j]; // Read each bit position
-				mp[temp[j]]++; // Increment the count of this bit position
-			}
-			v.push_back(temp); // Store the bit positions in the vector
-		}
-		string ans = "No"; // Default answer is "No"
-		for (int i = 0; i < n; i++) { // Check each number's bit positions
-			int f = 1; // Flag to check if all bit positions are repeated
-			for (auto it : v[i]) {
-				if (mp[it] == 1) { // If any bit position is unique
-					f = 0; // Set flag to 0
-					break; // Break the loop
-				}
-			}
-			if (f == 1) { // If all bit positions are repeated
-				ans = "Yes"; // Set answer to "Yes"
-				break; // Break the loop
-			}
-		}
-		cout << ans << endl;
 
+void solve(){
+int n,m;
+cin>>n>>m;
+vi a(n);
+a[0]=1;
+if(m==1){
+    cout<<-1<<endl;
+    return;
+}
+
+if(n>=2)a[1]=1;
+rep(i,2,n){
+    a[i]=(a[i-1]-a[i-2]+m)%m;
+}
+
+if(a[n-1]!=a[n-2]){
+    cout<<"-1"<<endl;
+    return;
+}
+    rep(i,0,n){
+        cout<<a[i]<<" ";
+    }
+    cout<<endl;
 }
  
  
@@ -77,5 +70,5 @@ int main() {
     while (t--) {
         solve();
     }
-    return 0;
+    return 0; 
 }

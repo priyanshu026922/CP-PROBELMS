@@ -28,46 +28,44 @@ typedef map<ll, ll> mll;
 #define repr(i, a, b) for (int i = (a); i >= (b); --i)
 #define ff first
 #define ss second
-#define mod 998244353
+#define mod 1000000007
  
+
+
 void fastio() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     cout.tie(NULL);
 }
 
+
 void solve(){
-    string s;
-    cin>>s;
-    ll n=s.length();
-    ll op=1;
-    ll ans=1;
-    ll len=1;
-    rep(i,1,n){
-        if(s[i]!=s[i-1]){
-            len++;
-            ans=(ans*op)%mod;
-            op=1;
-        }else{
-            op++;
-        }
-    }
-
-    ans=(ans*op)%mod;
-    for(int i=1;i<=n-len;i++){
-        ans=(ans*i)%mod;
-    }
-
-    cout<<n-len<<" "<<ans<<endl;
-
-
+string s;
+cin>>s;
+int n=s.length();
+if(n==1){
+    cout<<s<<endl;
+    return;
 }
- 
+rep(i,0,n){
+    char ch1=i>0?s[i-1]:'$';
+    char ch2=i<n-1?s[i+1]:'$';
+    if(s[i]==s[i-1]){
+       for(char ch='a';ch<='z';ch++){
+        if(ch!=ch1&&ch!=ch2){
+            s[i]=ch;
+            break;
+        }
+       }
+    }
+}
+cout<<s<<endl;
+}
+
  
 int main() {
     fastio();
-    int t;
-    cin >> t;
+    int t=1;
     while (t--) {
         solve();
     }

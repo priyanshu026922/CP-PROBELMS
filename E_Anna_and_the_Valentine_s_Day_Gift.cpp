@@ -28,7 +28,7 @@ typedef map<ll, ll> mll;
 #define repr(i, a, b) for (int i = (a); i >= (b); --i)
 #define ff first
 #define ss second
-#define mod 1000000007
+#define mod 998244353
  
 void fastio() {
     ios_base::sync_with_stdio(false);
@@ -36,36 +36,62 @@ void fastio() {
     cout.tie(NULL);
 }
 
+int countD(ll x){
+    int cnt=0;
+    while(x>0){
+        cnt++;
+        x/=10;
+    }
+    return cnt;
+}
+
+int countT(ll x){
+    int cnt=0;
+    while(x>0){
+
+        int t=x%10;
+        if(t==0)cnt++;
+        else break;
+
+        x/=10;
+    }
+    return cnt;
+}
+
 void solve(){
-	int n;
-		cin >> n; // Read the size of the array for each test case
-		map<int, int> mp; // Map to count occurrences of each bit position
-		vector<vector<int>> v; // Vector to store the bit positions for each number
-		for (int i = 0; i < n; i++) { // Loop through each number in the array
-			int x;
-			cin >> x; // Read the number of set bits in the current number
-			vector<int> temp(x); // Temporary vector to store the bit positions
-			for (int j = 0; j < x; j++) {
-				cin >> temp[j]; // Read each bit position
-				mp[temp[j]]++; // Increment the count of this bit position
-			}
-			v.push_back(temp); // Store the bit positions in the vector
-		}
-		string ans = "No"; // Default answer is "No"
-		for (int i = 0; i < n; i++) { // Check each number's bit positions
-			int f = 1; // Flag to check if all bit positions are repeated
-			for (auto it : v[i]) {
-				if (mp[it] == 1) { // If any bit position is unique
-					f = 0; // Set flag to 0
-					break; // Break the loop
-				}
-			}
-			if (f == 1) { // If all bit positions are repeated
-				ans = "Yes"; // Set answer to "Yes"
-				break; // Break the loop
-			}
-		}
-		cout << ans << endl;
+ll n,m;
+cin>>n>>m;
+
+vll a(n);
+rep(i,0,n){
+    cin>>a[i];
+}
+
+vi trailZ;
+int cntD=0;
+rep(i,0,n){
+    cntD+=countD(a[i]);
+    int c=countT(a[i]);
+    trailZ.push_back(c);
+}
+
+
+sort(rbegin(trailZ),rend(trailZ));
+
+// cout<<"CNTD Early::"<<cntD<<"--";
+for(int i=0;i<trailZ.size();i+=2){
+    cntD-=trailZ[i];
+}
+
+// cout<<"CNTD later::"<<cntD<<endl;
+
+if(cntD>m){
+    cout<<"Sasha"<<endl;
+    return;
+}
+
+cout<<"Anna"<<endl;
+
 
 }
  

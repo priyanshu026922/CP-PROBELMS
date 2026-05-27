@@ -37,28 +37,14 @@ void fastio() {
 }
 
 void solve(){
-    string s;
-    cin>>s;
-    ll n=s.length();
-    ll op=1;
-    ll ans=1;
-    ll len=1;
-    rep(i,1,n){
-        if(s[i]!=s[i-1]){
-            len++;
-            ans=(ans*op)%mod;
-            op=1;
-        }else{
-            op++;
-        }
-    }
+int n,h;
+cin>>n>>h;
 
-    ans=(ans*op)%mod;
-    for(int i=1;i<=n-len;i++){
-        ans=(ans*i)%mod;
-    }
+vi a(n);
+rep(i,0,n){
+    cin>>a[i];
+}
 
-    cout<<n-len<<" "<<ans<<endl;
 
 
 }
@@ -66,8 +52,8 @@ void solve(){
  
 int main() {
     fastio();
-    int t;
-    cin >> t;
+    int t=1;
+    // cin >> t;
     while (t--) {
         solve();
     }

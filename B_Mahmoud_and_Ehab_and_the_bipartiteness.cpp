@@ -30,50 +30,54 @@ typedef map<ll, ll> mll;
 #define ss second
 #define mod 1000000007
  
+
+
 void fastio() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     cout.tie(NULL);
 }
 
+void dfs(int node,vvi &adj,vi &color,int c){
+    color[node]=c;
+    for(auto &it:adj[node]){
+        if(color[it]==-1){
+            dfs(it,adj,color,!c);
+        }
+    }
+}
+
 void solve(){
-	int n;
-		cin >> n; // Read the size of the array for each test case
-		map<int, int> mp; // Map to count occurrences of each bit position
-		vector<vector<int>> v; // Vector to store the bit positions for each number
-		for (int i = 0; i < n; i++) { // Loop through each number in the array
-			int x;
-			cin >> x; // Read the number of set bits in the current number
-			vector<int> temp(x); // Temporary vector to store the bit positions
-			for (int j = 0; j < x; j++) {
-				cin >> temp[j]; // Read each bit position
-				mp[temp[j]]++; // Increment the count of this bit position
-			}
-			v.push_back(temp); // Store the bit positions in the vector
-		}
-		string ans = "No"; // Default answer is "No"
-		for (int i = 0; i < n; i++) { // Check each number's bit positions
-			int f = 1; // Flag to check if all bit positions are repeated
-			for (auto it : v[i]) {
-				if (mp[it] == 1) { // If any bit position is unique
-					f = 0; // Set flag to 0
-					break; // Break the loop
-				}
-			}
-			if (f == 1) { // If all bit positions are repeated
-				ans = "Yes"; // Set answer to "Yes"
-				break; // Break the loop
-			}
-		}
-		cout << ans << endl;
+int n;
+cin>>n;
+vvi adj(n+1);
+rep(i,0,n-1){
+ int u,v;
+ cin>>u>>v;
+ adj[u].push_back(v);
+ adj[v].push_back(u);
+}
+
+vector<int>color(n+1,-1);
+dfs(1,adj,color,0);
+ll cnt0=0;
+ll cnt1=0;
+
+for(int i=1;i<=n;i++){
+    if(color[i]==1){
+        cnt1++;
+    }else{
+        cnt0++;
+    }
+}
+cout<<cnt1*cnt0-1LL*(n-1)<<endl;
 
 }
  
  
 int main() {
     fastio();
-    int t;
-    cin >> t;
+    int t=1;
     while (t--) {
         solve();
     }

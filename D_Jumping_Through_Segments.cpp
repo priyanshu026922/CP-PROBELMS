@@ -36,36 +36,56 @@ void fastio() {
     cout.tie(NULL);
 }
 
+bool isPos(vector<pair<ll,ll>>&vec,ll mid){
+    ll start=0;
+    ll end=0;
+    for(int i=0;i<vec.size();i++){
+
+        ll s=max(start,vec[i].first);
+        ll e=min(end,vec[i].second);
+        if(s>e)return false;
+
+        start=max(start-mid,vec[i].first);
+        end=min(end+mid,vec[i].second);
+        // ll s=start-mid;
+        // ll e=end+mid;
+
+        // if(e<vec[i].first||s>vec[i].second){
+        //     return false;
+        // }
+
+        // start=s;
+        // end=e;
+    }
+
+    return true;
+}
+
 void solve(){
-	int n;
-		cin >> n; // Read the size of the array for each test case
-		map<int, int> mp; // Map to count occurrences of each bit position
-		vector<vector<int>> v; // Vector to store the bit positions for each number
-		for (int i = 0; i < n; i++) { // Loop through each number in the array
-			int x;
-			cin >> x; // Read the number of set bits in the current number
-			vector<int> temp(x); // Temporary vector to store the bit positions
-			for (int j = 0; j < x; j++) {
-				cin >> temp[j]; // Read each bit position
-				mp[temp[j]]++; // Increment the count of this bit position
-			}
-			v.push_back(temp); // Store the bit positions in the vector
-		}
-		string ans = "No"; // Default answer is "No"
-		for (int i = 0; i < n; i++) { // Check each number's bit positions
-			int f = 1; // Flag to check if all bit positions are repeated
-			for (auto it : v[i]) {
-				if (mp[it] == 1) { // If any bit position is unique
-					f = 0; // Set flag to 0
-					break; // Break the loop
-				}
-			}
-			if (f == 1) { // If all bit positions are repeated
-				ans = "Yes"; // Set answer to "Yes"
-				break; // Break the loop
-			}
-		}
-		cout << ans << endl;
+ll n;
+cin>>n;
+
+vector<pair<ll,ll>>vec(n);
+rep(i,0,n){
+    ll l,r;
+    cin>>l>>r;
+    vec[i]={l,r};
+}
+
+ll l=0;
+ll r=1e9;
+while(l<=r){
+    ll mid=l+(r-l)/2;
+
+    if(isPos(vec,mid)){
+
+        r=mid-1;
+    }else{
+        l=mid+1;
+    }
+}
+
+cout<<l<<endl;
 
 }
  
